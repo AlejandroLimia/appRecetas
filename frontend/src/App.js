@@ -1,8 +1,13 @@
 import React from 'react';
-import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+import './styles/generalStyles.css';
+import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 import userActions from './redux/actions/userActions';
-import Home from '../src/pages/Home'
+import Home from '../src/pages/Home';
+import SignUp from '../src/pages/SignUp';
+import Login from '../src/pages/Login';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App(props) {
 	if(localStorage.getItem('token') && props.auth.token === '') {
@@ -13,10 +18,11 @@ function App(props) {
 	? (<Switch>
 		{/* RUTAS USUARIO DESLOGEADO */}
 		<Route exact path='/' component={Home} />
+		<Route path='/signup' component={SignUp} />
+		<Route path='/login' component={Login} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>
-		{/* RUTAS USUARIO LOGEADO */}
 		{/* <Route exact path='/' component={} /> */}
 		<Redirect to='/' />
 	</Switch>);
@@ -26,6 +32,17 @@ function App(props) {
 			<BrowserRouter>
 				{rutas}
 			</BrowserRouter>
+			<ToastContainer
+				position="bottom-center"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 		</>
   	);
 }

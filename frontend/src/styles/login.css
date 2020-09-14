@@ -1,0 +1,81 @@
+div.sign {
+	display: flex;
+	align-items: center;
+	background: url('../images/loginbackground.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+div.sign div.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255,.9);
+	margin-left: 10vw;
+	width: 25vw;
+	min-height: 50vh;
+	border-radius: 20px;
+}
+
+div.sign .inputBox {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+div.sign .inputBox label {
+	position: relative;
+	left: 20px;
+	color: #58632c;
+}
+
+div.sign .inputBox input {
+	border: none;
+	border-bottom: 2px solid #58632c;
+	background: none;
+	font-size: 18px;
+	margin-bottom: 10px;
+	padding-left: 30px;
+}
+
+div.sign .inputBox input::placeholder {
+	text-align: center;
+}
+
+
+form.sign {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+form.sign button {
+	border: none;
+	background: #79d70f;
+	color: white;
+	width: 80%;
+	padding: 10px;
+	margin: 10px 0 15px 15px;
+}
+
+div.logo {
+	position: absolute;
+	top: 90px;
+	width: 10vw;
+	height: 10vw;
+	margin-bottom: 20px;
+	border-radius: 100%;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+form.sign span {
+	font-weight: bold;
+	font-size: 20px;
+	color: #58632c;
+	margin-bottom: 20px;
+}
