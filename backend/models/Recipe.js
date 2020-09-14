@@ -18,11 +18,9 @@ const RecipeSchema = new mongoose.Schema({
     },
     importantContain:{
         type: String,
-        required: true,
     },
     diet:{
         type: Array,
-        required: true,
     },
     difficulty:{
         type: String,
@@ -33,7 +31,7 @@ const RecipeSchema = new mongoose.Schema({
     },
     likes:{
         type: Number,
-        default: [],
+        default: 0,
     },
     urlPic:{
         type: String,

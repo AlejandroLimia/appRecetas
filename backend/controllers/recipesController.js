@@ -3,7 +3,7 @@ const Recipes = require('../models/Recipe');
 const recipesController = {
     newRecipe: async (req, res) => {
         const { title, description, ingredients, urlPic, userPic, userId, importantContains, recipe, difficulty, diet} = req.body
-        const createRecipe = new Recipe({
+        const createRecipe = new Recipes({
             title,
             description, 
             ingredients, 
@@ -32,13 +32,13 @@ const recipesController = {
         });
     },
     deleteRecipe: async (req, res) =>{
-        const id = req.params.id
+        const id = req.body._id
         Recipes.findByIdAndDelete({_id: id})
         .then(() => res.json({success: true, res: "Su receta ha sido eliminada."}))
         .catch(err=>res.json({success:false, error: err}))
     },
     modifyRecipe: async(req, res)=>{
-        Recipes.findOneAndUpdate({_id: req.body.id},{$set:{...req.body}})
+        Recipes.findOneAndUpdate({_id: req.body._id},{$set:{...req.body}})
         .then(()=> res.json({success: true, response: "Los datos se han modificado con éxito."}))
         .catch(err => res.json({success:false, error: err}))
     }
