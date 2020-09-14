@@ -2,19 +2,21 @@ import React from 'react';
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import { connect } from 'react-redux';
 import userActions from './redux/actions/userActions';
-import { RUTA_API } from './constants';
+import Home from '../src/pages/Home'
 
 function App(props) {
 	if(localStorage.getItem('token') && props.auth.token === '') {
 		props.authUser(localStorage.getItem('token'))
 	}
-	console.log(RUTA_API)
+	
 	const rutas = (props.user.token === '')
 	? (<Switch>
-		{/* <Route exact path='/' component={} /> */}
+		{/* RUTAS USUARIO DESLOGEADO */}
+		<Route exact path='/' component={Home} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>
+		{/* RUTAS USUARIO LOGEADO */}
 		{/* <Route exact path='/' component={} /> */}
 		<Redirect to='/' />
 	</Switch>);
