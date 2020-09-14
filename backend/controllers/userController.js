@@ -12,11 +12,11 @@ const userController = {
 
 		// Creating new User
 		const newUser = new User({
-			firstName: firstName.trim(),
-			lastName: lastName.trim(),
-			mail: mail.trim(),
-			urlPic: urlPic.trim(),
-			username: username.trim(),
+			firstName,
+			lastName,
+			mail,
+			urlPic,
+			username,
 			pass: hashPassword
 		})
 		// Saving new User
