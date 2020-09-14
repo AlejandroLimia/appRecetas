@@ -9,7 +9,7 @@ const commentController = {
     },
     getComments : async (req, res) => {
         const comments = await Comment.find({...req.params})
-        res.json({success : comments, comments})
+        res.json({success : true, comments})
 
     },
     deleteCommentById: (req, res) => {
@@ -20,7 +20,7 @@ const commentController = {
     },
     modifyCommentById : (req,res) => {
         const {commentId, comment} = req.body    
-        Comment.findByIdAndUpdate(commentId,comment,{new:true})
+        Comment.findByIdAndUpdate(commentId,{comment},{new:true})
         .then(comment => res.json({success:true, comment}))
         .catch(error => res.json({success:false, error}))
     }
