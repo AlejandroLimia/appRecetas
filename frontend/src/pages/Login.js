@@ -55,7 +55,7 @@ const Login = (props) => {
 				<div className="form">
 					<form className="sign">
 						<div className="logo" style={{backgroundImage: `url(${require('../images/logo.png')})`}}/>
-						<span>CREAR CUENTA</span>
+						<span className="title">INGRESAR</span>
 						<div className="inputBox">
 							<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
 							<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
@@ -64,7 +64,7 @@ const Login = (props) => {
 							<label htmlFor="pass"><i className="fas fa-lock"></i></label>
 							<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Contraseña" />
 						</div>
-						<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Log in' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+						<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Ingresar' : <i className="fas fa-spinner fa-pulse"></i>}</button>
 					</form>
 					<GoogleLogin
 					clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"

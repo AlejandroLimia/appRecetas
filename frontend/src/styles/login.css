@@ -16,6 +16,7 @@ div.sign div.form {
 	background: rgba(255, 255, 255,.9);
 	margin-left: 10vw;
 	width: 25vw;
+	min-width: 330px;
 	min-height: 50vh;
 	border-radius: 20px;
 }
@@ -63,9 +64,10 @@ form.sign button {
 
 div.logo {
 	position: absolute;
-	top: 90px;
-	width: 10vw;
-	height: 10vw;
+	top: 0;
+	margin-top: 100px;
+	width: 150px;
+	height: 150px;
 	margin-bottom: 20px;
 	border-radius: 100%;
 	background-position: center;
@@ -73,7 +75,7 @@ div.logo {
 	background-repeat: no-repeat;
 }
 
-form.sign span {
+form.sign span.title {
 	font-weight: bold;
 	font-size: 20px;
 	color: #58632c;

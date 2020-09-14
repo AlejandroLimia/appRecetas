@@ -166,46 +166,49 @@ const SignUp = (props) => {
     }
 
 	return (<>
-		<div className="container">
-		<form className="sign">
-			<span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
-			<div className="inputBox">
-				<label htmlFor="firstName"><i className="fas fa-user"></i></label>
-				<input type="text" name="firstName" id="firstName" placeholder="First name" onChange={inputHandler} value={user.firstName}/>
-			</div>
-			<span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
-			<div className="inputBox">
-				<label htmlFor="lastName"><i className="far fa-user"></i></label>
-				<input type="text" name="lastName" id="lastName" placeholder="Last name" onChange={inputHandler} value={user.lastName}/>
-			</div>
-			<span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
-			<div className="inputBox">
-				<label htmlFor="username"><i className="fas fa-id-card"></i></label>
-				<input type="text" name="username" id="username" placeholder="username" onChange={inputHandler} value={user.username}/>
-			</div>
-			<span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
-			<div className="inputBox">
-				<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
-				<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
-			</div>
-			<span className='error' style={!error.urlPic ? {display: "none"} : {display: "inherit"} }>{error.urlPic ? error.urlPic : null }</span>
-			<div className="inputBox">
-				<label htmlFor="urlPic"><i className="fas fa-image"></i></label>
-				<input type="text" name="urlPic" id="urlPic" placeholder="url Pic" onChange={inputHandler} value={user.urlPic}/>
-			</div>
-			<span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-			<div className="inputBox">
-				<label htmlFor="pass"><i className="fas fa-lock"></i></label>
-				<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Password" />
-			</div>
-				<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Create account' : <i className="fas fa-spinner fa-pulse"></i>}</button>
-		</form>
-		<GoogleLogin
-			clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"
-			onSuccess={responseGoogle}
-			onFailure={responseGoogle}
-			cookiePolicy={'single_host_origin'}
-		/>
+		<div className="sign">
+		<div className="form">
+			<form className="sign">
+				<div className="inputBox">
+					<label htmlFor="firstName"><i className="fas fa-user"></i></label>
+					<input type="text" name="firstName" id="firstName" placeholder="Nombre" onChange={inputHandler} value={user.firstName}/>
+				</div>
+				<span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
+				<div className="inputBox">
+					<label htmlFor="lastName"><i className="far fa-user"></i></label>
+					<input type="text" name="lastName" id="lastName" placeholder="Apellido" onChange={inputHandler} value={user.lastName}/>
+				</div>
+				<span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
+				<div className="inputBox">
+					<label htmlFor="username"><i className="fas fa-id-card"></i></label>
+					<input type="text" name="username" id="username" placeholder="Usuario" onChange={inputHandler} value={user.username}/>
+				</div>
+				<span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
+				<div className="inputBox">
+					<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
+					<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
+				</div>
+				<span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
+				<div className="inputBox">
+					<label htmlFor="urlPic"><i className="fas fa-image"></i></label>
+					<input type="text" name="urlPic" id="urlPic" placeholder="URL Foto de perfil" onChange={inputHandler} value={user.urlPic}/>
+				</div>
+				<span className='error' style={!error.urlPic ? {display: "none"} : {display: "inherit"} }>{error.urlPic ? error.urlPic : null }</span>
+				<div className="inputBox">
+					<label htmlFor="pass"><i className="fas fa-lock"></i></label>
+					<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Password" />
+				</div>
+				<span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
+					<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Crear cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+			</form>
+			<GoogleLogin
+				clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"
+				buttonText="Crear cuenta con Google"
+				onSuccess={responseGoogle}
+				onFailure={responseGoogle}
+				cookiePolicy={'single_host_origin'}
+			/>
+		</div>
 	</div>
 	</>)
 
