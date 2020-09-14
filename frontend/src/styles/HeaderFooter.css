@@ -20,14 +20,12 @@ header div#barraArriba{
     
 }
 
-#menuNormal a{
-    color: black;
-    padding-left: 20vw;
-}
+
 
 
 #menuHamburguesa{
-    display: none;
+    width: 40vw;
+
 }
 
 header {
@@ -38,7 +36,8 @@ header {
 }
 
 header img#fotologo {
-    width: 20%;
+    width: 25%;
+    margin-right: 15vw;
     }
 
 header img#fotousuario {
@@ -48,6 +47,56 @@ header img#fotousuario {
     margin-left: 2vw;
     }
 
+    #menuCostado{
+        background: white;
+        padding-top: 2vh;
+        width: 30vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        right: -30vw;
+        transition: right .2s linear;
+        z-index: 100;
+        border-left: 3px solid #dbf249;
+        margin-top: 2vh;
+    }
+
+    #menuCostado #home{
+        color: black;
+        font-weight: bold;
+        border: none;
+        background-color: #dbf249;
+        padding: 1vh 2vw;
+        padding-right: 14vw;
+        margin-top: 2vh;
+        color: #58632c;;
+    }
+
+
+    #tituloDietas{
+        margin-top: 5vh;
+        font-weight: bold;
+        align-self: center;
+        margin-left: 2vw;
+        color: #58632c;
+        text-align: left;
+        padding-right: 10vw;
+    }
+   
+    
+    #menuCostado #nombreDietas p{
+        margin-bottom: 2vh ;
+        border-bottom: 2px solid #abc120;
+        padding: 1vh 1vw;
+        padding-right: 5vw;
+        color: #58632c ;
+        font-weight: bold;
+        text-align: left;
+
+    }
+    
 
 
  /*Footer*/
