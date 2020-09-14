@@ -1,0 +1,68 @@
+App recetas
+
+backend/
+├── config/
+│   ├── db.js
+│   ├── passport.js
+│   └── validador.js -> {userValidador: method, 
+│                        recetaValidador: method} // Validacion backend
+├── controllers/
+│   ├── recetaController.js {crearReceta: method, 
+│   │                        modificarReceta: method, 
+│   │                        borrarReceta: method,
+│   │                        getAllRecetasOf: method}
+│   ├── comentarioController.js -> {crearComentario: method, 
+│   │                               modificarComentario: method, 
+│   │                               borrarComentario: method,
+│   │                               getComentariosOf: method}
+│   └── userController.js -> {crearUser: method, 
+│                             loginUser: method, 
+│                             decodeUser: method}
+├── models/
+│   ├── User.js
+│   ├── Recetas.js
+│   └── Comentarios.js
+├── node_modules/
+├── routes/
+│   └── index.js
+├── .env
+├── package-lock.json
+├── package.json
+└── server.js
+
+frontend/
+├── node_modules/
+├── public/
+│   ├── favicon.ico (o .png)
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── Footer.js
+│   │   ├── Receta.js
+│   │   └── Comentario.js
+│   ├── images/
+│   │   └── ...
+│   ├── pages/
+│   │   ├── Home.js
+│   │   ├── Perfil.js
+│   │   ├── CrearReceta.js
+│   │   ├── Login.js
+│   │   ├── CrearCuenta.js
+│   │   ├── RecetaCompleta.js
+│   │   └── Recetas.js
+│   ├── redux/
+│   │   ├── actions/
+│   │   │   ├── recetasActions.js
+│   │   │   └── userActions.js
+│   │   └── reducers/
+│   │       ├── recetasReducer.js
+│   │       └── userReducer.js
+│   ├── styles/
+│   │   └── ...
+│   ├── App.js
+│   ├── index.js
+│   ├── serviceWorker.js
+│   └── setupTests.js
+├── package-lock.json
+└── package.json
