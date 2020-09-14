@@ -1,4 +1,9 @@
-const mongoose = require("mongoose")
+// Comment
+// 	_id
+// 	userID
+// 	userPic
+// 	recipeId
+// 	comment string
 
 const commentSchema =  new mongoose.Schema({
     comment :{
@@ -16,24 +21,16 @@ const commentSchema =  new mongoose.Schema({
         ref: 'users',
         required: true
     },
-    userName:{
+    userPic:{
         type:String, 
         required:true
     },
     userPic:{
         type:String, 
         required:true
-    }
+    },
+    itineraryId: {type: mongoose.Schema.ObjectId, ref: 'itinerary' , required: true}
 })
-const Comment  = mongoose.model('comment',commentSchema)
+const Commentary  = mongoose.model('commentary',commentarySchema)
 
-module.exports = Comment
-
-// Comment
-// 	_id
-// 	userID
-// 	userPic
-// 	recipeId
-// 	comment string
-
-
+module.exports = Commentary
