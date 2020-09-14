@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
 const userSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
@@ -13,16 +15,18 @@ const userSchema = new mongoose.Schema({
 	mail: {
 		type: String,
 		required: true,
-		trim: true
+        trim: true,
+        unique: true
 	},
 	pass: {
 		type: String,
 		required: true
 	},
-	username: {
+	userName: {
 		type: String,
 		required: true,
-		trim: true
+        trim: true,
+        unique:true
 	},
 	urlPic: {
 		type: String,
@@ -36,5 +40,5 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('user', userSchema);
-
+userSchema.plugin(uniqueValidator,{ message: '{PATH} alredy used'});
 module.exports = User;
