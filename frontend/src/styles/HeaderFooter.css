@@ -1,0 +1,148 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ /*Header*/
+
+
+header div#barraArriba{
+    position: fixed!important; 
+    background-color: white!important;
+    z-index: 70;
+}
+
+#menuNormal{
+    display: inline;
+    margin-left: 9vw;
+    margin-top: 5vh;
+    
+}
+
+#menuNormal a{
+    color: black;
+    padding-left: 20vw;
+}
+
+
+#menuHamburguesa{
+    display: none;
+}
+
+header {
+    padding-right: 0vw!important;
+    padding-left: 0vw;
+    padding: 0vw;
+    box-shadow: 0vw 0vw 2vw 0vw rgba(255, 255, 255, 0.76);
+}
+
+header img#fotologo {
+    width: 20%;
+    }
+
+header img#fotousuario {
+   width: 5.5vw;
+    align-self: center;
+    margin-right: 25vw;
+    margin-left: 2vw;
+    }
+
+
+
+ /*Footer*/
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding-top: 1vh;
+    height: 10vh;
+}
+
+footer img {
+    height: 1.5vh!important;
+    margin-right: 1vw;
+    align-self: center;
+}
+
+footer p{
+    color: white;
+    font-size: 30%;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+@media only screen and (max-width: 600px){
+   
+
+ /*Header*/
+
+
+ header div#barraArriba{
+    position: fixed!important; 
+    background-color: white!important;
+    z-index: 70;
+    display: flex;
+    justify-items: center;
+}
+
+#menuNormal{
+    display: inline;
+    margin-left: 0vw;
+    margin-top: 0vh;
+    
+}
+
+#menuNormal a{
+    display: none;
+}
+
+
+#menuHamburguesa{
+    display: block;
+    width: 50vw;
+
+}
+
+#menuHamburguesa img {
+    width: 45%!important;
+
+}
+
+
+header img#fotologo {
+    width: 30%;
+    margin-right: 10vw;
+    }
+
+header img#fotousuario {
+   width: 10vw;
+    align-self: center;
+    margin-left: 2vw;
+    margin-right: 12vw;
+    }
+
+
+     /*Footer*/
+
+    footer {
+        display: flex;
+        background-color: black;
+        margin-right: 0vw;
+        margin-left: 0vw;
+    }
+}
+
+    
+ 
+     
+  
+
