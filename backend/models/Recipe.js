@@ -45,7 +45,7 @@ const RecipeSchema = new mongoose.Schema({
     userPic:{
         type: String
     }
-})
+},{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)
 module.exports = Recipes
 
