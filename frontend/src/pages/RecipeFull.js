@@ -23,7 +23,7 @@ const RecipeFull = (props) => {
 		return <><p>Paso {index+1}</p><>{step}</></>
 	})} 
 	<p>{props.RecipeFull.difficulty}</p>
-	<p>Dietas: {...props.RecipeFull.diet}</p>
+	<p>Dietas: {props.RecipeFull.diet}</p>
 	<p>{props.RecipeFull.duration}</p>
 	</> );
 }
