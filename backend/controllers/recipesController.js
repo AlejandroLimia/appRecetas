@@ -28,14 +28,14 @@ const recipesController = {
         })
     },
     getRecipeByLikes: async (req,res) => {
-        const likes = req.
-        const recipeInfo= await Recipes.findOne({...req.params})
+        const likes = req.body
+        const recipeInfo= await Recipes.find({...req.params})
+        const recipeLikes = recipeInfo.filter(recipe => likes.indexOf(recipe._id) !== -1) 
         res.json({
             success: true,
-            recipeInfo
+            recipeLikes
         })
     },
-
     deleteRecipe: async (req, res) =>{
         const id = req.body._id
         Recipes.findByIdAndDelete({_id: id})
