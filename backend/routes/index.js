@@ -3,6 +3,7 @@ const userController = require('../controllers/userController');
 const commentController = require('../controllers/commentController')
 const validator = require('../config/validator');
 const passport = require('../config/passport');
+const recipesController = require('../controllers/recipesController')
 
 const router = express.Router();
 
@@ -12,7 +13,6 @@ router.route('/user/register')
 router.route('/user/login')
 .post(userController.loginUser)
 
-
 router.route("/comment/:recipeId")
 .get(commentController.getComments)
 
@@ -21,9 +21,10 @@ router.route("/comment")
 .delete(commentController.deleteCommentById)
 .put(commentController.modifyCommentById)
 
-
-
-.get((req, res) => res.send('Hola'));
-
+router.route("/recipes")
+.get(recipesController.getAllRecipes)
+.post(recipesController.newRecipe)
+.put(recipesController.modifyRecipe)
+.delete(recipesController.deleteRecipe)
 
 module.exports = router; 

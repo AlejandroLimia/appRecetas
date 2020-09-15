@@ -1,2 +1,4 @@
-/node_modules/
-.env
+MONGO_DB=mongodb+srv://us3r:123Mindhub@appchallenge.0d9mx.mongodb.net/appchallenge?retryWrites=true&w=majority
+HOST=localhost
+SECRET_KEY=s4e5c6r7e8t9o0
+PORT=4000
