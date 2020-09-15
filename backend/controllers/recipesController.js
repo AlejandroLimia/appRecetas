@@ -7,13 +7,20 @@ const recipesController = {
         createRecipe
         .save()
         .then((recipe) => {
-          res.json({ success: true, recipe});
+            res.json({ success: true, recipe});
         })
         .catch((err) => {
-          res.json({ success: false, error: err});
+            res.json({ success: false, error: err});
         });
     },
     getRecipes: async (req, res) => {
+        const recipes = await Recipes.find({...req.params});
+        res.json({
+            success: true,
+            recipes
+        });
+    },
+    getRecipesByUserId: async (req, res) => {
         const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
@@ -29,8 +36,8 @@ const recipesController = {
     },
     getRecipeByLikes: async (req,res) => {
         const likes = req.body
-        const recipeInfo= await Recipes.find({...req.params})
-        const recipeLikes = recipeInfo.filter(recipe => likes.indexOf(recipe._id) !== -1) 
+        const recipeInfo= await Recipes.find()
+        const recipeLikes = recipeInfo.filter(recipe => likes.includes(recipe._id)) 
         res.json({
             success: true,
             recipeLikes

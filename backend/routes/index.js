@@ -31,6 +31,9 @@ router.route("/recipes/likes")
 router.route("/recipes/:id")
 .get(recipesController.getRecipeById)
 
+router.route("/recipes/:userId")
+.get(recipesController.getRecipesByUserId)
+
 router.route("/recipes")
 .post(recipesController.newRecipe)
 .put(recipesController.modifyRecipe)
