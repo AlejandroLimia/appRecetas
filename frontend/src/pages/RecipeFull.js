@@ -18,6 +18,7 @@ const RecipeFull = (props) => {
 
 	return ( 
     <>
+	<Header />
     <div id="space" style={{ height:"15vh"}}></div>
     <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
             <div id="ProfilePic" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"20vh", height:"20vh"}}>
