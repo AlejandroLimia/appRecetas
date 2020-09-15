@@ -36,6 +36,7 @@ const recipeActions ={
             })
         }  
     },
+    //comentario
     getRecipes : diet => {
         return async (dispatch, getState) => {
         const response = axios.get(`${RUTA_API}'/api/recipes/${diet}`);
