@@ -7,18 +7,23 @@ const Recipe = (props) => {
 			<div class="picture">
 				<div class="avatar">
 				</div>
-				<div class="likes">
-					<i class="fas fa-heart"></i>
-					20
-				</div>
 			</div>
 			<div class="text">
-				<span class="title">
-					Corn & Chickpea Bowl
-				</span>
-				<span class="body">
-					A quick sear gives corn kernels caramelized edges and concentrated flavor. Here, they're cooked with crisp chickpeas, ...
-				</span>
+				<h3 class="title">Comida rica</h3>
+				<div class="data">
+					<div class="time">
+						<span><i class="far fa-clock"> </i> <span class="number">40</span></span>
+						<span>minutos</span>
+					</div>
+					<div class="likes">
+						<span><i class="far fa-heart"> </i> <span class="number">10</span></span>
+						<span>likes</span>
+					</div>
+				</div>
+				<div class="descripcion">
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident laboriosam dolor voluptatem!
+				</div>
+				<button class="btn">Ver receta</button>
 			</div>
 		</div>
 	</> );

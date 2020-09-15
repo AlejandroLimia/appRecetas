@@ -13,14 +13,14 @@ const RecipeSchema = new mongoose.Schema({
         required: true
     },
     recipe: {
-        type: String,
+        type: Array,
         required: true
 	},
 	importantContain:{
 		type: Array,
 		default: []
-	},
-		diet:{
+    },
+    diet:{
 		type: String,
 		required: true
     },
@@ -49,23 +49,3 @@ const RecipeSchema = new mongoose.Schema({
 },{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)
 module.exports = Recipes
-
-
-
-// Recipe
-// 	_id
-// 	title string
-// 	description string
-// 	ingredients [ {
-// 					quantity,
-// 					ingredient
-// 				}]
-// 	recipe string
-// 	importantContains [array]
-// 	diet [array]
-// 	difficulty string
-// 	createdAt: date/string
-// 	likes: ? / number
-// 	urlPic: string
-// 	userId: objectID
-// 	userPic: string/uri
