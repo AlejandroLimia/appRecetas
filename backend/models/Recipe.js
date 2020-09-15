@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const {string} = require("@hapi/joi")
 const RecipeSchema = new mongoose.Schema({
     title:{
         type: String,
@@ -21,7 +22,7 @@ const RecipeSchema = new mongoose.Schema({
 		default: []
     },
     diet:{
-		type: Array,
+		type: String,
 		required: true
     },
     difficulty:{

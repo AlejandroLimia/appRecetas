@@ -2,20 +2,8 @@ const Recipes = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
-        const { title, description, ingredients, urlPic, userPic,likes, userId, importantContains, recipe, difficulty, diet} = req.body
-        const createRecipe = new Recipes({
-            title,
-            description, 
-            ingredients, 
-            urlPic, 
-            userPic, 
-            userId, 
-            likes,
-            importantContains, 
-            recipe, 
-            difficulty, 
-            diet,
-        });
+        const createRecipe = new Recipes({...req.body});
+
         createRecipe
         .save()
         .then((recipe) => {
@@ -25,8 +13,8 @@ const recipesController = {
           res.json({ success: false, error: err});
         });
     },
-    getAllRecipes: async (req, res) => {
-        const recipes = await Recipes.find();
+    getRecipes: async (req, res) => {
+        const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
             recipes: recipes,
