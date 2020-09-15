@@ -5,7 +5,7 @@ const Recipe = (props) => {
 	return ( <>
 		<div class="recipeCard">
 			<div class="picture">
-				<div class="avatar">
+				<div class="avatar" style={props.own ? {display:"none"} : {}}>
 				</div>
 			</div>
 			<div class="text">

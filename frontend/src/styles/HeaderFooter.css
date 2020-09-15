@@ -12,6 +12,7 @@ header div#barraArriba{
     position: fixed!important; 
     background-color: white!important;
     z-index: 70;
+    box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
 }
 
 #menuNormal{
@@ -49,6 +50,7 @@ header img#fotousuario {
     }
 
     #menuCostado{
+        position: fixed!important; 
         background: white;
         padding-top: 2vh;
         width: 30vw;
@@ -195,6 +197,83 @@ header img#fotousuario {
     align-self: center;
     margin-left: 2vw;
     margin-right: 12vw;
+    }
+
+
+
+    #menuCostado{
+        position: fixed!important; 
+        background: white;
+        padding-top: 2vh;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        right: -50vw;
+        transition: right .3s linear;
+        z-index: 100;
+        border-left: 3px solid #dbf249;
+       
+    }
+
+    #menuCostado button {
+        margin-top: 2vh;
+    }
+
+
+    #menuCostado #home{
+        color: black;
+        font-weight: bold;
+        font-size: 2vw;
+        border: none;
+        background-color: #dbf249;
+        width: 20vw;
+        padding: 1vh 2vw;
+        text-align: center;
+        margin-left: 0vw;
+        margin-top: 5vh;
+        color: #58632c;
+        border-radius: 2vw;
+        
+    }
+    #menuCostado #home:hover{
+        text-decoration: none;
+        color:#dbf249;
+        background-color:#58632c8a ;
+    }
+    
+
+
+    #tituloDietas{
+        font-size: 3vw;
+        margin-top: 6vh;
+        font-weight: bolder;
+        align-self: center;
+        margin-left: 3vw;
+        color: #58632c;
+        text-align: left;
+        padding-right: 10vw;
+    }
+   
+    
+    #menuCostado #nombreDietas p{
+        width: 30vw;
+        font-size: 3vw;
+        margin-bottom: 1vh ;
+        border-bottom: 2px solid #abc120;
+        padding: 0.5vh 0vw;
+        padding-right: 5vw;
+        color: #58632c ;
+        font-weight: normal;
+        text-align: left;
+
+    }
+    #menuCostado #nombreDietas p:hover{
+        color: #abc120 ;
+        cursor: pointer;
+        font-weight: bold;
     }
 
 
