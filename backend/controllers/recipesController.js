@@ -2,7 +2,7 @@ const Recipes = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
-        const { title, description, ingredients, urlPic, userPic,likes, userId, importantContains, recipe, difficulty, diet} = req.body
+        const { title, description, ingredients, urlPic, userPic,likes, userId, importantContains, recipe, difficulty, diet, duration} = req.body
         const createRecipe = new Recipes({
             title,
             description, 
@@ -15,6 +15,7 @@ const recipesController = {
             recipe, 
             difficulty, 
             diet,
+            duration
         });
         createRecipe
         .save()

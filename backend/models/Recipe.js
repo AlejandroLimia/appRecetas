@@ -15,12 +15,12 @@ const RecipeSchema = new mongoose.Schema({
     recipe: {
         type: String,
         required: true
-    },
-    importantContain:{
+	},
+	importantContain:{
 		type: Array,
 		default: []
-    },
-    diet:{
+	},
+		diet:{
 		type: Array,
 		required: true
     },
@@ -41,6 +41,10 @@ const RecipeSchema = new mongoose.Schema({
     },
     userPic:{
         type: String
+    },
+    duration:{
+		type: Number,
+		required: true
     }
 },{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)

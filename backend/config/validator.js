@@ -33,6 +33,7 @@ const validator = {
 			difficulty: Joi.string().trim().alphanum().required(),
 			urlPic: Joi.string().uri().required().trim(),
 			userPic: Joi.string().uri().required().trim(),
+			duration: Joi.number().integer().required().trim(),
 			userId: Joi.string()
 		})
 		const validation = schema.validate(req.body, { abortEarly: false })
