@@ -1,7 +1,22 @@
 import React from 'react';
+import Header from "../components/Header"
+import {connect} from 'react-redux'
+import Footer from '../components/Footer';
 
-const Home = () => {
-	return ( <h1> Hola! </h1> );
+
+const Home = (props) => {
+    return (
+        <>
+       <Header/>
+       <Footer/>
+       </>
+    )
 }
- 
-export default Home;
+
+const mapStateToProps = state => {
+  return{
+
+  }
+}
+
+export default connect(mapStateToProps) (Home)

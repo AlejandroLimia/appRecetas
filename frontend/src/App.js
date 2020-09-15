@@ -8,6 +8,10 @@ import SignUp from '../src/pages/SignUp';
 import Login from '../src/pages/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+
+
 
 function App(props) {
 	if(localStorage.getItem('token') && props.auth.token === '') {
@@ -23,14 +27,18 @@ function App(props) {
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>
+		<Route exact path="/" component={Home}/>
 		{/* <Route exact path='/' component={} /> */}
 		<Redirect to='/' />
 	</Switch>);
+	
 
 	return (
 		<>
 			<BrowserRouter>
+			 <Header/>
 				{rutas}
+				<Footer/>	
 			</BrowserRouter>
 			<ToastContainer
 				position="bottom-center"
