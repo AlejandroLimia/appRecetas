@@ -3,13 +3,9 @@ const Joi = require('@hapi/joi');
 const validator = {
 	validateUser: (req, res, next) => {
 		const schema = Joi.object({
-			firstName: Joi.string().trim().alphanum().min(3).max(20).required(),
-			lastName: Joi.string().trim().alphanum().min(3).max(20).required(),
 			username: Joi.string().trim().min(3).max(20).required(),
 			mail: Joi.string().trim().email().required(),
-			pass: Joi.string().trim().pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/, 'password').required(),
-			urlPic: Joi.string().uri().required().trim(),
-			country: Joi.string().max(2)
+			pass: Joi.string().trim().pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/, 'password').required()
 		})
 		const validation = schema.validate(req.body, { abortEarly: false })
 		
@@ -33,7 +29,8 @@ const validator = {
 			difficulty: Joi.string().trim().alphanum().required(),
 			urlPic: Joi.string().uri().required().trim(),
 			userPic: Joi.string().uri().required().trim(),
-			userId: Joi.string()
+			userId: Joi.string(),
+			duration: Joi.number().integer(),
 		})
 		const validation = schema.validate(req.body, { abortEarly: false })
 		
