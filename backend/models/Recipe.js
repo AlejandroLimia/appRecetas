@@ -2,32 +2,31 @@ const mongoose = require("mongoose")
 const RecipeSchema = new mongoose.Schema({
     title:{
         type: String,
-        required: true,
+        required: true
     },
     description:{
         type: String,
-        required: true,
+        required: true
     },
     ingredients:{
         type: Array,
-        required: true,
+        required: true
     },
     recipe: {
         type: String,
-        required: true,
+        required: true
     },
     importantContain:{
-        type: String,
+		type: Array,
+		default: []
     },
     diet:{
-        type: Array,
+		type: Array,
+		required: true
     },
     difficulty:{
         type: String,
-        required: true,
-    },
-    date:{
-        type: Date,
+        required: true
     },
     likes:{
         type: Number,
