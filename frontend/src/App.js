@@ -8,8 +8,6 @@ import SignUp from '../src/pages/SignUp';
 import Login from '../src/pages/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
 import './styles/generalStyles.css'
 
 
@@ -37,9 +35,7 @@ function App(props) {
 	return (
 		<>
 			<BrowserRouter>
-			 <Header/>
-				{rutas}
-				<Footer/>	
+				{rutas}	
 			</BrowserRouter>
 			<ToastContainer
 				position="bottom-center"

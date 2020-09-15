@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import userActions from '../redux/actions/userActions';
 import { GoogleLogin } from 'react-google-login';
 import { toast } from 'react-toastify';
+import { NavLink } from 'react-router-dom';
 
 const SignUp = (props) => {
 	const [user, setUser] = useState({
@@ -208,6 +209,7 @@ const SignUp = (props) => {
 				onFailure={responseGoogle}
 				cookiePolicy={'single_host_origin'}
 			/>
+			<p><NavLink to="/">Volver al Home</NavLink></p>
 		</div>
 	</div>
 	</>)

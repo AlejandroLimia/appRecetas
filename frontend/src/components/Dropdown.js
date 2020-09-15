@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -39,8 +40,8 @@ const Dropdown1 = (props) => {
         </>)
         }       */}
          <DropdownMenu>
-         <DropdownItem> Login {/* <NavLink to="/logIn">Login</NavLink> */}</DropdownItem>
-         <DropdownItem> Register{/* <NavLink to="/register">Register</NavLink>*/}</DropdownItem>
+         <DropdownItem><NavLink to="/login">Login</NavLink></DropdownItem>
+         <DropdownItem><NavLink to="/signup">Register</NavLink></DropdownItem>
          </DropdownMenu>
 
     </Dropdown>

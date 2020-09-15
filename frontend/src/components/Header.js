@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom"
 import {connect} from 'react-redux'
 import '../styles/HeaderFooter.css'
 import Dropdown from './Dropdown';
-import Menuhamburguesa from './MenuHamburguesa';
 
 const Header = (props) => {
     const fotologo = require("../images/logo.png")

@@ -4,7 +4,7 @@ import userActions from '../redux/actions/userActions';
 import '../styles/login.css';
 import { GoogleLogin } from 'react-google-login';
 import { toast } from 'react-toastify';
-import logo from '../images/logo.png'
+import { NavLink } from 'react-router-dom';
 
 
 const Login = (props) => {
@@ -54,7 +54,7 @@ const Login = (props) => {
 		<div className="sign">
 				<div className="form">
 					<form className="sign">
-						<div className="logo" style={{backgroundImage: `url(${require('../images/logo.png')})`}}/>
+						<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 						<span className="title">INGRESAR</span>
 						<div className="inputBox">
 							<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
@@ -73,6 +73,7 @@ const Login = (props) => {
 					onFailure={responseGoogle}
 					cookiePolicy={'single_host_origin'}
 					/>
+					<p><NavLink to="/">Volver al Home</NavLink></p>
 				</div>
 			</div>
 	</>)

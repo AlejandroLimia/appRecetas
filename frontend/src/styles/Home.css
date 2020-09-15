@@ -49,7 +49,7 @@ justify-content: center;
     display: flex;
     justify-content: center;
     align-items: center;
-   
+	transition: opacity .4s ease-in-out;
 }
 
 .oneBubble{

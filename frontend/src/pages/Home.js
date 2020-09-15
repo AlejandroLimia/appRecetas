@@ -6,6 +6,7 @@ import homeTitle from "../images/homeTitle.png"
 import DietBubble from "../components/DietBubble"
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
+import Footer from '../components/Footer';
 
 const Home = (props) => {
   
@@ -15,6 +16,7 @@ const Home = (props) => {
   
     return (
         <div>
+			<Header/>
        <div id="space" style={{ height:"15vh"}}></div>
           <img id="homeBackgroundOne" src={homeBackgroundOne}/>
           <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
@@ -23,13 +25,14 @@ const Home = (props) => {
             </div>
             <div id="AllCategories">
               {categories.categories.map(conjunto => {
-                  return (
-                  <div id="categorie" key={conjunto} >
+				  return (
+					  <div id="categorie" key={conjunto} >
                       <DietBubble bubble={conjunto}/>
                   </div>
                   )
-              })}
+				})}
             </div>
+			<Footer/>
           </div>
     )
 }
