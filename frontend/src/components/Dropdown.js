@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import {NavLink} from "react-router-dom"
 import {connect} from 'react-redux'
 
 
@@ -9,7 +8,7 @@ const Dropdown1 = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  const fotousuario = require("../images/usuario.png")
+  const fotousuario = require("../images/user.png")
 
 
 

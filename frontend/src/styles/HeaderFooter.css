@@ -183,7 +183,7 @@ header img#fotousuario {
      /*Footer*/
 
     footer {
-        display: flex;
+        display: none;
         background-color: black;
         margin-right: 0vw;
         margin-left: 0vw;

@@ -1,0 +1,120 @@
+#homeBackgroundOne{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 25%;
+}
+#homeBackgroundTwo{
+    position: fixed;
+    right: 0;
+    top: 10;
+    z-index: -1;
+    width: 10%;
+}
+
+#homeTitle{
+display: flex;
+justify-content: center;
+}
+#homeTitle img{
+    width: 40vw;
+}
+
+
+#AllCategories{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 80%;
+ margin: 0vh auto;
+ flex-wrap: wrap;
+ padding-bottom: 25vh;
+ 
+}
+#categorie{
+    margin: 3vh 5vw;
+}
+
+#categorie .imageBubble{
+    border-radius: 100%;
+    width: 16vw;
+    height: 16vw;
+    box-shadow: 2vw 2vw 3vw 0vw #a09e9e41;
+    background-color: #77c919;
+    border:6px solid #dbf249;
+    border-right-style: inherit;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.oneBubble{
+    background: #77c919;
+    width: 16vw;
+    height: 16vw;
+    border-radius: 100%;
+    
+}
+#categorie .imageBubble p{
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+#categorie .imageBubble:hover{
+    opacity: 0.6;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 650px){
+    #homeBackgroundOne{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        width: 45%;
+    }
+    #homeBackgroundTwo{
+        position: fixed;
+        right: 0;
+        top: 10;
+        z-index: -1;
+        width: 20%;
+    }
+    #homeTitle img{
+        width: 80vw;
+    }
+    #categorie .imageBubble{
+        border-radius: 100%;
+        width: 25vw;
+        height: 25vw;
+    }
+    .oneBubble{
+        background: #77c919;
+        width: 25vw;
+        height: 25vw;
+        border-radius: 100%;
+        
+    }
+    #AllCategories{
+        padding-bottom: 5vh;
+    }
+    #categorie .imageBubble p{
+        font-size: 2vw;
+    }
+    
+}
+
+@media only screen and (max-width: 800px){
+    footer{
+        display: none!important;
+    }
+    #AllCategories{
+        padding-bottom: 10vh;
+    }
+}
+
