@@ -1,0 +1,94 @@
+#banner{
+    height: 30vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+}
+
+
+#ProfilePic{
+    bottom: -10vh;
+    right: 5vw;
+    position: absolute;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0vw 0vw 1vw 0.1vw black;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#ProfilePic P{
+    bottom: -8vh;
+    position: absolute;
+}
+#everything{
+    margin: 10vh 3vw;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+#LeftSide{
+    width: 50%;
+}
+#RightSide{
+    width: 50%;
+    margin-top: 10vh;
+}
+
+#imageFood{
+    height: 40vw;
+    width: 40vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 3vw;
+}
+.title{
+    font-weight: bold;
+    color: #59642f;
+}
+#LeftSide #ingredients .title{
+    margin-top: 5vh;
+}
+#LeftSide #ingredients h6{
+    margin-left: 33vw;
+    font-weight: bold;
+}
+#ingredient{
+    display: flex;
+    width: 40vw;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+#ingredient #TheIngredient{
+ width: 30vw;
+ background-color: lawngreen;
+}
+#ingredient #TheAmount{
+    width: 7vw;
+    background-color: lawngreen;
+}
+#ingredient h4{
+    font-weight: bold;
+}
+
+
+#icons{
+    display: flex;
+    height: 5vh;
+}
+#allAlergies{
+    height: 5vh;
+}
+#allergie{
+width: 4vw;
+}

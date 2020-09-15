@@ -9,6 +9,7 @@ import Login from '../src/pages/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
+import RecipeFull from './pages/RecipeFull';
 
 
 
@@ -23,6 +24,7 @@ function App(props) {
 		<Route exact path='/' component={Home} />
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
+		<Route path='/recipes/id' component={RecipeFull} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>
