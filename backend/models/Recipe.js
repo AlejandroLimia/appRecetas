@@ -21,8 +21,7 @@ const RecipeSchema = new mongoose.Schema({
 		default: []
     },
     diet:{
-		type: Array,
-		required: true
+		type: String,
     },
     difficulty:{
         type: String,

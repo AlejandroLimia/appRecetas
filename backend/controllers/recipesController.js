@@ -32,6 +32,15 @@ const recipesController = {
             recipes: recipes,
         });
     },
+    getRecipe: async (req,res) => {
+        const recipeInfo= await Recipes.findOne({
+              _id: req.params.id
+        });
+        res.json({
+            success: true,
+            recipeInfo: recipeInfo
+        })
+  },
     deleteRecipe: async (req, res) =>{
         const id = req.body._id
         Recipes.findByIdAndDelete({_id: id})
