@@ -25,9 +25,33 @@ const recipeActions ={
                 type: "GET_RECIPE",
                 payload: selectedRecipe[0],
             })
-
         }    
-    }
+    },
+    userRecipes: (userId) =>{
+        return(dispatch, getState)=>{
+            const response = axios.get(`${RUTA_API}'/api/recipes/${userId}`)
+            dispatch({
+                type: "USER_RECIPES",
+                payload: response.data.recipes
+            })
+        }  
+    },
+    getRecipes : diet => {
+        return async (dispatch, getState) => {
+        const response = axios.get(`${RUTA_API}'/api/recipes/${diet}`);
+            dispatch({
+                type:'GET_RECIPES',
+                payload: response.data.recipes
+            });
 
+        }
+    },
+    /*filterRecipes : () => {
+        return async (dispatch, getState) => {
+            const recipes = getState().recipeReducer.recipes
+            recipes.filter()
+                
+        }
+    }*/
 }
 export default recipeActions

@@ -2,45 +2,31 @@ const Recipes = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
-        const { title, description, ingredients, urlPic, userPic,likes, userId, importantContains, recipe, difficulty, diet} = req.body
-        const createRecipe = new Recipes({
-            title,
-            description, 
-            ingredients, 
-            urlPic, 
-            userPic, 
-            userId, 
-            likes,
-            importantContains, 
-            recipe, 
-            difficulty, 
-            diet,
-        });
+        const createRecipe = new Recipes({...req.body});
+
         createRecipe
         .save()
         .then((recipe) => {
-          res.json({ success: true, recipe: recipe });
+          res.json({ success: true, recipe});
         })
         .catch((err) => {
           res.json({ success: false, error: err});
         });
     },
-    getAllRecipes: async (req, res) => {
-        const recipes = await Recipes.find();
+    getRecipes: async (req, res) => {
+        const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
-            recipes: recipes,
+            recipes
         });
     },
-    getRecipe: async (req,res) => {
-        const recipeInfo= await Recipes.findOne({
-              _id: req.params.id
-        });
+    getRecipeById: async (req,res) => {
+        const recipeInfo= await Recipes.findOne({...req.params})
         res.json({
             success: true,
-            recipeInfo: recipeInfo
-        })
-  },
+            recipeInfo
+    })
+    },
     deleteRecipe: async (req, res) =>{
         const id = req.body._id
         Recipes.findByIdAndDelete({_id: id})

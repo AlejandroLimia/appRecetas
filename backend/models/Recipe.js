@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const {string} = require("@hapi/joi")
 const RecipeSchema = new mongoose.Schema({
     title:{
         type: String,
@@ -22,6 +23,7 @@ const RecipeSchema = new mongoose.Schema({
     },
     diet:{
 		type: String,
+		required: true
     },
     difficulty:{
         type: String,
@@ -44,23 +46,3 @@ const RecipeSchema = new mongoose.Schema({
 },{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)
 module.exports = Recipes
-
-
-
-// Recipe
-// 	_id
-// 	title string
-// 	description string
-// 	ingredients [ {
-// 					quantity,
-// 					ingredient
-// 				}]
-// 	recipe string
-// 	importantContains [array]
-// 	diet [array]
-// 	difficulty string
-// 	createdAt: date/string
-// 	likes: ? / number
-// 	urlPic: string
-// 	userId: objectID
-// 	userPic: string/uri
