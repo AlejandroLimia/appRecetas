@@ -25,7 +25,7 @@ router.route("/comment")
 router.route("/recipes/:diet")
 .get(recipesController.getRecipes)
 
-router.route("/recipes/:id")
+router.route("/recipes/n/:_id")
 .get(recipesController.getRecipeById)
 
 router.route("/recipes")
