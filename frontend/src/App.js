@@ -13,7 +13,7 @@ import './styles/generalStyles.css'
 
 
 function App(props) {
-	if(localStorage.getItem('token') && props.auth.token === '') {
+	if(localStorage.getItem('token') && props.user.token === '') {
 		props.authUser(localStorage.getItem('token'))
 	}
 	

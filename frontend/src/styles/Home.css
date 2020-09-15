@@ -49,7 +49,7 @@ justify-content: center;
     display: flex;
     justify-content: center;
     align-items: center;
-	transition: opacity .4s ease-in-out;
+	transition: opacity .3s ease-in-out;
 }
 
 .oneBubble{
@@ -66,7 +66,7 @@ justify-content: center;
     font-weight: bold;
 }
 #categorie .imageBubble:hover{
-    opacity: 0.6;
+	opacity: 0.6;
     color: #ffffff;
 }
 

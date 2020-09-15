@@ -1,26 +1,27 @@
 import axios from 'axios'
 import { RUTA_API } from '../../constants'
-//import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const authActions = {
 	createUser: user => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
+			console.log(response)
 			if(!response.data.success) {
-				// if(response.data.error.indexOf('Mail') !== -1) toast.error('Mail alredy in use')
-				// if(response.data.error.indexOf('Username') !== -1) toast.error('Username alredy in use')
-				// if(response.data.error.indexOf('error') !== -1) toast.error('Something goes wrong! Please refresh, try again')
+				if(response.data.error.indexOf('Mail') !== -1) toast.error('Mail en uso')
+				if(response.data.error.indexOf('Username') !== -1) toast.error('Usuario en uso')
+				if(response.data.error.indexOf('error') !== -1) toast.error('Opss! Algo falló, prueba de nuevo')
 				return response.data.error
 			}
 			else {
-				//toast.success(`Account created!`)
+				toast.success(`Cuenta creada!`)
 				dispatch({
 					type: 'USER_IN',
 					payload: {
-						token: response.data.response.token,
-						urlPic: response.data.response.urlPic,
-						username: response.data.response.username,
-						likes: response.data.response.likes
+						token: response.data.token,
+						urlPic: response.data.urlPic,
+						username: response.data.username,
+						likes: response.data.likes
 					}
 				})
 			}
@@ -31,18 +32,18 @@ const authActions = {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/login', user)
 			if(!response.data.success) {
-				//toast.error(response.data.error)
+				toast.error(response.data.error)
 				return response.data.error
 			}
 			else {
-				//toast.success(`Welcome ${response.data.response.username}!`)
+				toast.success(`Bienvenidx ${response.data.username}!`)
 				dispatch({
 					type: 'USER_IN',
 					payload: {
-						token: response.data.response.token,
-						urlPic: response.data.response.urlPic,
-						username: response.data.response.username,
-						likes: response.data.response.likes
+						token: response.data.token,
+						urlPic: response.data.urlPic,
+						username: response.data.username,
+						likes: response.data.likes
 					}
 				})
 			}
@@ -50,7 +51,7 @@ const authActions = {
 	},
 	logoutUser: () => {
 		return (dispatch, getState) => {
-			//toast.info('See you later! =D')
+			toast.info('See you later! =D')
 			dispatch({
 				type: 'LOGOUT_USER'
 			})

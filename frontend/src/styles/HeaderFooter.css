@@ -58,29 +58,41 @@ header img#fotousuario {
         position: absolute;
         height: 100%;
         right: -30vw;
-        transition: right .2s linear;
+        transition: right .3s linear;
         z-index: 100;
         border-left: 3px solid #dbf249;
-        margin-top: 2vh;
+       
     }
 
     #menuCostado #home{
         color: black;
         font-weight: bold;
+        font-size: 2vw;
         border: none;
         background-color: #dbf249;
+        width: 20vw;
         padding: 1vh 2vw;
-        padding-right: 14vw;
-        margin-top: 2vh;
-        color: #58632c;;
+        text-align: center;
+        margin-left: 0vw;
+        margin-top: 5vh;
+        color: #58632c;
+        border-radius: 2vw;
+        
     }
+    #menuCostado #home:hover{
+        text-decoration: none;
+        color:#dbf249;
+        background-color:#58632c8a ;
+    }
+    
 
 
     #tituloDietas{
-        margin-top: 5vh;
-        font-weight: bold;
+        font-size: 2vw;
+        margin-top: 4vh;
+        font-weight: bolder;
         align-self: center;
-        margin-left: 2vw;
+        margin-left: 3vw;
         color: #58632c;
         text-align: left;
         padding-right: 10vw;
@@ -88,14 +100,21 @@ header img#fotousuario {
    
     
     #menuCostado #nombreDietas p{
-        margin-bottom: 2vh ;
+        width: 20vw;
+        font-size: 2vw;
+        margin-bottom: 1vh ;
         border-bottom: 2px solid #abc120;
-        padding: 1vh 1vw;
+        padding: 0.5vh 0vw;
         padding-right: 5vw;
         color: #58632c ;
-        font-weight: bold;
+        font-weight: normal;
         text-align: left;
 
+    }
+    #menuCostado #nombreDietas p:hover{
+        color: #abc120 ;
+        cursor: pointer;
+        font-weight: bold;
     }
     
 
@@ -182,7 +201,7 @@ header img#fotousuario {
      /*Footer*/
 
     footer {
-        display: none;
+        display: flex;
         background-color: black;
         margin-right: 0vw;
         margin-left: 0vw;

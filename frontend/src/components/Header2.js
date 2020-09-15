@@ -37,7 +37,8 @@ const Header = (props) => {
         </header>
 
          <div id="menuCostado" style={menuShow.show ? {right:0} : {}}>
-            <button onClick={menuHamburguesa} style={{backgroundColor: 'white', border:'none'}} ><img src={cerrar} style={{width:'4vw', marginTop:'2vh'}}></img></button>
+            <button onClick={menuHamburguesa} style={{backgroundColor: 'white', border:'none'}} ><img src={cerrar} style={{width:'5vh'}}></img></button>
+            <NavLink id="home" to="/Home">Home</NavLink>
             <p id="tituloDietas"> Elegi tu dieta:</p>
             <div id="nombreDietas">
                 <p>DIETA KETO</p>
@@ -47,7 +48,6 @@ const Header = (props) => {
                 <p>PALEO</p>
                 <p>INCLUYE TODO</p>
             </div>
-            <NavLink id="home" to="/Home">Home</NavLink>
          </div>
 
      </>
