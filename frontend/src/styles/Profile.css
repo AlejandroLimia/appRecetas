@@ -91,19 +91,12 @@ height: 25vh;
 }
 
 #myRecipes{
-    border: 1px solid #58632c;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-#singleRecipe{
-    height: 50vh;
-    width: 27.8vw;
-   border: 1px solid #58632c;
-   margin: 3vh 1vw;
-
-}
 
 
 
@@ -189,20 +182,13 @@ height: 25vh;
     }
     
     #myRecipes{
-        border: 1px solid black;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
         padding-left: 0.4vw;
     }
     
-    #singleRecipe{
-        height: 40vh;
-        width: 27.7vw;
-       border: 1px solid black;
-       margin: 1vh 1vw;
-    
-    }
+
 }
 
 
@@ -304,20 +290,13 @@ height: 25vh;
     }
     
     #myRecipes{
-        border: 1px solid #58632c;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
         padding-left: 0.7vw;
     }
     
-    #singleRecipe{
-        height: 22vh;
-        width: 30vw;
-       border: 1px solid black;
-       margin: 1vh 1vw;
-    
-    }
+   
 
 }
 
@@ -365,19 +344,12 @@ height: 25vh;
     }
     
     #myRecipes{
-        border: 1px solid #58632c;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
         padding-left: 0.7vw;
     }
     
-    #singleRecipe{
-        height: 18vh;
-        width: 30vw;
-       border: 1px solid black;
-       margin: 1vh 1vw;
-    
-    }
+   
 
 }

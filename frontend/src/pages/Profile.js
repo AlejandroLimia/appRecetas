@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'
-import ProfileRecipes from '../components/ProfileRecipes';
+import Recipe from '../components/Recipe';
 
 
 
@@ -49,8 +49,8 @@ const Profile = (props) => {
                 <button onClick={changeView} style={!showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
             </div>
           {showRecipe.show 
-          ?  <ProfileRecipes/> 
-          :  <ProfileRecipes/>
+          ?  <div id="myRecipes"><Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/></div>
+          :  <div id="myRecipes"><Recipe/><Recipe/><Recipe/><Recipe/><Recipe/></div>
           }
         </div>
         <Footer/>
