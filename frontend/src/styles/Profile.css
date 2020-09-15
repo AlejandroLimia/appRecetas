@@ -1,0 +1,383 @@
+
+#divBlanco{
+height: 25vh;
+}
+
+
+#AllProfile{
+    margin: 2vh 5vw;
+}
+
+#PictureAndInfoUser{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40vh;
+    border-bottom: 1px solid #58632c;
+
+
+}
+
+#userPicture{
+    align-self: center;
+    margin: auto 5vw;
+    border-radius: 100%;
+    display: flex;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 10vh;
+    box-shadow: 0vw 0vw 1vw 0.1vw black;
+    border: 1px solid white;
+}
+
+#infoUser{
+    height: 30vh;
+    margin-left: 4vw;
+    padding: 2vh 2vw;
+    border-left: 2px solid #58632c;
+}
+
+#NameAndEdit{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+
+}
+
+#NameAndEdit p{
+    margin-right: 4vw;
+    font-weight: bold;
+}
+
+#NameAndEdit button{
+    background-color: #dbf249;
+    border-radius: 20vw;
+    margin-bottom: 2vh;
+    box-shadow: 0vw 0vw 1vw 0vw rgb(201, 201, 201);
+    padding: 0vh 2vw;
+    border: #dbf249 ;
+}
+#NameAndEdit button:hover {
+    box-shadow: 0vw 0vw 1vw 0vw rgb(175, 174, 174);
+
+}
+
+
+
+#description{
+    width: 50vw;
+
+}
+
+#description600{
+    display: none;
+}
+
+
+#selectProfile{
+    display: flex;
+    justify-content: space-around;
+    margin: 4vh 20vw;
+}
+
+#selectProfile button{
+    border: none;
+    background-color: white;
+    width: 20vw;
+    font-weight: bold;
+    color: #58632c;
+}
+
+#myRecipes{
+    border: 1px solid #58632c;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#singleRecipe{
+    height: 50vh;
+    width: 27.8vw;
+   border: 1px solid #58632c;
+   margin: 3vh 1vw;
+
+}
+
+
+
+
+@media only screen and (max-width: 800px){
+    #divBlanco{
+        height: 10vh;
+        }
+   
+    #AllProfile{
+        margin: 4vh 5vw;
+    
+    }
+    
+    #PictureAndInfoUser{
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 45vh;
+        border-bottom: 1px solid #58632c;
+    
+    
+    }
+    
+    #userPicture{
+        align-self: center;
+        margin: auto 5vw;
+        border-radius: 100%;
+        display: flex;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 10vh;
+        box-shadow: 0vw 0vw 1vw 0.1vw black;
+        border: 1px solid white;
+    }
+    
+    #infoUser{
+        height: 34vh;
+        margin-left: 4vw;
+        padding: 2vh 2vw;
+        border-left: 2px solid #58632c;
+    }
+    
+    #NameAndEdit{
+        display: flex;
+        align-items: center;
+        margin-bottom: 1vh;
+    }
+    
+    #NameAndEdit p{
+        margin-right: 4vw;
+        font-weight: bold;
+    }
+    
+    #NameAndEdit button{
+        background-color: #dbf249;
+        margin-bottom: 2vh;
+        padding: 0vh 1vw;
+    
+    }
+    
+    
+    #description{
+        width: 50vw;
+    }
+
+    #description600{
+        display: none;
+    }
+    
+    #selectProfile{
+        display: flex;
+        justify-content: space-around;
+        margin: 4vh 20vw;
+    }
+    
+    #selectProfile button{
+        border: none;
+        background-color: white;
+        width: 20vw;
+    }
+    
+    #myRecipes{
+        border: 1px solid black;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0.4vw;
+    }
+    
+    #singleRecipe{
+        height: 40vh;
+        width: 27.7vw;
+       border: 1px solid black;
+       margin: 1vh 1vw;
+    
+    }
+}
+
+
+
+@media only screen and (max-width: 580px){
+    #divBlanco{
+        height: 2vh;
+        }
+   
+    #AllProfile{
+        margin: 2vh 1vw;
+    
+    }
+    
+    #pictureInfoandDecription{
+        border-bottom: 1px solid #58632c;
+
+    }
+    #PictureAndInfoUser{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 45vh;
+        border-bottom: 0px solid #58632c;
+    
+    
+    }
+    
+    #userPicture{
+        align-self: center;
+        margin: auto 5vw;
+        border-radius: 100%;
+        display: flex;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 22vw!important;
+        width: 22vw!important;
+        box-shadow: 0vw 0vw 1vw 0.1vw black;
+        border: 1px solid white;
+    }
+    
+    #infoUser{
+        height: 20vh;
+        margin-left: 4vw;
+        padding: 2vh 2vw;
+        border-left: 0px solid #58632c;
+        margin-top: 4vh;
+    }
+    
+    #NameAndEdit{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1vh;
+    }
+    
+    #NameAndEdit p{
+        margin-right: 4vw;
+        font-weight: bold;
+        font-size: 2.4vh;
+    }
+    
+    #NameAndEdit button{
+        font-size: 2vh;
+    
+    }
+    
+    
+    #description{
+        width: 50vw;
+    display: none;
+    }
+
+    #description600{
+        display: block;
+        width: 80vw;
+        margin: 0vh auto;
+        margin-top: -7vh;
+        margin-bottom: 2vh;
+        font-size: 2.4vh;
+        padding-left: 3vw;
+
+    }
+    
+    #selectProfile{
+        display: flex;
+        justify-content: space-around;
+        margin: 4vh 20vw;
+    }
+    
+    #selectProfile button{
+        border: none;
+        background-color: white;
+        width: 35vw;
+        font-size: 2.5vh;
+        margin-right: 2vw;
+    }
+    
+    #myRecipes{
+        border: 1px solid #58632c;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0.7vw;
+    }
+    
+    #singleRecipe{
+        height: 22vh;
+        width: 30vw;
+       border: 1px solid black;
+       margin: 1vh 1vw;
+    
+    }
+
+}
+
+
+@media only screen and (max-width: 430px){
+    #divBlanco{
+        height: 1vh;
+        }
+   
+    #AllProfile{
+        margin: 0vh 1vw;
+        margin-top: -4vh;
+    
+    }
+    
+    
+    #description{
+        width: 50vw;
+    display: none;
+    }
+
+    #description600{
+        display: block;
+        width: 80vw;
+        margin: 0vh auto;
+        margin-top: -10vh;
+        margin-bottom: 2vh;
+        font-size: 2.4vh;
+        padding-left: 3vw;
+
+    }
+    
+    #selectProfile{
+        display: flex;
+        justify-content: space-around;
+        margin: 4vh 8vw;
+    }
+    
+    #selectProfile button{
+        border: none;
+        background-color: white;
+        width: 40vw;
+        font-size: 2.3vh;
+        margin-right: 2vw;
+    }
+    
+    #myRecipes{
+        border: 1px solid #58632c;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0.7vw;
+    }
+    
+    #singleRecipe{
+        height: 18vh;
+        width: 30vw;
+       border: 1px solid black;
+       margin: 1vh 1vw;
+    
+    }
+
+}

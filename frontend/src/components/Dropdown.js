@@ -30,7 +30,7 @@ const Dropdown1 = (props) => {
         ? (<>
          <DropdownMenu>
             <NavLink to="/logIn"><DropdownItem>Login</DropdownItem></NavLink>
-            <NavLink to="/register"><DropdownItem>Register</DropdownItem></NavLink>
+            <NavLink to="/signup"><DropdownItem>Register</DropdownItem></NavLink>
          </DropdownMenu>
         </>)
         :(<>
