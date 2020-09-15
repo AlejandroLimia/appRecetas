@@ -26,7 +26,7 @@ router.route("/recipes/:diet)")
 .get(recipesController.getRecipes)
 
 router.route("/recipes/:_id")
-.get(recipesController.getRecipe)
+.get(recipesController.getRecipeById)
 
 router.route("/recipes")
 .get(recipesController.getAllRecipes)

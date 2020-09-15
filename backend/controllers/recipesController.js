@@ -7,7 +7,7 @@ const recipesController = {
         createRecipe
         .save()
         .then((recipe) => {
-          res.json({ success: true, recipe: recipe });
+          res.json({ success: true, recipe});
         })
         .catch((err) => {
           res.json({ success: false, error: err});
@@ -17,8 +17,15 @@ const recipesController = {
         const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
-            recipes: recipes,
+            recipes
         });
+    },
+    getRecipeById: async (req,res) => {
+        const recipeInfo= await Recipes.findOne({...req.params})
+        res.json({
+            success: true,
+            recipeInfo
+    })
     },
     deleteRecipe: async (req, res) =>{
         const id = req.body._id
