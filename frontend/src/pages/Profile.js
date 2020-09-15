@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'
 import Recipe from '../components/Recipe';
+import {NavLink} from "react-router-dom"
+
 
 
 
@@ -33,7 +35,7 @@ const Profile = (props) => {
                     <div id="infoUser">
                         <div id="NameAndEdit">
                         <p>Nombre de Usuario</p>
-                        <button>Editar Perfil</button>
+                        <NavLink to="/editProfile"><button>Editar Perfil</button></NavLink>
                         </div>
                     <div id="description"> <p>Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta</p>
                     </div>

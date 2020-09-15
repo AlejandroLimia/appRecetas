@@ -1,0 +1,27 @@
+#todoEditarUsuario{
+    height: 100vh;
+    margin: 2vh 6vw;
+}
+
+#todoEditarUsuario #PictureAndInfoUser {
+    border-bottom: none;
+}
+
+#todoEditarUsuario form {
+    height: 80vh;
+}
+
+#todoEditarUsuario label {
+    margin-right: 2vw;
+    width: 10vw;
+
+}
+
+#todoEditarUsuario input {
+    width: 30vw;
+}
+
+#todoEditarUsuario button {
+    align-self: flex-start;
+
+}

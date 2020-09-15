@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
 import Profile from './pages/Profile';
+import EditProfile from './components/EditProfile';
 
 
 
@@ -25,6 +26,8 @@ function App(props) {
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
+		<Route path='/editProfile' component={EditProfile} />
+		
 
 		<Redirect to='/' />
 	</Switch>)
