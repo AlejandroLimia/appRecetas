@@ -29,7 +29,7 @@ const validator = {
 			ingredients: Joi.array().items({quantity: Joi.number().required(), name: Joi.string().alphanum().required()}),
             recipe: Joi.string().trim().min(10).required(),
 			importantContains: Joi.array(),
-            diet:Joi.array().items(Joi.string()),
+            diet:Joi.string(),
 			difficulty: Joi.string().trim().alphanum().required(),
 			urlPic: Joi.string().uri().required().trim(),
 			userPic: Joi.string().uri().required().trim(),
