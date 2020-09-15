@@ -3,7 +3,7 @@ import recipeActions from '../redux/actions/recipeActions';
 
 const RecipeFull = (props) => {
 	useEffect(() => {
-		props.getRecipeFull(props.match.params)
+		props.getRecipe(props.match.params)
 	}, [])
 
 	return ( <>
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-	getRecipeFull: recipeActions.getRecipeFull
+	getRecipe: recipeActions.getRecipe
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull);
