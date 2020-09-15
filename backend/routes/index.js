@@ -22,8 +22,13 @@ router.route("/comment")
 .delete(commentController.deleteCommentById)
 .put(commentController.modifyCommentById)
 
+router.route("/recipes/:diet")
+.get(recipesController.getRecipes)
+
+router.route("/recipes/:id")
+.get(recipesController.getRecipeById)
+
 router.route("/recipes")
-.get(recipesController.getAllRecipes)
 .post(recipesController.newRecipe)
 .put(recipesController.modifyRecipe)
 .delete(recipesController.deleteRecipe)
