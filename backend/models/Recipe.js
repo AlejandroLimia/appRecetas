@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const {string} = require("@hapi/joi")
 const RecipeSchema = new mongoose.Schema({
     title:{
         type: String,
@@ -42,6 +41,9 @@ const RecipeSchema = new mongoose.Schema({
     },
     userPic:{
         type: String
+    },
+    duration:{
+        type: Number
     }
 },{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)
