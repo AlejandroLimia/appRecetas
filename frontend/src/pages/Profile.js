@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import userActions from '../redux/actions/userActions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'

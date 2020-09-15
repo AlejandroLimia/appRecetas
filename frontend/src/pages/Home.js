@@ -21,7 +21,7 @@ const Home = (props) => {
           <img id="homeBackgroundOne" src={homeBackgroundOne}/>
           <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
             <div id="homeTitle" >
-              <img src={homeTitle}  ></img>
+              <img src={homeTitle}></img>
             </div>
             <div id="AllCategories">
               {categories.categories.map(conjunto => {
