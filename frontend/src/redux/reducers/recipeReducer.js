@@ -1,6 +1,7 @@
 const initialState = {
     recipes:[],
-    recipe: null,
+    recipe: [],
+    userRecipes:[],
 }
 
 const recipesReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ const recipesReducer = (state = initialState, action) => {
             return {...state, recipes: action.payload}
         case "GET_RECIPE":
             return {...state, recipe: action.payload}
+        case "USER_RECIPES":
+            return {...state, userRecipes: action.payload}
         default: 
             return state
     }

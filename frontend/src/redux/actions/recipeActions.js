@@ -39,6 +39,16 @@ const recipeActions ={
 
         };
     },
+    userRecipes: (userId) =>{
+        return(dispatch, getState)=>{
+            const response = axios.get(`${RUTA_API}'/api/recipes/${userId}`)
+            dispatch({
+                type: "USER_RECIPES",
+                payload: response.data.recipes
+            })
+        }  
+    },
+    //comentario
     getRecipes : diet => {
         return async (dispatch, getState) => {
 			console.log(`${RUTA_API}'/api/recipes/${diet}`)

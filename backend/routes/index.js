@@ -29,15 +29,17 @@ router.route("/recipes/:diet")
 router.route("/recipes/likes")
 .post(recipesController.getRecipeByLikes)
 
-router.route("/recipe/:_id")
-.get(recipesController.getRecipeById)
-
-router.route("/recipes/:userId")
+router.route("/recipes/user/:userId")
 .get(recipesController.getRecipesByUserId)
 
-router.route("/recipes")
-.post(recipesController.newRecipe)
-.put(recipesController.modifyRecipe)
+router.route("/recipe/:_id")
+.get(recipesController.getRecipeById)
 .delete(recipesController.deleteRecipe)
 
+router.route("/recipes")
+.get(recipesController.getRecipes)
+.post(recipesController.newRecipe)
+.put(recipesController.modifyRecipe)
+
 module.exports = router; 
+
