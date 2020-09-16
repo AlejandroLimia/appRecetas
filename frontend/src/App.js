@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
 import Profile from './pages/Profile';
+import Recipes from './pages/Recipes';
 
 
 
@@ -25,7 +26,7 @@ function App(props) {
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
-
+		<Route path='/recipes' component={Recipes} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>

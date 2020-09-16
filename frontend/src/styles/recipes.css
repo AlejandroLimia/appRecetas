@@ -1,0 +1,56 @@
+.banner {
+	height: 30vh;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.contenedorRecipes {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px 10vw;
+}
+
+div.filtrador {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.filtrador input {
+	border: none;
+	border-bottom: 2px solid #58632c;
+	background: none;
+	width: 70%;
+	text-align: center;
+}
+
+div.filtrador input::placeholder {
+	text-align: center;
+}
+
+div.recetas {
+    display: flex;
+    flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 5px;
+}
+
+#homeBackgroundOne{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 25%;
+}
+
+#homeBackgroundTwo{
+    position: fixed;
+    right: 0;
+    top: 10;
+    z-index: -1;
+    width: 10%;
+}
