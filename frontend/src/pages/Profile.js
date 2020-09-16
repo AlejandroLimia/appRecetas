@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'
 import Recipe from '../components/Recipe';
+import {NavLink} from "react-router-dom"
+import recipeActions from '../redux/actions/recipeActions';
 
 
 
 
 const Profile = (props) => {
 
-    const [showRecipe, setshowRecipe] = useState({
-        show: true
+    useEffect(() => {
+		props.getRecipes('vegetariana')
+    }, [])
+    
+
+    const [showRecipe2, setshowRecipe2] = useState({
+        show2: true
     })
- 
-   const changeView =  e =>{
-       e.preventDefault()
-       setshowRecipe ({
-        ...showRecipe,
-        show: !showRecipe.show
-    })
+  
+
+   const changeView2 = e =>{
+    e.preventDefault()
+    setshowRecipe2 ({
+     ...showRecipe2,
+     show2: true
+ })
+   }
+
+   const changeView3 = e =>{
+    e.preventDefault()
+    setshowRecipe2 ({
+     ...showRecipe2,
+     show2: false
+ })
    }
 
   return (
@@ -33,7 +49,7 @@ const Profile = (props) => {
                     <div id="infoUser">
                         <div id="NameAndEdit">
                         <p>Nombre de Usuario</p>
-                        <button>Editar Perfil</button>
+                        <NavLink to="/editProfile"><button>Editar Perfil</button></NavLink>
                         </div>
                     <div id="description"> <p>Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta</p>
                     </div>
@@ -45,13 +61,24 @@ const Profile = (props) => {
 
 
             <div id="selectProfile">
-                <button onClick={changeView} style={showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Mis Recetas</button>
-                <button onClick={changeView} style={!showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
+                <button onClick={changeView2} style={showRecipe2.show2 ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Mis Recetas</button>
+                <button onClick={changeView3} style={!showRecipe2.show2 ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
             </div>
-          {showRecipe.show 
-          ?  <div id="myRecipes"><Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/></div>
-          :  <div id="myRecipes"><Recipe/><Recipe/><Recipe/><Recipe/><Recipe/></div>
+
+          {showRecipe2.show2
+          
+          ? <div id="myRecipes">{
+            props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+            return <Recipe recipe={recipe}  own={true}/> })}
+            </div>
+
+      
+          :  <div id="myRecipes">{
+            props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+            return <Recipe recipe={recipe} /> })}
+            </div>
           }
+
         </div>
         <Footer/>
       </>
@@ -61,12 +88,19 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		user: state.userReducer
+        user: state.userReducer,
+        data: state.recipeReducer
+
 	}
 }
 
-const mapDispatchToProps = {
-}
+
+    const mapDispatchToProps = {
+        // Conseguir recetas
+        getRecipes: recipeActions.getRecipes
+        // Accion de filtar
+    }
+
 
 export default connect(mapStateToProps, mapDispatchToProps) (Profile)
 

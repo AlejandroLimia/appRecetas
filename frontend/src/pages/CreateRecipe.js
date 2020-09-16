@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../styles/createRecipe.css"
 
 const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
@@ -6,7 +7,11 @@ const CreateRecipe = (props) => {
 		allergies: [],
 		ingredients: []
 	})
-
+	const constantes = {
+		allergies: ['gluten', 'peanut', 'seaFood', 'egg', 'milk', 'sesame','soy' ],
+		diet: ['keto', 'vegetariana','vegana','pecetariana','paleo','otros'],
+		dif: [['Fácil','facil'],['Intermedio', 'intermedio'],['Difícil', 'dificil']]
+	}
 	const [mod, setMod] = useState(true)
 
 	const [unit, setUnit] = useState([
@@ -64,30 +69,72 @@ const CreateRecipe = (props) => {
 	console.log(recipe)
 
 	return ( <>
-			<form>
-				<input type='text' onChange={inputHandler} name="title" placeholder="Titulo" />
-				<input type='text' onChange={inputHandler} name="description" placeholder="Descripcion" />
-				<input type='text' onChange={inputHandler} name="duration" placeholder="Duracion" />
-				<input type='text' onChange={ingNameHandler} placeholder="ingrediente" name="ingredient" id="0" />
-				<input type='text' onChange={ingQHandler} placeholder="cantidad" name="quantity" id="0" />
-				<select name='unit' id="0" onChange={ingUHandler}>
-					<option defaultValue value="un">un</option>
-					<option value="g">g</option>
-					<option value="kg">kg</option>
-					<option value="cda">cda</option>
-				</select>
-				<input type='text' onChange={ingNameHandler} placeholder="ingrediente" name="ingredient" id="1" />
-				<input type='text' onChange={ingQHandler} placeholder="cantidad" name="quantity" id="1" />
-				<select name='unit' id="1" onChange={ingUHandler}>
-					<option defaultValue>un/s</option>
-					<option>g</option>
-					<option>kg</option>
-					<option>cda/s</option>
-				</select>
-				<input type='checkbox' name="allergies" value="algo1" />
-				<input type='checkbox' name="allergies" value="algo2" />
-				<input type='checkbox' name="allergies" value="algo3" />
-			</form>
+			<div className="createRecipe">
+				<span className="title">Crear Receta</span>
+				<form class="createRecipe">
+					<div class="inputBox">
+						<label for="">Imagen</label>
+						<input type="file" name="urlPic" id="" />
+					</div>
+					<div class="inputBox">
+						<label for="">Titulo</label>
+						<input type="text" name="" id="" />
+					</div>
+					<div class="inputBox">
+						<label for="">Descripcion</label>
+						<input type="text" name="" id="" />
+					</div>
+					<div class="inputBox">
+						<label>Dieta</label>
+						<div>
+							<select name="" id="">
+								{constantes.diet.map(diet => {
+									return <option value={diet}>{diet}</option>
+								})}
+							</select>
+						</div>
+					</div>
+					<div class="inputBox">
+						<label>Dificultad</label>
+						<div>
+							<select name="" id=""></select>
+						</div>
+					</div>
+					<div class="inputBox">
+						<label>Duracion</label>
+						<input type="text" />
+					</div>
+					<div class="inputBox">
+						<label>Dificultad</label>
+						<div>
+							<select name="" id=""></select>
+						</div>
+					</div>
+					<div class="inputBox">
+						<label>Ingredientes</label>
+						<div class="ingredient">
+							<input type="text" />
+							<select name="" id="" ></select>
+							<input type="text" />
+						</div>
+					</div>
+					<div class="inputBox">
+						<label>Receta</label>
+						<div class="recipe">
+							<input type="text" />
+							<select name="" id=""></select>
+							<input type="text" />
+						</div>
+					</div>
+			<div class="inputBox">
+				<label for="">Alergias</label>
+				<div class="allergies">
+					<label for=""></label>
+					<input type="checkbox" name="" id="" />
+				</div>
+			</div>
+		</form>
+	</div>
 	</> );
 }
  

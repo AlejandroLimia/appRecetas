@@ -31,11 +31,11 @@ const recipeActions ={
             //     type: "GET_RECIPE",
             //     payload: recipes? selectedRecipe[0]:selectedRecipe.data.recipe,
 			// });
-			const selectedRecipe = await axios.get(`${RUTA_API}/api/recipe/${recipeId}`);
-			console.log(selectedRecipe.data)
+            const selectedRecipe = await axios.get(`${RUTA_API}/api/recipe/${recipeId}`);
+            console.log(selectedRecipe.data)
 			dispatch({
 			    type: "GET_RECIPE",
-			    payload: selectedRecipe.data.recipeInfo
+                payload: selectedRecipe.data.recipeInfo
 			});
 
         };

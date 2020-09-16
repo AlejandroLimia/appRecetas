@@ -11,6 +11,9 @@ router.route("/user/register")
 .post(userController.createUser)
 //.post(validator.validateUser,userController.createUser)
 
+router.route("/user/modifyUser")
+.post(userController.modifyUser)
+
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
 .post(userController.loginUser)

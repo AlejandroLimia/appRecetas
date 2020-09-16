@@ -5,20 +5,11 @@ const message = 'Mail or Password incorrect'
 
 const userController = {
 	createUser: async (req, res) => {
-		const {firstName, lastName, mail, pass, urlPic, username } = req.body;
-		// Hashing Password
-		const hashPassword = bcrypt.hashSync(pass.trim(), 10);
-
+		const {pass} = req.body;
 		// Creating new User
-		const newUser = new User({
-			firstName,
-			lastName,
-			mail,
-			urlPic,
-			username,
-			pass: hashPassword
-        });
-
+		const newUser = new User({...req.body})
+        newUser.pass =  bcrypt.hashSync(pass.trim(), 10);
+	
         newUser.save()
         .then(user => {
             const token = jwt.sign({...user},process.env.SECRET_KEY,{})
