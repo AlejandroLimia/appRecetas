@@ -12,6 +12,7 @@ import './styles/generalStyles.css'
 import Profile from './pages/Profile';
 import Recipes from './pages/Recipes';
 import RecipeFull from './pages/RecipeFull';
+import CreateRecipe from './pages/CreateRecipe';
 
 
 
@@ -27,6 +28,7 @@ function App(props) {
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
+		<Route path='/createRecipe' component={CreateRecipe} />
 		<Route path='/recipes/:diet' component={Recipes} />
 		<Route path='/recipe/:id' component={RecipeFull} />
 		<Redirect to='/' />

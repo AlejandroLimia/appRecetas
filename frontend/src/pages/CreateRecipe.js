@@ -5,8 +5,20 @@ const CreateRecipe = (props) => {
 		title: '',
 		ingredients: []
 	})
+
+	const [mod, setMod] = useState(true)
+
+	const [unit, setUnit] = useState([
+		'un','un','un','un','un'
+	])
 	
-	const [ing, setIng] = useState({q: 1 , ings: []})
+	const [ing, setIng] = useState([
+		{q: '' , name: ''},
+		{q: '' , name: ''},
+		{q: '' , name: ''},
+		{q: '' , name: ''},
+		{q: '' , name: ''},
+		])
 
 	const inputHandler = (e) => {
 		const valor = e.target.value;
@@ -17,29 +29,50 @@ const CreateRecipe = (props) => {
 		})
 	}
 
-	const ingredientHandler = e => {
-
+	const ingQHandler = e => {
+		const index = e.target.id;
+		const valor = e.target.value + ' ' + unit[index];
+		ing[index].q = valor;
+		setMod(!mod)
 	}
 
-	const ingredientAdd = e => {
-		setIng({
-			...ing,
-			q: ing.q + 1
-		})
-	}
-	const ingredientSub = e => {
-		setIng({
-			...ing,
-			q: ing.q - 1
-		})
+	const ingUHandler = e => {
+		const valor = e.target.value;
+		const index = e.target.id;
+		unit[index] = valor;
+		setMod(!mod)
 	}
 
-	console.log(recipe)
+	const ingNameHandler = e => {
+		const valor = e.target.value;
+		const index = e.target.id;
+		ing[index].name = valor;
+		setMod(!mod)
+	}
+
 	console.log(ing)
 
 	return ( <>
 			<form>
-				<input type='text' onChange={inputHandler} name="title" />
+				<input type='text' onChange={inputHandler} name="title" placeholder="Titulo" />
+				<input type='text' onChange={inputHandler} name="description" placeholder="Descripcion" />
+				<input type='text' onChange={inputHandler} name="duration" placeholder="Duracion" />
+				<input type='text' onChange={ingNameHandler} placeholder="ingrediente" name="ingredient" id="0" />
+				<input type='text' onChange={ingQHandler} placeholder="cantidad" name="quantity" id="0" />
+				<select name='unit' id="0" onChange={ingUHandler}>
+					<option defaultValue value="un">un</option>
+					<option value="g">g</option>
+					<option value="kg">kg</option>
+					<option value="cda">cda</option>
+				</select>
+				<input type='text' onChange={ingNameHandler} placeholder="ingrediente" name="ingredient" id="1" />
+				<input type='text' onChange={ingQHandler} placeholder="cantidad" name="quantity" id="1" />
+				<select name='unit' id="1" onChange={ingUHandler}>
+					<option defaultValue>un/s</option>
+					<option>g</option>
+					<option>kg</option>
+					<option>cda/s</option>
+				</select>
 			</form>
 	</> );
 }
