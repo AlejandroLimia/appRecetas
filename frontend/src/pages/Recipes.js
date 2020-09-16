@@ -7,6 +7,7 @@ import Recipe from '../components/Recipe';
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import recipeActions from '../redux/actions/recipeActions';
+import imageBanner from "../images/foodit.jpg";
 
 const Recipes = (props) => {
 	useEffect(() => {
@@ -17,7 +18,8 @@ const Recipes = (props) => {
 	<Header />
 		<img id="homeBackgroundOne" src={homeBackgroundOne}/>
         <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
-		<div className="banner" style={{backgroundImage: `url(${require('../images/food.jpg')})`}}>
+		<div id="space" style={{ height:"10vh"}}></div>
+		<div className="banner" style={{backgroundImage: `url(${imageBanner})`}}>
 		</div>
 		<div className="contenedorRecipes">
 			<div>

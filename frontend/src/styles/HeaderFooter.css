@@ -12,7 +12,9 @@ header div#barraArriba{
     position: fixed!important; 
     background-color: white!important;
     z-index: 70;
-    box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
+	box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
+	display: flex;
+	justify-content: space-between;
 }
 
 #menuNormal{

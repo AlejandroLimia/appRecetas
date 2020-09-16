@@ -26,7 +26,7 @@ const Header = (props) => {
             <div id="barraArriba" style={{display:`flex`, alignItems: `center`}}>
               <div id="usuarioymenu"><Dropdown/></div>
               <img id="fotologo" src={fotologo} alt="logo" style={{ marginLeft: `2vw`,}}/>
-              <div id="menuHamburguesa" style={{marginLeft: `4vw`, marginTop: `2vh`}}>
+              <div id="menuHamburguesa" style={{marginLeft: `4vw`, marginTop: `0vh`}}>
               <button onClick={menuHamburguesa} style={{backgroundColor: `white`, border: `none`}}>< img src={fotoBoton} alt="menu" style={{width: `26%`}}></img></button>
               </div>
             </div>

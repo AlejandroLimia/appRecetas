@@ -27,7 +27,7 @@ const RecipeFull = (props) => {
     <div id="space" style={{ height:"15vh"}}></div>
     <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
             <div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
-				<p>PALTA FELIZ</p>
+				<p>{props.recipe.username.toUpperCase()}</p>
 			</div>
 	</div>
 	<div id="everything">

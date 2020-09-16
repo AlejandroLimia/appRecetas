@@ -8,7 +8,8 @@ const recipesController = require('../controllers/recipesController')
 const router = express.Router();
 
 router.route("/user/register")
-.post(validator.validateUser,userController.createUser)
+.post(userController.createUser)
+//.post(validator.validateUser,userController.createUser)
 
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
