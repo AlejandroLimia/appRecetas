@@ -11,6 +11,7 @@ const RecipeFull = (props) => {
 		const gR = async () => {
 			await props.getRecipe(props.match.params.id)
 		}
+		window.scroll(0,0)
 		gR()
 	}, [])
 	const fotousuario = require("../images/usuario.png")
@@ -24,7 +25,7 @@ const RecipeFull = (props) => {
 		? ""
 		:<>
 	<Header/>
-    <div id="space" style={{ height:"15vh"}}></div>
+    <div id="space" style={{ height:"10vh"}}></div>
     <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
             <div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
 				<p>{props.recipe.username.toUpperCase()}</p>
@@ -34,7 +35,7 @@ const RecipeFull = (props) => {
 		<div id="LeftSide">
 			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} > </div>
 			    <div id="ingredients">
-					<h3 className="title">ingredientes</h3>
+					<h3 className="title">Ingredientes</h3>
 					<h6>cant.</h6>
 				{props.recipe.ingredients.map(ingredient =>{
 					return <div className="ingredient">
@@ -57,7 +58,7 @@ const RecipeFull = (props) => {
 				<p>{props.recipe.description}</p>
 			</div>
 			<div id="steps">
-				<h3 className="title">pasos a seguir</h3>
+				<h3 className="title">Pasos a seguir</h3>
 				{props.recipe.recipe.map((step,index) => {
 					return <div className="divRecipeSteps">
 					<h4>{index + 1}</h4>
