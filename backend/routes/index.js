@@ -28,7 +28,7 @@ router.route("/recipes/:diet")
 router.route("/recipes/likes")
 .post(recipesController.getRecipeByLikes)
 
-router.route("/recipes/n/:_id")
+router.route("/recipe/:_id")
 .get(recipesController.getRecipeById)
 
 router.route("/recipes/:userId")

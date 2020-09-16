@@ -17,10 +17,7 @@ const Header = (props) => {
         setmenuShow ({
             ...menuShow,
             show: !menuShow.show
-        })
-        console.log(menuShow)
-        console.log("hola")
-       
+        })       
     }
 
     return (
@@ -37,7 +34,7 @@ const Header = (props) => {
         </header>
 
          <div id="menuCostado" style={menuShow.show ? {right:0} : {}}>
-            <button onClick={menuHamburguesa} style={{backgroundColor: 'white', border:'none'}} ><img src={cerrar} style={{width:'4vw', marginTop:'2vh'}}></img></button>
+            <button onClick={menuHamburguesa} style={{backgroundColor: 'white', border:'none'}} ><img src={cerrar} style={{width:'2em', marginTop:'2vh'}}></img></button>
             <p id="tituloDietas"> Elegi tu dieta:</p>
             <div id="nombreDietas">
                 <p>DIETA KETO</p>
@@ -45,7 +42,7 @@ const Header = (props) => {
                 <p>VEGANA</p>
                 <p>PECETARIANA</p>
                 <p>PALEO</p>
-                <p>INCLUYE TODO</p>
+                <p>OTROS</p>
             </div>
             <NavLink id="home" to="/Home">Home</NavLink>
          </div>

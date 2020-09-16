@@ -17,8 +17,9 @@ div.sign div.form {
 	margin-left: 10vw;
 	width: 25vw;
 	min-width: 330px;
-	min-height: 50vh;
+	min-height: 60vh;
 	border-radius: 20px;
+	padding-top: 10vh;
 }
 
 div.sign .inputBox {
@@ -44,6 +45,7 @@ div.sign .inputBox input {
 
 div.sign .inputBox input::placeholder {
 	text-align: center;
+	padding-right: 20%;
 }
 
 
@@ -65,7 +67,7 @@ form.sign button {
 div.logo {
 	position: absolute;
 	top: 0;
-	margin-top: 100px;
+	margin-top: 30px;
 	width: 150px;
 	height: 150px;
 	margin-bottom: 20px;
@@ -80,4 +82,10 @@ form.sign span.title {
 	font-size: 20px;
 	color: #58632c;
 	margin-bottom: 20px;
+}
+div.form .googleButton{
+	margin: 0px 0 15px 15px;
+}
+div.form p{
+	margin: 2px 0 4px 15px;
 }

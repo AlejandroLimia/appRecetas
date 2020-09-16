@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
 import Profile from './pages/Profile';
 import Recipes from './pages/Recipes';
+import RecipeFull from './pages/RecipeFull';
 
 
 
@@ -27,6 +28,7 @@ function App(props) {
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
 		<Route path='/recipes/:diet' component={Recipes} />
+		<Route path='/recipe/:id' component={RecipeFull} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>

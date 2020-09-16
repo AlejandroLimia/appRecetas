@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/recipe.css'
 
 const Recipe = (props) => {
@@ -6,6 +7,7 @@ const Recipe = (props) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
 	}
 	return ( <>
+		<Link to={`/recipe/${props.recipe._id}`}>
 		<div class="recipeCard">
 			<div class="picture" style={{backgroundImage: `url(${props.recipe.urlPic})`}}>
 				<div class="avatar" style={{backgroundImage: `url(${props.recipe.userPic})`, display: `${props.own ? "none" : "inherit"}`}}>
@@ -29,6 +31,7 @@ const Recipe = (props) => {
 				<button class="btn">Ver receta</button>
 			</div>
 		</div>
+		</Link>
 	</> );
 }
  
