@@ -5,12 +5,9 @@ import { toast } from 'react-toastify'
 const recipeActions ={
     newRecipe: recipe => {
         return async (dispatch, getState) => {
-            const response = await axios.post(RUTA_API+'/api/recipes', recipe)
-            /*dispatch({
-                type:"NEW_RECIPE",
-                payload: toast.success("Su receta creada exitosamente."),
-            })*/
-        }
+            const response = await axios.post(RUTA_API+'/api/recipes', recipe);
+            
+        };
     },
     modifyRecipe: recipe =>{
         return async (dispatch, getState) => {
@@ -18,9 +15,15 @@ const recipeActions ={
         }
     },
     getRecipe: (recipeId) =>{
-        return(dispatch, getState)=>{
-            const data= getState()
-            const selectedRecipe = data.recipesReducer.recipes.filter((recipe)=> recipe._Id === recipeId)
+        return async (dispatch, getState)=>{
+            const recipes = getState().recipesReducer.recipes;
+            const selectedRecipe = null;
+
+            if(!recipes) 
+                selectedRecipe = await axios.get(`${RUTA_API}/api/recipes${recipeId}`);
+            else
+                selectedRecipe = recipes.filter((recipe)=> recipe._Id === recipeId);
+
             dispatch({
                 type: "GET_RECIPE",
                 payload: selectedRecipe[0],
@@ -45,7 +48,7 @@ const recipeActions ={
                 payload: response.data.recipes
             });
 
-        }
+        };
     },
     /*filterRecipes : () => {
         return async (dispatch, getState) => {
