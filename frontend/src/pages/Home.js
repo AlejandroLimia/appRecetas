@@ -17,7 +17,7 @@ const Home = (props) => {
     return (
         <>
 			<Header/>
-       <div id="space" style={{ height:"15vh"}}></div>
+       <div id="space" style={{ height:"20vh"}}></div>
           <img id="homeBackgroundOne" src={homeBackgroundOne}/>
           <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
             <div id="homeTitle" >

@@ -1,8 +1,17 @@
+#EditarPerfilTitulo{
+    margin-left: 11vw;
+    color: #58632c;
+
+}
+
 #todoEditarUsuario{
-    height: 100vh;
+    height: 135vh;
     margin: 2vh 6vw;
 }
 
+#todoEditarUsuario #infoUser{
+    border-left: none;
+}
 #todoEditarUsuario #PictureAndInfoUser {
     border-bottom: none;
 }
@@ -11,17 +20,55 @@
     height: 80vh;
 }
 
-#todoEditarUsuario label {
+#todoEditarUsuario label, .inputdescripcion p  {
     margin-right: 2vw;
     width: 10vw;
+}
+
+#todoEditarUsuario .inputdescripcion{
+display:flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+#todoEditarUsuario input, #todoEditarUsuario textarea {
+    width: 35vw;
+    border: 1px solid #dbf249 ;
+    padding: 0.5vh 0.5vw;
 
 }
 
-#todoEditarUsuario input {
-    width: 30vw;
+#todoEditarUsuario textarea {
+height: 25vh;
+
 }
 
 #todoEditarUsuario button {
     align-self: flex-start;
 
+}
+
+.botoneditarperfil{
+    background-color: white!important;
+    color: #58632c!important;
+    font-weight: bold!important;
+    text-align: left!important;
+    margin-left: 0vw!important;
+    padding: 1vh 0vw!important;
+    margin-bottom: -1vh!important;
+    margin-top: 1vh!important;
+    font-size: 2.6vh!important;
+}
+
+.botoneditarperfil:hover{
+text-decoration: underline;
+
+}
+
+#editarUsuario{
+    margin-top: 8vh;
+}
+
+#divCambiarContraseña{
+    margin-top: 5vh;
 }

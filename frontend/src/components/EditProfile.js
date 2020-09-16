@@ -5,7 +5,8 @@ import Footer from '../components/Footer';
 import '../styles/Profile.css'
 import { toast } from 'react-toastify';
 import '../styles/editarUsuario.css'
-
+import homeBackgroundOne from "../images/homeBackgroundOne.png"
+import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 
 
 const Profile = (props) => {
@@ -173,6 +174,9 @@ const [send, setSend] = useState({
       <>
       	<Header/>
           <div id="divBlanco"></div>
+          <img id="homeBackgroundOne" src={homeBackgroundOne}/>
+          <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
+          <h3 id="EditarPerfilTitulo">Editar Perfil:</h3>
           <div id="todoEditarUsuario">
                 <div id="pictureInfoandDecription">
                      <div id="PictureAndInfoUser">
@@ -203,10 +207,20 @@ const [send, setSend] = useState({
                                     <input type="text" name="username" id="username" onChange={inputHandler} value="LeoDi"/>
                                 </div>
                                 <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
-                                <button>Cambiar Foto del Perfil </button>
-                                <button onClick={viewChangePass}>Cambiar contraseña</button>
-                               {ChangePass.pass 
-                                ?  <>
+                                
+                                <div className="inputdescripcion">
+                                    <p>Descripción: </p>
+                                    <textarea name="description" id="description" onChange={inputHandler} >
+                                    Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta
+                                    </textarea>
+                                </div>
+                                <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
+                                
+                                <button className="botoneditarperfil">Cambiar Foto del Perfil </button>
+                                <button className="botoneditarperfil" onClick={viewChangePass}>Cambiar Contraseña</button>
+
+                               {ChangePass.Pass && 
+                               <div id="divCambiarContraseña">
                                     <div className="inputBox">
                                       <label htmlFor="pass">Contraseña Vieja</label>
                                       <input type="password" name="pass" id="pass" onChange={inputHandler}  />
@@ -216,20 +230,14 @@ const [send, setSend] = useState({
                                          <label htmlFor="newPass">Contraseña Nueva</label>
                                           <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
                                       </div>
-                                      </>
-                                 : <></>
+                                      <div className="inputBox">
+                                         <label htmlFor="confirmNewPass">Confirmar Contraseña Nueva</label>
+                                          <input type="password" name="confirmNewPass" id="confirmNewPass" onChange={inputHandler}  />
+                                      </div>
+                              </div>
                                }
-                                <div className="inputBox">
-				                 	<label htmlFor="pass">Contraseña Vieja</label>
-				                 	<input type="password" name="pass" id="pass" onChange={inputHandler}  />
-                                </div>
-                                <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-                                <div className="inputBox">
-                                  <label htmlFor="newPass">Contraseña Nueva</label>
-				                  <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
-                                </div>
                                 
-                                <button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Crear cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+                                <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
                             </form>
 
                            </div>

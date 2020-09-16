@@ -11,21 +11,31 @@ import recipeActions from '../redux/actions/recipeActions';
 
 
 const Profile = (props) => {
-    
+
     useEffect(() => {
 		props.getRecipes('vegetariana')
     }, [])
     
-    const [showRecipe, setshowRecipe] = useState({
-        show: true
+
+    const [showRecipe2, setshowRecipe2] = useState({
+        show2: true
     })
- 
-   const changeView =  e =>{
-       e.preventDefault()
-       setshowRecipe ({
-        ...showRecipe,
-        show: !showRecipe.show
-    })
+  
+
+   const changeView2 = e =>{
+    e.preventDefault()
+    setshowRecipe2 ({
+     ...showRecipe2,
+     show2: true
+ })
+   }
+
+   const changeView3 = e =>{
+    e.preventDefault()
+    setshowRecipe2 ({
+     ...showRecipe2,
+     show2: false
+ })
    }
 
   return (
@@ -51,20 +61,24 @@ const Profile = (props) => {
 
 
             <div id="selectProfile">
-                <button onClick={changeView} style={showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Mis Recetas</button>
-                <button onClick={changeView} style={!showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
+                <button onClick={changeView2} style={showRecipe2.show2 ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Mis Recetas</button>
+                <button onClick={changeView3} style={!showRecipe2.show2 ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
             </div>
-          {showRecipe.show 
+
+          {showRecipe2.show2
           
-          ?  <div id="myRecipes">{
+          ? <div id="myRecipes">{
             props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
             return <Recipe recipe={recipe}  own={true}/> })}
             </div>
+
+      
           :  <div id="myRecipes">{
             props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
             return <Recipe recipe={recipe} /> })}
             </div>
           }
+
         </div>
         <Footer/>
       </>
