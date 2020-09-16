@@ -32,7 +32,6 @@ const recipeActions ={
             //     payload: recipes? selectedRecipe[0]:selectedRecipe.data.recipe,
 			// });
 			const selectedRecipe = await axios.get(`${RUTA_API}/api/recipe/${recipeId}`);
-			console.log(selectedRecipe)
 			dispatch({
 			    type: "GET_RECIPE",
 			    payload: selectedRecipe.data.recipeInfo
@@ -40,6 +39,16 @@ const recipeActions ={
 
         };
     },
+    userRecipes: (userId) =>{
+        return(dispatch, getState)=>{
+            const response = axios.get(`${RUTA_API}'/api/recipes/${userId}`)
+            dispatch({
+                type: "USER_RECIPES",
+                payload: response.data.recipes
+            })
+        }  
+    },
+    //comentario
     getRecipes : diet => {
         return async (dispatch, getState) => {
 			console.log(`${RUTA_API}'/api/recipes/${diet}`)

@@ -5,7 +5,7 @@ const message = 'Mail or Password incorrect'
 
 const userController = {
 	createUser: async (req, res) => {
-		const {firstName, lastName, mail, pass, urlPic, userName } = req.body;
+		const {firstName, lastName, mail, pass, urlPic, username } = req.body;
 		// Hashing Password
 		const hashPassword = bcrypt.hashSync(pass.trim(), 10);
 
@@ -15,7 +15,7 @@ const userController = {
 			lastName,
 			mail,
 			urlPic,
-			userName,
+			username,
 			pass: hashPassword
         });
 
@@ -25,7 +25,7 @@ const userController = {
             if(!token) return res.json({success:false, error:'An error occurred while saving the user'});
             res.json({
                 success: true, token, 
-                userName: user.userName, 
+                username: user.username, 
                 urlPic: user.urlPic, 
                 likes: user.likes
             });
@@ -43,20 +43,20 @@ const userController = {
 
         const token = jwt.sign({...userExists},process.env.SECRET_KEY,{})
         
-        if(!token) return res.json({success:false, error});
-        
+		if(!token) return res.json({success:false, error});
+		
         res.json({
                 success: true, token, 
-                userName: userExists.userName, 
+                username: userExists.username, 
                 urlPic: userExists.urlPic, 
                 likes: userExists.likes
         });
     },
 	decodeUser: (req, res) => {
-		const {urlPic, userName, likes} = req.user;
+		const {urlPic, username, likes} = req.user;
 		res.json({
 			urlPic,
-			userName,
+			username,
 			likes
 		})
 	}

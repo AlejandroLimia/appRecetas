@@ -31,6 +31,7 @@ const authActions = {
 	loginUser: user => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/login', user)
+			console.log(response.data)
 			if(!response.data.success) {
 				toast.error(response.data.error)
 				return response.data.error
