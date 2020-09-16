@@ -1,6 +1,6 @@
 const initialState = {
     recipes:[],
-    recipe: [],
+    recipe: null,
     userRecipes:[],
 }
 

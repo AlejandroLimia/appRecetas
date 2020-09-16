@@ -16,9 +16,6 @@ const RecipeFull = (props) => {
 	}, [])
 	const fotousuario = require("../images/usuario.png")
 	const imageFood = require("../images/VEGETARIANA.jpg")
-
-   
-	
 	return ( 
 		<>
 		{props.recipe === null 
