@@ -5,19 +5,10 @@ const message = "Mail or Password incorrect"
 
 const userController = {
 	createUser: async (req, res) => {
-		const { firstName, lastName, mail, pass, urlPic, username } = req.body
-		// Hashing Password
-		const hashPassword = bcrypt.hashSync(pass.trim(), 10)
-
+		const { pass } = req.body
 		// Creating new User
-		const newUser = new User({
-			firstName,
-			lastName,
-			mail,
-			urlPic,
-			username,
-			pass: hashPassword,
-		})
+		const newUser = new User({ ...req.body })
+		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
 
 		newUser
 			.save()
@@ -46,8 +37,6 @@ const userController = {
 		const passwordMatches = bcrypt.compareSync(pass, userExists.pass)
 		console.log(passwordMatches)
 		if (!passwordMatches) return res.json({ success: false, error: message })
-
-		const token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
 
 		if (!token) return res.json({ success: false, error })
 

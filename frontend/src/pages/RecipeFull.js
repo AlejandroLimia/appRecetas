@@ -44,7 +44,7 @@ const RecipeFull = props => {
 
 	return (
 		<>
-			{props.recipe === null || props.comments === null ? (
+			{props.recipe === null ? (
 				""
 			) : (
 				<>
@@ -114,9 +114,11 @@ const RecipeFull = props => {
 							</div>
 							<div id="theComments">
 								<div>
-									{props.comments.map(comentario => {
-										return <Comment data={comentario} />
-									})}
+									{props.comments === null
+										? "cargando"
+										: props.comments.map(comentario => {
+												return <Comment data={comentario} />
+										  })}
 								</div>
 								<div id="TheInput">
 									<div

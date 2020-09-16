@@ -1,8 +1,16 @@
 import React from "react"
+import { connect } from "react-redux"
 import usuario from "../images/usuario.png"
 
 const Comment = comentario => {
 	console.log(comentario)
+	const deleteComment = () => {
+		if (comentario.username === comentario.data.username) {
+			return (
+				<button style={{ width: "2px", height: "2px", color: "red" }}>x</button>
+			)
+		}
+	}
 	return (
 		<div style={{ margin: "5vw" }}>
 			<div
@@ -63,6 +71,7 @@ const Comment = comentario => {
 								{" "}
 								{comentario.data.comment}
 							</p>
+							{deleteComment}
 						</div>
 					</div>
 				</div>
@@ -71,7 +80,12 @@ const Comment = comentario => {
 	)
 }
 
-export default Comment
+const mapStateToProps = state => {
+	return {
+		username: state.userReducer.username,
+	}
+}
+export default connect(mapStateToProps, null)(Comment)
 
 ///versión para comentar:
 /* <div className="writeComment" style={{width:"100%", display: "flex", alignItems:"center", justifyContent:'center'}}>
