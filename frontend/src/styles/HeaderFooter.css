@@ -12,7 +12,9 @@ header div#barraArriba{
     position: fixed!important; 
     background-color: white!important;
     z-index: 70;
-    box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
+	box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
+	display: flex;
+	justify-content: space-between;
 }
 
 #menuNormal{
@@ -39,7 +41,7 @@ header {
 
 header img#fotologo {
     width: 25%;
-    margin-right: 15vw;
+    margin-right: 25vw;
     }
 
 header img#fotousuario {
@@ -69,7 +71,7 @@ header img#fotousuario {
     #menuCostado #home{
         color: black;
         font-weight: bold;
-        font-size: 2vw;
+        font-size: 1em;
         border: none;
         background-color: #dbf249;
         width: 20vw;
@@ -90,11 +92,11 @@ header img#fotousuario {
 
 
     #tituloDietas{
-        font-size: 2vw;
+        font-size: 1.4em;
         margin-top: 4vh;
         font-weight: bolder;
         align-self: center;
-        margin-left: 3vw;
+        margin-left: 2vw;
         color: #58632c;
         text-align: left;
         padding-right: 10vw;
@@ -103,7 +105,7 @@ header img#fotousuario {
     
     #menuCostado #nombreDietas p{
         width: 20vw;
-        font-size: 2vw;
+        font-size: 1em;
         margin-bottom: 1vh ;
         border-bottom: 2px solid #abc120;
         padding: 0.5vh 0vw;
@@ -205,13 +207,13 @@ header img#fotousuario {
         position: fixed!important; 
         background: white;
         padding-top: 2vh;
-        width: 50vw;
+        width: 80vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: absolute;
         height: 100%;
-        right: -50vw;
+        right: -80vw;
         transition: right .3s linear;
         z-index: 100;
         border-left: 3px solid #dbf249;
@@ -226,16 +228,16 @@ header img#fotousuario {
     #menuCostado #home{
         color: black;
         font-weight: bold;
-        font-size: 2vw;
+        font-size: 1em;
         border: none;
         background-color: #dbf249;
-        width: 20vw;
+        width: 80%;
         padding: 1vh 2vw;
         text-align: center;
         margin-left: 0vw;
         margin-top: 5vh;
         color: #58632c;
-        border-radius: 2vw;
+        border-radius: 20px;
         
     }
     #menuCostado #home:hover{
@@ -247,7 +249,7 @@ header img#fotousuario {
 
 
     #tituloDietas{
-        font-size: 3vw;
+        font-size: 1.5em;
         margin-top: 6vh;
         font-weight: bolder;
         align-self: center;
@@ -256,12 +258,17 @@ header img#fotousuario {
         text-align: left;
         padding-right: 10vw;
     }
-   
+	#menuCostado #nombreDietas {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
     
     #menuCostado #nombreDietas p{
-        width: 30vw;
-        font-size: 3vw;
-        margin-bottom: 1vh ;
+        width: 70%;
+        font-size: 1em;
+        margin: 1vh 0;
         border-bottom: 2px solid #abc120;
         padding: 0.5vh 0vw;
         padding-right: 5vw;

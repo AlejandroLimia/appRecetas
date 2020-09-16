@@ -8,7 +8,8 @@ const recipesController = require('../controllers/recipesController')
 const router = express.Router();
 
 router.route("/user/register")
-.post(validator.validateUser,userController.createUser)
+.post(userController.createUser)
+//.post(validator.validateUser,userController.createUser)
 
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
@@ -25,8 +26,14 @@ router.route("/comment")
 router.route("/recipes/:diet")
 .get(recipesController.getRecipes)
 
-router.route("/recipes/n/:_id")
+router.route("/recipes/likes")
+.post(recipesController.getRecipeByLikes)
+
+router.route("/recipe/:_id")
 .get(recipesController.getRecipeById)
+
+router.route("/recipes/:userId")
+.get(recipesController.getRecipesByUserId)
 
 router.route("/recipes")
 .post(recipesController.newRecipe)

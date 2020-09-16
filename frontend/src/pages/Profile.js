@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'
 import Recipe from '../components/Recipe';
 import {NavLink} from "react-router-dom"
-
+import recipeActions from '../redux/actions/recipeActions';
 
 
 
 
 const Profile = (props) => {
-
+    
+    useEffect(() => {
+		props.getRecipes('vegetariana')
+    }, [])
+    
     const [showRecipe, setshowRecipe] = useState({
         show: true
     })
@@ -51,8 +55,15 @@ const Profile = (props) => {
                 <button onClick={changeView} style={!showRecipe.show ? { borderBottom: "1px solid black"} : {borderBottom: "none"}}>Guardadas</button>
             </div>
           {showRecipe.show 
-          ?  <div id="myRecipes"><Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/> <Recipe own={true}/></div>
-          :  <div id="myRecipes"><Recipe/><Recipe/><Recipe/><Recipe/><Recipe/></div>
+          
+          ?  <div id="myRecipes">{
+            props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+            return <Recipe recipe={recipe}  own={true}/> })}
+            </div>
+          :  <div id="myRecipes">{
+            props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+            return <Recipe recipe={recipe} /> })}
+            </div>
           }
         </div>
         <Footer/>
@@ -63,12 +74,19 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		user: state.userReducer
+        user: state.userReducer,
+        data: state.recipeReducer
+
 	}
 }
 
-const mapDispatchToProps = {
-}
+
+    const mapDispatchToProps = {
+        // Conseguir recetas
+        getRecipes: recipeActions.getRecipes
+        // Accion de filtar
+    }
+
 
 export default connect(mapStateToProps, mapDispatchToProps) (Profile)
 

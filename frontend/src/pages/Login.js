@@ -53,8 +53,8 @@ const Login = (props) => {
 	return (<>
 		<div className="sign">
 				<div className="form">
+					<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 					<form className="sign">
-						<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 						<span className="title">INGRESAR</span>
 						<div className="inputBox">
 							<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
@@ -66,13 +66,15 @@ const Login = (props) => {
 						</div>
 						<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Ingresar' : <i className="fas fa-spinner fa-pulse"></i>}</button>
 					</form>
+					<div className="googleButton">
 					<GoogleLogin
 					clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"
-					buttonText="Login with Google"
+					buttonText="Login con Google"
 					onSuccess={responseGoogle}
 					onFailure={responseGoogle}
 					cookiePolicy={'single_host_origin'}
 					/>
+					</div>
 					<p><NavLink to="/">Volver al Home</NavLink></p>
 				</div>
 			</div>
