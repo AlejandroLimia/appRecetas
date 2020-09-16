@@ -18,9 +18,10 @@ const RecipeFull = (props) => {
 
 	return ( 
     <>
+	<Header/>
     <div id="space" style={{ height:"15vh"}}></div>
     <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
-            <div id="ProfilePic" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"20vh", height:"20vh"}}>
+            <div id="ProfilePic" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"25vh", height:"25vh"}}>
 				<p>PALTA FELIZ</p>
 			</div>
 	</div>
@@ -30,10 +31,13 @@ const RecipeFull = (props) => {
 			    <div id="ingredients">
 					<h3 className="title">ingredientes</h3>
 					<h6>cant.</h6>
-				<div id="ingredient">
-					<h4>1</h4>
-					<p id="TheIngredient">este es el ingrediente que utilice</p>
-					<p id="TheAmount">cantidad</p>
+				<div className="ingredient">
+					<p className="TheIngredient">este es el ingrediente que utilice</p>
+					<p className="TheAmount">cantidad</p>
+				</div>
+				<div className="ingredient">
+					<p className="TheIngredient">este es el ingrediente que utilice</p>
+					<p className="TheAmount">cantidad</p>
 				</div>
 			</div>
 		</div>
@@ -48,26 +52,34 @@ const RecipeFull = (props) => {
 			})}
 			</div>
 			<div id="titleDescription">
-				<h2>soy el title</h2>
-				<p>soy la description</p>
+				<h2>REVUELTO DE BROCOLI CON HUEVO Y PALTA</h2>
+				<p>descripcion de este plato tan rico para comer en familia completa</p>
 			</div>
-			<div id="Steps">
+			<div id="steps">
 				<h3 className="title">pasos a seguir</h3>
-				<div >
+				<div className="divRecipeSteps">
 					<h4>1</h4>
-					<p>soy el texto</p>
+					<p className="RecipeSteps" > Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet</p>
 				</div>
-				<button>ver mas</button>
+				<div className="divRecipeSteps">
+					<h4>2</h4>
+					<p className="RecipeSteps" > Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet</p>
+				</div>
+				<button id="viewMoreSteps">ver mas</button>
 			</div>
-			<div>
-				<div>aqui van los comments</div>
-				<div>
+			<div id="theComments">
+				<div id="userComment">
+					<p id="userPic">foto</p>
+					<div id="theComment">
+					   <h5>usuario</h5>
+					   <p>hola te amo</p>
+					</div>
+				</div>
+				<div id="TheInput">
 				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
 				<button>send</button>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 			
