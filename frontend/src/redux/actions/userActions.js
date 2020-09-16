@@ -6,7 +6,6 @@ const authActions = {
 	createUser: user => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API + "/api/user/register", user)
-			console.log(response)
 			if (!response.data.success) {
 				if (response.data.error.indexOf("Mail") !== -1)
 					toast.error("Mail en uso")
@@ -33,7 +32,6 @@ const authActions = {
 	loginUser: user => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API + "/api/user/login", user)
-			console.log(response.data)
 			if (!response.data.success) {
 				toast.error(response.data.error)
 				return response.data.error
@@ -98,11 +96,26 @@ const authActions = {
 			const response = await axios.get(
 				`http://127.0.0.1:4000/api/comment/${recipeId}`
 			)
-			console.log(response.data, "acá")
 			dispatch({
 				type: "GET_COM",
 				payload: response.data.comments,
 			})
+		}
+	},
+	deleteComment: commentId => {
+		return async (dispatch, getState) => {
+			const response = await axios.delete(
+				`http://127.0.0.1:4000/api/comment`,
+				commentId
+			)
+		}
+	},
+	editComment: edited => {
+		return async (dispatch, getState) => {
+			const response = await axios.put(
+				`http://127.0.0.1:4000/api/comment`,
+				edited
+			)
 		}
 	},
 }

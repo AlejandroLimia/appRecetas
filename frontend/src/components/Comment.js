@@ -1,13 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import usuario from "../images/usuario.png"
+import userActions from "../redux/actions/userActions"
 
-const Comment = comentario => {
-	console.log(comentario)
-	const deleteComment = () => {
-		if (comentario.username === comentario.data.username) {
+const Comment = props => {
+	console.log(props)
+	const [editedComment, setEditedComment] = useState({})
+	const erased = async () => {
+		await props.deleteComment(props.data._id)
+	}
+	const edite = async () => {
+		setEditedComment({
+			commentId: props.data._id,
+			comment: props.data.comment,
+		})
+		await props.editComment(editedComment)
+	}
+	const options = () => {
+		if (props.username === props.data.username) {
 			return (
-				<button style={{ width: "2px", height: "2px", color: "red" }}>x</button>
+				<>
+					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
+						x
+					</button>
+					<button onClick={edite} style={{ width: "20px", height: "20px" }}>
+						editar
+					</button>
+				</>
 			)
 		}
 	}
@@ -56,7 +75,7 @@ const Comment = comentario => {
 								borderBottom: "0.2vw dashed black",
 							}}
 						>
-							<p>{comentario.data.username} said:</p>
+							<p>{props.data.username} said:</p>
 							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
 						</div>
 						<div
@@ -69,9 +88,9 @@ const Comment = comentario => {
 						>
 							<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
 								{" "}
-								{comentario.data.comment}
+								{props.data.comment}
 							</p>
-							{deleteComment}
+							{options()}
 						</div>
 					</div>
 				</div>
@@ -85,11 +104,8 @@ const mapStateToProps = state => {
 		username: state.userReducer.username,
 	}
 }
-export default connect(mapStateToProps, null)(Comment)
-
-///versión para comentar:
-/* <div className="writeComment" style={{width:"100%", display: "flex", alignItems:"center", justifyContent:'center'}}>
-         <div className="picturebox" style={{backgroundImage: `url(${userImg})`,width:"4.5em", height:"4.5em",backgroundSize:"cover", alignItems:"center", display:"flex", margin: "0 2%"}}  />
-         <textarea  playholder="write your comment here..." onChange={readComment} name="comment" style={{width:"60%",border:'2px black solid', padding:"1.5%" ,borderRadius:"2em", backgroundColor:"white", resize:"none",outline:"none", overflow:"hidden", marginRight:"2%" }}/>
-      <div style={{marginBotton:"4%", display: "table"}}><button style={{alignSelf:"center!important",padding:"3%"}} onClick={sendComment} >send</button></div>
- </div>*/
+const mapDispatchToProps = {
+	editComment: userActions.editComment,
+	deleteComment: userActions.deleteComment,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Comment)

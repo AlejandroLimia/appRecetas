@@ -115,9 +115,9 @@ const RecipeFull = props => {
 							<div id="theComments">
 								<div>
 									{props.comments === null
-										? "cargando"
-										: props.comments.map(comentario => {
-												return <Comment data={comentario} />
+										? "cargando..."
+										: props.comments.map((comentario, index) => {
+												return <Comment key={index} data={comentario} />
 										  })}
 								</div>
 								<div id="TheInput">
@@ -170,7 +170,6 @@ const RecipeFull = props => {
 }
 
 const mapStateToProps = state => {
-	console.log(state.userReducer.comments)
 	return {
 		recipe: state.recipeReducer.recipe,
 		token: state.userReducer.token,

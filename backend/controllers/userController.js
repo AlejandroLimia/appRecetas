@@ -37,7 +37,7 @@ const userController = {
 		const passwordMatches = bcrypt.compareSync(pass, userExists.pass)
 		console.log(passwordMatches)
 		if (!passwordMatches) return res.json({ success: false, error: message })
-
+		const token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
 		if (!token) return res.json({ success: false, error })
 
 		res.json({
