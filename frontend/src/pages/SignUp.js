@@ -170,16 +170,7 @@ const SignUp = (props) => {
 		<div className="sign">
 		<div className="form">
 			<form className="sign">
-				<div className="inputBox">
-					<label htmlFor="firstName"><i className="fas fa-user"></i></label>
-					<input type="text" name="firstName" id="firstName" placeholder="Nombre" onChange={inputHandler} value={user.firstName}/>
-				</div>
-				<span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
-				<div className="inputBox">
-					<label htmlFor="lastName"><i className="far fa-user"></i></label>
-					<input type="text" name="lastName" id="lastName" placeholder="Apellido" onChange={inputHandler} value={user.lastName}/>
-				</div>
-				<span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
+			<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 				<div className="inputBox">
 					<label htmlFor="username"><i className="fas fa-id-card"></i></label>
 					<input type="text" name="username" id="username" placeholder="Usuario" onChange={inputHandler} value={user.username}/>
@@ -190,11 +181,6 @@ const SignUp = (props) => {
 					<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
 				</div>
 				<span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
-				<div className="inputBox">
-					<label htmlFor="urlPic"><i className="fas fa-image"></i></label>
-					<input type="text" name="urlPic" id="urlPic" placeholder="URL Foto de perfil" onChange={inputHandler} value={user.urlPic}/>
-				</div>
-				<span className='error' style={!error.urlPic ? {display: "none"} : {display: "inherit"} }>{error.urlPic ? error.urlPic : null }</span>
 				<div className="inputBox">
 					<label htmlFor="pass"><i className="fas fa-lock"></i></label>
 					<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Password" />
