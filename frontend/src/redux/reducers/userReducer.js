@@ -18,7 +18,12 @@ function authReducer(state = initialState, action) {
 			return {
 				...initialState
 			};
-		
+        case 'USER_EDIT':
+            return{
+                ...state,
+                urlPic: action.payload.urlPic,
+                username: action.payload.username
+                };
 		default:
 			return state;
 	}

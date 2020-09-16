@@ -50,7 +50,12 @@ const userController = {
 			username,
 			likes
 		})
-	}
+	},
+    editUser: (req , res) =>{
+        User.indByIdAndUpdate(req.body._id,{...req.body},{new:true})
+        .then(user => res.json({success: true, username: user.username ,urlPic: user.urlPic}))
+        .catch(err => res.json({success:false, error: err})) 
+    } 
 }
 
 module.exports = userController;

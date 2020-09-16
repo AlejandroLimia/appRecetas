@@ -57,7 +57,16 @@ const authActions = {
 				type: 'LOGOUT_USER'
 			})
 		}
-	},
+    },
+    modifyUser:	user => {
+		return async (dispatch, getState) => {
+			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+            dispatch({
+                type:'USER_EDIT',
+                payload: response.data
+            })
+        }
+    },	
 	authUser: (token) => {
 		return async (dispatch, getState) => {
 			let response;
