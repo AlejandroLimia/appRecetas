@@ -1,27 +1,29 @@
 const initialState = {
-	urlPic: '', //? NOMBRE PENDIENTE DE CONFIRMAR
-	token: '',
-	username: '',
-	likes: ''
+	urlPic: "", //? NOMBRE PENDIENTE DE CONFIRMAR
+	token: "",
+	username: "",
+	likes: "",
+	id: "",
+	comments: [],
 }
 
 function authReducer(state = initialState, action) {
 	switch (action.type) {
-		case 'USER_IN':
-			localStorage.setItem('token', action.payload.token)
+		case "USER_IN":
+			localStorage.setItem("token", action.payload.token)
 			return {
 				...state,
-				...action.payload
-			};
-		case 'LOGOUT_USER':
-			localStorage.removeItem('token')
+				...action.payload,
+			}
+		case "LOGOUT_USER":
+			localStorage.removeItem("token")
 			return {
-				...initialState
-			};
-		
+				...initialState,
+			}
+
 		default:
-			return state;
+			return state
 	}
 }
 
-export default authReducer;
+export default authReducer

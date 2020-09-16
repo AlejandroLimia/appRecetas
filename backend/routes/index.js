@@ -7,9 +7,8 @@ const recipesController = require("../controllers/recipesController")
 
 const router = express.Router()
 
-router
-	.route("/user/register")
-	.post(validator.validateUser, userController.createUser)
+router.route("/user/register").post(userController.createUser)
+//.post(validator.validateUser,userController.createUser)
 
 router
 	.route("/user/login")
@@ -29,14 +28,20 @@ router
 
 router.route("/recipes/:diet").get(recipesController.getRecipes)
 
-router.route("/recipes/:userId").get(recipesController.getRecipesByUserId)
-
-router.route("/recipes/:_id")
 router.route("/recipes/likes").post(recipesController.getRecipeByLikes)
 
-router.route("/recipes/n/:_id").get(recipesController.getRecipeById)
+router.route("/recipes/user/:userId").get(recipesController.getRecipesByUserId)
 
-router.route("/recipes/:userId").get(recipesController.getRecipesByUserId)
+router
+	.route("/recipe/:_id")
+	.get(recipesController.getRecipeById)
+	.delete(recipesController.deleteRecipe)
+
+router
+	.route("/recipes")
+	.get(recipesController.getRecipes)
+	.post(recipesController.newRecipe)
+	.put(recipesController.modifyRecipe)
 
 router
 	.route("/recipes")

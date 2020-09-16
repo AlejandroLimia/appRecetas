@@ -10,6 +10,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
 import Profile from './pages/Profile';
+import Recipes from './pages/Recipes';
+import RecipeFull from './pages/RecipeFull';
 
 
 
@@ -17,21 +19,24 @@ function App(props) {
 	if(localStorage.getItem('token') && props.user.token === '') {
 		props.authUser(localStorage.getItem('token'))
 	}
-	
+	console.log(props.user)
 	const rutas = (props.user.token === '')
 	? (<Switch>
-		{/* RUTAS USUARIO DESLOGEADO */}
+		{/* RUTAS USUARIO DESLOGUEADO */}
 		<Route exact path='/' component={Home} />
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
-
+		<Route path='/recipes/:diet' component={Recipes} />
+		<Route path='/recipe/:id' component={RecipeFull} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>
+		{/* RUTAS USUARIO LOGUEADO */}
 		<Route exact path="/" component={Home}/>
 		<Route path='/profile' component={Profile} />
-		{/* <Route exact path='/' component={} /> */}
+		<Route path='/recipes/:diet' component={Recipes} />
+		<Route path='/recipe/:id' component={RecipeFull} />
 		<Redirect to='/' />
 	</Switch>);
 	

@@ -1,72 +1,85 @@
-import React from "react"
+import React, { useEffect, useSate } from "react"
+import { connect } from "react-redux"
 
-const Comments = () => {
-	;<div style={{ margin: "5vw" }}>
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "row",
-				flexWrap: "nowrap",
-				justifyContent: "space-between",
-				alignItems: "stretch",
-				alignContent: "flex-start",
-				paddingBottom: "5px",
-				width: "60%",
-			}}
-		>
-			<div className="foto">
-				{" "}
-				<div
-					style={{
-						backgroundImage: `url(${user})`,
-						width: "4.5em",
-						border: "0.2vw solid white",
-						height: "4.5em",
-						backgroundSize: "cover",
-						alignItems: "center",
-						display: "inline-block",
-						margin: "1vw",
-						borderRadius: "50px",
-					}}
-				/>
-			</div>
-
-			<div>
-				<div style={{ width: "100%" }}>
+const Comment = comentario => {
+	console.log(comentario)
+	return (
+		<div style={{ margin: "5vw" }}>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					flexWrap: "nowrap",
+					justifyContent: "space-between",
+					alignItems: "stretch",
+					alignContent: "flex-start",
+					paddingBottom: "5px",
+					width: "60%",
+				}}
+			>
+				<div className="foto">
+					{" "}
 					<div
 						style={{
-							display: "flex",
-							flexDirection: "row",
-							justifyContent: "space-between",
+							backgroundImage: `url(${comentario.data})`,
+							width: "4.5em",
+							border: "0.2vw solid white",
+							height: "4.5em",
+							backgroundSize: "cover",
 							alignItems: "center",
-							backgroundColor: "#f7f7f7",
-							marginLeft: "-1px",
-							padding: " 0 2vw 0 2vw",
-							borderBottom: "0.2vw dashed black",
+							display: "inline-block",
+							margin: "1vw",
+							borderRadius: "50px",
 						}}
-					>
-						<p>Pepito said:</p>
-						<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
-					</div>
-					<div
-						style={{
-							backgroungColor: "white",
-							borderLeft: "0.5vw solid #dedede",
-							borderBottom: "0.5vw solid #dedede",
-							minHeight: "15vw",
-						}}
-					>
-						<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
-							{" "}
-							acá va ir el comentario
-						</p>
+					/>
+				</div>
+
+				<div>
+					<div style={{ width: "100%" }}>
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								justifyContent: "space-between",
+								alignItems: "center",
+								backgroundColor: "#f7f7f7",
+								marginLeft: "-1px",
+								padding: " 0 2vw 0 2vw",
+								borderBottom: "0.2vw dashed black",
+							}}
+						>
+							<p>Pepito said:</p>
+							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
+						</div>
+						<div
+							style={{
+								backgroungColor: "white",
+								borderLeft: "0.5vw solid #dedede",
+								borderBottom: "0.5vw solid #dedede",
+								minHeight: "15vw",
+							}}
+						>
+							<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
+								{" "}
+								acá va ir el comentario
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	)
 }
-export default Comments
+const mapStateToProps = state => {
+	return {
+		recipe: state.recipeReducer.recipe,
+		token: state.userReducer.token,
+		urlPic: state.userReducer.profilePic,
+		username: state.userReducer.username,
+	}
+}
+
+export default connect(mapStateToProps, null)(Comment)
 
 ///versión para comentar:
 /* <div className="writeComment" style={{width:"100%", display: "flex", alignItems:"center", justifyContent:'center'}}>

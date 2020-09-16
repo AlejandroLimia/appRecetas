@@ -22,7 +22,7 @@ const validator = {
 		const schema = Joi.object({
 			title: Joi.string().trim().alphanum().min(6).max(40).required(),
             description:Joi.string().trim().alphanum().min(20).max(300).required(),
-			ingredients: Joi.array().items({quantity: Joi.number(), name: Joi.string().alphanum().required()}),
+			ingredients: Joi.array().items({quantity: Joi.string().required(), name: Joi.string().alphanum().required()}),
             recipe: Joi.array().items(Joi.string()).required(),
 			importantContain: Joi.array(),
             diet:Joi.string(),
@@ -30,7 +30,8 @@ const validator = {
 			urlPic: Joi.string().uri().required().trim(),
 			userPic: Joi.string().uri().required().trim(),
 			duration: Joi.number().integer().required().trim(),
-			userId: Joi.string()
+			userId: Joi.string(),
+			username: Joi.string()
 		})
 		const validation = schema.validate(req.body, { abortEarly: false })
 		

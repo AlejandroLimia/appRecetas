@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/signup.css';
 import {connect} from 'react-redux'
 import userActions from '../redux/actions/userActions';
@@ -8,17 +8,11 @@ import { NavLink } from 'react-router-dom';
 
 const SignUp = (props) => {
 	const [user, setUser] = useState({
-			firstName: '',
-			lastName: '',
-			urlPic: '',
 			username: '',
 			mail: '',
 			pass: ''
 	})
 	const [error, setError] = useState({
-		firstName: '',
-		lastName: '',
-		urlPic: '',
 		username: '',
 		mail: '',
 		pass: '',
@@ -32,51 +26,8 @@ const SignUp = (props) => {
 		error.ok = true
 		//RegEx
 		const uname = RegExp(/^[a-zA-Z0-9._]+$/)
-		const alphanum = RegExp(/^\w+$/)
 		const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
 		const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
-		//firstName
-		if(user.firstName === '') {
-			error.firstName = 'No puede estar vacío'
-			error.ok = false
-		}
-		else if(user.firstName.length < 3) {
-			error.firstName = 'Debe tener tres letras mínimo'
-			error.ok = false
-		}
-		else if(!alphanum.test(user.firstName)) {
-			error.firstName = 'Solo puede contener letras'
-			error.ok = false
-		}
-		else error.firstName = ''
-		// lastName
-		if(user.lastName === '') {
-			error.lastName = 'No puede estar vacío'
-				error.ok = false
-		}
-		else if(user.lastName.length < 3) {
-			error.lastName = 'Debe tener tres letras mínimo'
-			error.ok = false
-		}
-		else if(!alphanum.test(user.lastName)) {
-			error.lastName = 'Solo puede contener letras'
-			error.ok = false
-		}
-		else error.lastName = ''
-		// urlPic
-		if(user.urlPic === '') {
-			error.urlPic = 'No puede estar vacío'
-			error.ok = false
-		}
-		else if(user.urlPic.length < 10) {
-			error.urlPic = 'Debe tener diez letras mínimo'
-			error.ok = false
-		}
-		else if(user.urlPic.toLowerCase().indexOf('http://') !== 0 && user.urlPic.toLowerCase().indexOf('https://') !== 0) {
-			error.urlPic = 'Debe ser una URL válida'
-			error.ok = false
-		}
-		else error.urlPic = ''
 		// username
 		if(user.username === '') {
 			error.username = 'No puede estar vacío'
@@ -150,7 +101,7 @@ const SignUp = (props) => {
 				...error,
 				ok: false
 			})
-			toast.error(`Oops! Check out the fields`,{autoClose: 2000})
+			toast.error(`Oops! Mira los campos`,{autoClose: 2000})
 		}
 	}
 	
@@ -169,17 +120,8 @@ const SignUp = (props) => {
 	return (<>
 		<div className="sign">
 		<div className="form">
+			<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 			<form className="sign">
-				<div className="inputBox">
-					<label htmlFor="firstName"><i className="fas fa-user"></i></label>
-					<input type="text" name="firstName" id="firstName" placeholder="Nombre" onChange={inputHandler} value={user.firstName}/>
-				</div>
-				<span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
-				<div className="inputBox">
-					<label htmlFor="lastName"><i className="far fa-user"></i></label>
-					<input type="text" name="lastName" id="lastName" placeholder="Apellido" onChange={inputHandler} value={user.lastName}/>
-				</div>
-				<span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
 				<div className="inputBox">
 					<label htmlFor="username"><i className="fas fa-id-card"></i></label>
 					<input type="text" name="username" id="username" placeholder="Usuario" onChange={inputHandler} value={user.username}/>
@@ -190,11 +132,6 @@ const SignUp = (props) => {
 					<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
 				</div>
 				<span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
-				<div className="inputBox">
-					<label htmlFor="urlPic"><i className="fas fa-image"></i></label>
-					<input type="text" name="urlPic" id="urlPic" placeholder="URL Foto de perfil" onChange={inputHandler} value={user.urlPic}/>
-				</div>
-				<span className='error' style={!error.urlPic ? {display: "none"} : {display: "inherit"} }>{error.urlPic ? error.urlPic : null }</span>
 				<div className="inputBox">
 					<label htmlFor="pass"><i className="fas fa-lock"></i></label>
 					<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Password" />
