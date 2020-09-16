@@ -1,5 +1,5 @@
-import React, { useEffect, useSate } from "react"
-import { connect } from "react-redux"
+import React from "react"
+import usuario from "../images/usuario.png"
 
 const Comment = comentario => {
 	console.log(comentario)
@@ -21,7 +21,7 @@ const Comment = comentario => {
 					{" "}
 					<div
 						style={{
-							backgroundImage: `url(${comentario.data})`,
+							backgroundImage: `url(${usuario})`,
 							width: "4.5em",
 							border: "0.2vw solid white",
 							height: "4.5em",
@@ -48,7 +48,7 @@ const Comment = comentario => {
 								borderBottom: "0.2vw dashed black",
 							}}
 						>
-							<p>Pepito said:</p>
+							<p>{comentario.data.username} said:</p>
 							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
 						</div>
 						<div
@@ -61,7 +61,7 @@ const Comment = comentario => {
 						>
 							<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
 								{" "}
-								acá va ir el comentario
+								{comentario.data.comment}
 							</p>
 						</div>
 					</div>
@@ -70,16 +70,8 @@ const Comment = comentario => {
 		</div>
 	)
 }
-const mapStateToProps = state => {
-	return {
-		recipe: state.recipeReducer.recipe,
-		token: state.userReducer.token,
-		urlPic: state.userReducer.profilePic,
-		username: state.userReducer.username,
-	}
-}
 
-export default connect(mapStateToProps, null)(Comment)
+export default Comment
 
 ///versión para comentar:
 /* <div className="writeComment" style={{width:"100%", display: "flex", alignItems:"center", justifyContent:'center'}}>

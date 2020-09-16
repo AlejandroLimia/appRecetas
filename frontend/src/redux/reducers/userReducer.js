@@ -3,8 +3,7 @@ const initialState = {
 	token: "",
 	username: "",
 	likes: "",
-	id: "",
-	comments: [],
+	comments: null,
 }
 
 function authReducer(state = initialState, action) {
@@ -19,6 +18,12 @@ function authReducer(state = initialState, action) {
 			localStorage.removeItem("token")
 			return {
 				...initialState,
+			}
+		case "GET_COM":
+			console.log(action.payload)
+			return {
+				...state,
+				comments: action.payload,
 			}
 
 		default:

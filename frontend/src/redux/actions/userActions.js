@@ -45,7 +45,6 @@ const authActions = {
 						token: response.data.token,
 						urlPic: response.data.urlPic,
 						username: response.data.username,
-						id: response.data._id,
 						likes: response.data.likes,
 					},
 				})
@@ -86,6 +85,7 @@ const authActions = {
 		}
 	},
 	newComment: comment => {
+		console.log(comment)
 		return async (dispatch, getState) => {
 			const response = await axios.post(
 				"http://127.0.0.1:4000/api/comment/",
@@ -96,8 +96,13 @@ const authActions = {
 	getComments: recipeId => {
 		return async (dispatch, getState) => {
 			const response = await axios.get(
-				`http://127.0.0.1:4000/api/comment/:${recipeId}`
+				`http://127.0.0.1:4000/api/comment/${recipeId}`
 			)
+			console.log(response.data, "acá")
+			dispatch({
+				type: "GET_COM",
+				payload: response.data.comments,
+			})
 		}
 	},
 }

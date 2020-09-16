@@ -8,15 +8,13 @@ import Header from "../components/Header"
 import usuario from "../images/usuario.png"
 import { toast } from "react-toastify"
 import Comment from "../components/Comment"
+
 const RecipeFull = props => {
-	console.log(props, "acáestoy")
-	const [recipeId, setRecipeId] = useState("")
-	setRecipeId(props.match.params.id)
 	useEffect(() => {
 		const gR = async () => {
 			await props.getRecipe(props.match.params.id)
+			await props.getComments(props.match.params.id)
 		}
-
 		window.scroll(0, 0)
 		gR()
 	}, [])
@@ -29,10 +27,9 @@ const RecipeFull = props => {
 		setComment({
 			...comment,
 			[e.target.name]: text,
-			user: props.username,
+			username: props.username,
 			recipeId: props.recipe._id,
 			userPic: props.urlPic,
-			userId: props._id,
 		})
 	}
 	const sendComment = async e => {
@@ -47,7 +44,7 @@ const RecipeFull = props => {
 
 	return (
 		<>
-			{props.recipe === null ? (
+			{props.recipe === null || props.comments === null ? (
 				""
 			) : (
 				<>
@@ -117,9 +114,9 @@ const RecipeFull = props => {
 							</div>
 							<div id="theComments">
 								<div>
-									{/*props.recipe.comments.map(comentario => {
+									{props.comments.map(comentario => {
 										return <Comment data={comentario} />
-									})*/}
+									})}
 								</div>
 								<div id="TheInput">
 									<div
@@ -171,18 +168,20 @@ const RecipeFull = props => {
 }
 
 const mapStateToProps = state => {
+	console.log(state.userReducer.comments)
 	return {
 		recipe: state.recipeReducer.recipe,
 		token: state.userReducer.token,
 		urlPic: state.userReducer.profilePic,
 		username: state.userReducer.username,
-		_id: state.userReducer._id,
+		comments: state.userReducer.comments,
 	}
 }
 
 const mapDispatchToProps = {
 	getRecipe: recipeActions.getRecipe,
 	newComment: userActions.newComment,
+	getComments: userActions.getComments,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull)
