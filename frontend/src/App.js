@@ -26,7 +26,7 @@ function App(props) {
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
 		<Route path='/profile' component={Profile} />
-		<Route path='/recipes' component={Recipes} />
+		<Route path='/recipes/:diet' component={Recipes} />
 		<Redirect to='/' />
 	</Switch>)
 	: (<Switch>

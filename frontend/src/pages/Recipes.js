@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/recipes.css'
@@ -6,8 +6,13 @@ import { connect } from 'react-redux';
 import Recipe from '../components/Recipe';
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
+import recipeActions from '../redux/actions/recipeActions';
 
 const Recipes = (props) => {
+	useEffect(() => {
+		props.getRecipes('vegetariana')
+	}, [])
+	console.log(props.data.recipes)
 	return ( <>
 	<Header />
 		<img id="homeBackgroundOne" src={homeBackgroundOne}/>
@@ -23,11 +28,9 @@ const Recipes = (props) => {
 				<input type="text" placeholder="Buscas una receta?"/>
 			</div>
 			<div className="recetas">
-				<Recipe />
-				<Recipe />
-				<Recipe />
-				<Recipe />
-				<Recipe />
+				{props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+					return <Recipe recipe={recipe} />
+				})}
 			</div>
 		</div>
 
@@ -38,11 +41,13 @@ const Recipes = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		recipes: state.recipeReducer
+		data: state.recipeReducer
 	}
 }
 
 const mapDispatchToProps = {
+	// Conseguir recetas
+	getRecipes: recipeActions.getRecipes
 	// Accion de filtar
 }
 

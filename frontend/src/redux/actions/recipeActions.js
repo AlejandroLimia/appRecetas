@@ -23,7 +23,7 @@ const recipeActions ={
             const selectedRecipe = null;
 
             if(!recipes) 
-                selectedRecipe = await axios.get(`${RUTA_API}/api/recipes${recipeId}`);
+                selectedRecipe = await axios.get(`${RUTA_API}/api/recipes/${recipeId}`);
             else
                 selectedRecipe = recipes.filter((recipe)=> recipe._Id === recipeId);
 
@@ -36,7 +36,9 @@ const recipeActions ={
     },
     getRecipes : diet => {
         return async (dispatch, getState) => {
-        const response = axios.get(`${RUTA_API}'/api/recipes/${diet}`);
+			console.log(`${RUTA_API}'/api/recipes/${diet}`)
+			const response = await axios.get(`${RUTA_API}/api/recipes/${diet}`);
+			console.log(response)
             dispatch({
                 type:'GET_RECIPES',
                 payload: response.data.recipes
