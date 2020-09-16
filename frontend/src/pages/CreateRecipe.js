@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
 		title: '',
+		allergies: [],
 		ingredients: []
 	})
 
@@ -29,6 +30,16 @@ const CreateRecipe = (props) => {
 		})
 	}
 
+	const allergyHandler = (e) => {
+		if(e.target.checked){
+			recipe.allergies.push(e.target.value);
+		}
+		else {
+			recipe.allergies = recipe.allergies.filter(item => item != e.target.value)
+		}
+		setMod(!mod)
+	}
+
 	const ingQHandler = e => {
 		const index = e.target.id;
 		const valor = e.target.value + ' ' + unit[index];
@@ -50,7 +61,7 @@ const CreateRecipe = (props) => {
 		setMod(!mod)
 	}
 
-	console.log(ing)
+	console.log(recipe)
 
 	return ( <>
 			<form>
@@ -73,6 +84,9 @@ const CreateRecipe = (props) => {
 					<option>kg</option>
 					<option>cda/s</option>
 				</select>
+				<input type='checkbox' name="allergies" value="algo1" />
+				<input type='checkbox' name="allergies" value="algo2" />
+				<input type='checkbox' name="allergies" value="algo3" />
 			</form>
 	</> );
 }
