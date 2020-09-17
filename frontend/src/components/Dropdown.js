@@ -16,7 +16,7 @@ const Dropdown1 = (props) => {
 
   return ( 
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-       <DropdownToggle caret style= {{backgroundColor: `white`, border: `0px solid white`}}>        
+       <DropdownToggle caret style= {{backgroundColor: `white`, border: `0px solid white`, height:"10vh"}}>        
        { !props.user.token
         ? <img id="fotousuario" src={fotousuario} alt="fotousuario"/>
         :  props.user.urlPic === "false"

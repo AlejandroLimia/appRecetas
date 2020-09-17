@@ -40,7 +40,7 @@ router
 router
 	.route("/recipes")
 	.get(recipesController.getRecipes)
-	.post(recipesController.newRecipe)
+	.post(passport.authenticate('jwt',{session: false}), recipesController.newRecipe)
 	.put(recipesController.modifyRecipe)
 
 router.route("/subirFoto")

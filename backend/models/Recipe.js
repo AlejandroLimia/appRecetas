@@ -36,10 +36,6 @@ const RecipeSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    urlPic:{
-        type: String,
-        required: true,
-    },
     userId:{
         type: mongoose.Schema.ObjectId, ref: "user"
     },

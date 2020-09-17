@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import "../styles/createRecipe.css"
 import axios from 'axios'
 import Header from "../components/Header"
+import homeBackgroundOne from "../images/homeBackgroundOne.png"
+import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
+import recipeActions from '../redux/actions/recipeActions';
+import { connect } from 'react-redux';
 
 const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
@@ -35,6 +39,7 @@ const CreateRecipe = (props) => {
 		])
 	
 	const submitHandler = async e => {
+		e.preventDefault();
 		const recetaFull = {
 			title: recipe.title,
 			description: recipe.description,
@@ -47,12 +52,17 @@ const CreateRecipe = (props) => {
 		}
 		const formData = new FormData()
 		formData.append('pic', recipe.urlPic)
-		const resp = await axios.post(`http://127.0.0.1:4000/api/subirFoto`, formData, {
-			headers: {
-				'Content-Type': 'multipart/form-data'
-			}
-		})
-		//console.log(recetaFull)
+		formData.append('title', recetaFull.title)
+		formData.append('description', recetaFull.description)
+		formData.append('ingredients', recetaFull.ingredients)
+		formData.append('recipe', recetaFull.recipe)
+		formData.append('importantContains', recetaFull.importantContains)
+		formData.append('diet', recetaFull.diet)
+		formData.append('difficulty', recetaFull.difficulty)
+		formData.append('duration', recetaFull.duration)
+
+		await props.createRecipe(formData)
+		console.log(recetaFull)
 	}
 
 	const inputHandler = (e) => {
@@ -104,6 +114,9 @@ const CreateRecipe = (props) => {
 
 	return ( <>
 		<Header />
+			<img id="homeBackgroundOne" src={homeBackgroundOne}/>
+			<img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
+			<div id="space" style={{ height:"20vh"}}></div>
 			<div className="createRecipe">
 				<span className="title">Crear Receta</span>
 				<form class="createRecipe">
@@ -131,7 +144,7 @@ const CreateRecipe = (props) => {
 					</div>
 					<div class="inputBox">
 						<label>Duracion</label>
-						<input type="number" placeholder="minutos" name='duration' onChange={inputHandler} />
+						<input type="number" className='time' placeholder="minutos" name='duration' onChange={inputHandler} />
 					</div>
 					<div class="inputBox">
 						<label>Dificultad</label>
@@ -147,14 +160,14 @@ const CreateRecipe = (props) => {
 						<label>Ingredientes</label>
 						<div className="ingredient">
 							{ing.map((ingrediente, index) => {
-								return <div>
-								<input type="number" className="ingredientN" id={index} onChange={ingQHandler} />
+								return <div style={{display: 'flex'}}>
+								<input type="number" className="cant" id={index} onChange={ingQHandler} />
 								<select name="" id={index} onChange={ingUHandler}>
 									{constantes.medidas.map(medida => {
 										return <option value={medida}>{medida}</option>
 									})}
 								</select>
-								<input type="text" placeholder="Ingrediente" onChange={ingNameHandler} id={index}/>
+								<input type="text" className='ingredient' placeholder="Ingrediente" onChange={ingNameHandler} id={index}/>
 								</div>
 							})}
 						</div>
@@ -171,7 +184,7 @@ const CreateRecipe = (props) => {
 						</div>
 					</div>
 			<div class="inputBox">
-				<label for="">Alergias</label>
+				<label for="">Contenido importante (alergias)</label>
 				<div class="allergies">
 					{constantes.allergies.map((item,index) => {
 						return <>
@@ -181,10 +194,14 @@ const CreateRecipe = (props) => {
 					})}
 				</div>
 			</div>
+		<button className="btn" onClick={submitHandler}> Crear receta! </button>
 		</form>
-		<button style={{width: '200px', height: "80px"}} onClick={submitHandler} />
 	</div>
 	</> );
 }
  
-export default CreateRecipe;
+const mapDispatchToProps = {
+	createRecipe: recipeActions.createRecipe
+}
+
+export default connect(null, mapDispatchToProps)(CreateRecipe);
