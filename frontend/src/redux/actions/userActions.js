@@ -66,7 +66,16 @@ const authActions = {
                 payload: response.data
             })
         }
-    },	
+    },
+    userInformation: (id) => {
+        return async (dispatch, getState) => {
+            const response = await axios.get(`${RUTA_API}/api/user/${id})`)
+            dispatch({
+                type: 'GET_USER_INFO',
+                payload: response.data.userInfo
+            })
+        }
+    },
 	authUser: (token) => {
 		return async (dispatch, getState) => {
 			let response;
@@ -80,7 +89,6 @@ const authActions = {
 			catch {
 				return false
 			}
-			
 			const {urlPic, username, likes} = response.data
 			dispatch({
 				type: 'USER_IN',

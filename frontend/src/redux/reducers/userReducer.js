@@ -2,7 +2,8 @@ const initialState = {
 	urlPic: '', //? NOMBRE PENDIENTE DE CONFIRMAR
 	token: '',
 	username: '',
-	likes: ''
+    likes: '',
+    userInfo: null
 }
 
 function authReducer(state = initialState, action) {
@@ -17,7 +18,12 @@ function authReducer(state = initialState, action) {
 			localStorage.removeItem('token')
 			return {
 				...initialState
-			};
+        };
+        case 'GET_USER_INFO':
+            return{
+                ...state,
+                userInfo: action.payload
+            };
         case 'USER_EDIT':
             return{
                 ...state,
