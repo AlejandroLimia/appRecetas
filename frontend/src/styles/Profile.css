@@ -203,11 +203,11 @@ height: 25vh;
     
     }
     
-    #pictureInfoandDecription{
+    #AllProfile #pictureInfoandDecription{
         border-bottom: 1px solid #58632c;
 
     }
-    #PictureAndInfoUser{
+    #AllProfile #PictureAndInfoUser{
         display:flex;
         justify-content: center;
         align-items: center;
