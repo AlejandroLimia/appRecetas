@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     description:{
         type:String,
         trim:true
-    }
+    },
 	pass: {
 		type: String,
 		required: true

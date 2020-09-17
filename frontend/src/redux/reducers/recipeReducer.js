@@ -2,6 +2,7 @@ const initialState = {
     recipes:[],
     recipe: null,
     userRecipes:[],
+    filterRecipes :[]
 }
 
 const recipesReducer = (state = initialState, action) => {
@@ -12,6 +13,8 @@ const recipesReducer = (state = initialState, action) => {
             return {...state, recipe: action.payload}
         case "USER_RECIPES":
             return {...state, userRecipes: action.payload}
+        case "REC_FILTER":
+            return {...state, filterRecipes: action.payload}
         default: 
             return state
     }

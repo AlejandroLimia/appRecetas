@@ -66,10 +66,10 @@ const recipeActions ={
         return async (dispatch, getState) => {
             const recipes = getState().recipeReducer.recipes;
             const filterRecipes = recipes.filter(recipe => recipe.title.indexOf(title) !== -1);
-            dispatch(
+            dispatch({
                 type: 'REC_FILTER',
                 payload: filterRecipes
-            );
+            });
         }
     }
 }
