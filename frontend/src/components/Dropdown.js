@@ -16,15 +16,13 @@ const Dropdown1 = (props) => {
 
   return ( 
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-       <DropdownToggle caret style= {{backgroundColor: `white`, border: `0px solid white`, height:"10vh"}}>        
-       { !props.user.token
-        ? <img id="fotousuario" src={fotousuario} alt="fotousuario"/>
+      { !props.user.token
+        ? <DropdownToggle id="dropdownToggle" style={{ backgroundImage: `url(${fotousuario})`, width:"8vw", height:"8vw"}}></DropdownToggle>
         :  props.user.urlPic === "false"
-           ? <div id="imagenTinerary" className="fotoHeader" id="usuariosinfoto" style={{width:"8vw", height:"8vw", backgroundColor:"none", border: "2px solid #abc120", borderRadius:"100%", marginBottom:"-3vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
-           :<div id="imagenTineraryusuarioLogueado" className="fotoHeader" style={{ backgroundImage: `url(${props.user.urlPic})`, width:"8vw", height:"8vw"}}></div> 
+           ? <DropdownToggle id="imagenTinerarysinfoto" className="fotoHeader" id="usuariosinfoto" style={{width:"75px", height:"75px", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></DropdownToggle>
+           :<DropdownToggle id="imagenTineraryusuarioLogueado" className="fotoHeader" style={{ backgroundImage: `url(${props.user.urlPic})`, width:"8vw", height:"8vw"}}></DropdownToggle>
            
        }
-     </DropdownToggle>
 
 
 
@@ -37,7 +35,7 @@ const Dropdown1 = (props) => {
         </>)
         :(<>
          <DropdownMenu>
-		<NavLink to="/profile"><DropdownItem>{props.user.username}</DropdownItem></NavLink>
+		<NavLink to={`/profile/${props.user.username}`}><DropdownItem>{props.user.username}</DropdownItem></NavLink>
             <NavLink to="/"><DropdownItem onClick={props.logoutUser}>Logout</DropdownItem></NavLink>
          </DropdownMenu>
         </>)

@@ -63,13 +63,14 @@ const userController = {
         .then(user => res.json({success: true, username: user.username ,urlPic: user.urlPic, likes: user.likes }))
         .catch(err => res.json({success:false, error: err})) 
     },
-    getUserInformation: (req, res) => {
-        const  user = User.findOne({...req.params})
+    getUserInformation: async (req, res) => {
+        const user = await User.findOne({...req.params})
         if(!user) return res.json({success : true, user: null})
-        const { username, firstName, lastName, mail, urlPic, description } = user
+        const { username, firstName, lastName, mail, urlPic, description, likes } = user
         res.json({
-            success: true,
-            infoUser:{
+            success: user ? true : false,
+            userInfo:{
+				likes,
                 username,
                 firstName,
                 lastName,

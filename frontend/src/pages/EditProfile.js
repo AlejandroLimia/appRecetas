@@ -8,6 +8,8 @@ import '../styles/editarUsuario.css'
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import userActions from '../redux/actions/userActions';
+import {NavLink} from "react-router-dom"
+
 
 
 
@@ -226,7 +228,10 @@ const [send, setSend] = useState({
           <div id="todoEditarUsuario">
                 <div id="pictureInfoandDecription">
                      <div id="PictureAndInfoUser">
-                          <div id="userPicture" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"25vh", height:"25vh"}}></div>
+                     {props.user.urlPic === "false"
+                        ?<div id="userPicture" id="sinfotologueado" className="fotoHeader" id="usuariosinfoto" style={{width:"25vh", height:"25vh",padding:"8vw 8vw", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
+                         :  <div id="userPicture" style={{backgroundImage: `Url(${props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
+                      }
                           <div id="infoUser">
                              <div id="NameAndEdit">
                                  <p>Nombre de Usuario</p>
@@ -270,7 +275,13 @@ const [send, setSend] = useState({
 
                                {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
-                                   <div className="inputBox">
+                                     <div className="inputBox" >
+                                         <label htmlFor="pass">Contraseña Actual: </label>
+                                         <input type="password" name="pass" id="pass" onChange={inputHandler}  />
+                                     </div>
+                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
+                                     
+                                     <div className="inputBox">
                                          <label htmlFor="newPass">Contraseña Nueva</label>
                                           <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
                                       </div>
@@ -284,14 +295,11 @@ const [send, setSend] = useState({
 
                               </div>
                                }
-                                <div className="inputBox" >
-                                      <label htmlFor="pass">Contraseña: </label>
-                                      <input type="password" name="pass" id="pass" onChange={inputHandler}  />
-                                    </div>
-                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-                                     
-                                
-                                <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+                              
+                                <div id="botones">
+                                     <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+                                     <NavLink to="/profile" id="volver"> <button  id="volver">Volver</button></NavLink>
+                                </div>
                             </form>
 
                            </div>
@@ -317,7 +325,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    modifyUser: userActions.modifyUser
+    modifyUser: userActions.modifyUser,
+    userInformation: userActions.userInformation,
 
 }
 

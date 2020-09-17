@@ -9,6 +9,8 @@ import usuario from "../images/usuario.png"
 import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
+import { RUTA_API } from "../constants"
+import "../styles/comments.css"
 
 
 const RecipeFull = props => {
@@ -43,13 +45,20 @@ const RecipeFull = props => {
 	const time = (minutes) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
 	}
-	const [comment, setComment] = useState(null)
+	const [comment, setComment] = useState({
+		comment: "",
+		username: "",
+		recipeId: "",
+		userPic: "",
+	})
+
 
 	const readComment = e => {
 		const text = e.target.value
+		const comment = e.target.name
 		setComment({
 			...comment,
-			[e.target.name]: text,
+			[comment]: text,
 			username: props.username,
 			recipeId: props.recipe._id,
 			userPic: props.urlPic,
@@ -60,7 +69,14 @@ const RecipeFull = props => {
 		setUpdate(true)
 		if (props.token) {
 			props.newComment(comment)
+			
+			setComment({
+				...comment,
+			    comment: "",
+			})
 			toast.success("Su comentario fue publicado.")
+
+
 		} else {
 			toast.error("Es necesaria una cuenta para publicar un comentario")
 		}
@@ -95,7 +111,7 @@ const RecipeFull = props => {
 		    <div id="difficulty" key={props.recipe.difficulty}>
 					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
 			</div>
-			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} >
+			<div  id="imageFood" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}} >
 			<div class="data">
 				<div class="time">
 						<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
@@ -116,7 +132,7 @@ const RecipeFull = props => {
 				{props.recipe.ingredients.map(ingredient =>{
 					return <div className="ingredient">
 						<p className="TheIngredient">{ingredient.name}</p>
-						<p className="TheAmount">{ingredient.quantity || ""}</p>
+						<p className="TheAmount">{ingredient.q || ""}</p>
 					</div>
 				})}
 			</div>
@@ -144,58 +160,20 @@ const RecipeFull = props => {
 				        </div>
 				   })}
 		      </div>
-
-		
-			<button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
-			<div id="theComments">
-								<div>
-									{props.comments === null
-										? "cargando..."
-										: props.comments.map((comentario, index) => {
-												return <Comment key={index} fx={setUpdate} data={comentario} />
-										  })}
-								</div>
-								<div id="TheInput">
-									<div
-										className="picturebox"
-										style={{
-											backgroundImage: `url(${
-												props.token ? props.urlPic : usuario
-											})`,
-											width: "4.5em",
-											height: "4.5em",
-											backgroundSize: "cover",
-											alignItems: "center",
-											display: "flex",
-											margin: "0 2%",
-										}}
-									/>
-									<textarea
-										playholder="write your comment here..."
-										onChange={readComment}
-										name="comment"
-										style={{
-											width: "60%",
-											border: "2px black solid",
-											padding: "1.5%",
-											borderRadius: "2em",
-											backgroundColor: "white",
-											resize: "none",
-											outline: "none",
-											overflow: "hidden",
-											marginRight: "2%",
-										}}
-									/>
-									<div style={{ marginBotton: "4%", display: "table" }}>
-										<button
-											style={{ alignSelf: "center!important", padding: "3%" }}
-											onClick={sendComment}
-										>
-											send
-										</button>
-						</div>
-				</div>
-			</div>
+			  <button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
+			  <div id="theComments">
+					<div id="scrollComments">
+						{props.comments === null
+						? "cargando..."
+						: props.comments.map((comentario, index) => {
+							return <Comment key={index} fx={setUpdate} data={comentario} />
+						})}
+					</div>
+					<div id="TheInput">
+						<input onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment" value={comment.comment}/>
+						<button id="buttonSend" onClick={sendComment}>send</button>
+				    </div>
+			   </div>
 		</div>
 	</div>
 	<div id="everythingMovile">
@@ -203,7 +181,7 @@ const RecipeFull = props => {
 			<h2>{props.recipe.title}</h2>
 			<p>{props.recipe.description}</p>
 		</div>
-		<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}}> 
+		<div  id="imageFood" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}}> 
 		    <div class="data">
 				<div class="time">
 					<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
@@ -231,7 +209,7 @@ const RecipeFull = props => {
 		{props.recipe.ingredients.map(ingredient =>{
 			return <div className="ingredient">
 					<p className="TheIngredient">{ingredient.name}</p>
-					<p className="TheAmount">{ingredient.quantity || ""}</p>
+					<p className="TheAmount">{ingredient.q || ""}</p>
 			</div>
 		})}
 		</div>
@@ -248,17 +226,17 @@ const RecipeFull = props => {
 		</div>
 		<button id="viewMoreSteps"onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
 		<div id="theComments">
-				<div id="userComment">
-					<p id="userPic">foto</p>
-					<div id="theComment">
-					   <h5>usuario</h5>
-					   <p>hola te amo</p>
-					</div>
-				</div>
-				<div id="TheInput">
-				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
-				<button>Enviar</button>
-				</div>
+			<div id="scrollComments">
+				{props.comments === null
+				? "cargando..."
+				: props.comments.map((comentario, index) => {
+					return <Comment key={index} fx={setUpdate} data={comentario} />
+				})}
+			</div>
+			<div id="TheInput">
+				<input onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment" value={comment.comment}/>
+				<button id="buttonSend" onClick={sendComment}>send</button>
+			</div>
 		</div>
 	</div>
 	 </>}
@@ -269,7 +247,7 @@ const mapStateToProps = state => {
 	return {
 		recipe: state.recipeReducer.recipe,
 		token: state.userReducer.token,
-        urlPic: state.userReducer.profilePic,
+        urlPic: state.userReducer.urlPic,
         likes : state.userReducer.likes,
 		username: state.userReducer.username,
 		comments: state.userReducer.comments,
@@ -288,7 +266,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull)
 /*
 	 
 	{props.recipe.ingredients.map(ingredient => {
-		return <p><span>{ingredient.quantity}</span> {ingredient.name}</p>
+		return <p><span>{ingredient.q}</span> {ingredient.name}</p>
 	})} 
 	<p>{props.recipe.userId}</p> 
 	<p>Likes: {props.recipe.likes}</p>

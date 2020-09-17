@@ -88,7 +88,7 @@
     justify-content: space-between;
 }
 .ingredient .TheIngredient{
-font-size: 1.3vw;
+font-size: 15px;
  width: 27vw;
  background-color: #ffffff;
  box-shadow: 0vw 1vw 2vw 0vw #7c7c7c1e;
@@ -96,7 +96,7 @@ font-size: 1.3vw;
 padding: 0.5vh 1vw;
 }
 .ingredient .TheAmount{
-    font-size: 1.3vw;
+    font-size:15px;
     width: 7vw;
     background-color: #ffffff;
     box-shadow: 0vw 2vw 2vw 0vw #7c7c7c18;
@@ -171,71 +171,6 @@ width: 4vw;
     font-size: 1.4vw;
     
 }
-#theComments{
-    margin: 5vh 0vw;
-    width: 47vw;
-    height: 30vh;
-    background-color:#aac144d8;
-    border-radius: 1vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-#theComments p{
-    padding:1vw;
-
-}
-
-#TheInput{
-    box-shadow: 0vw -3vw 2vw 0vw #6b6b6b27;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 0vw 0vw 1vh 1vw;
-    background-color: #d7e05cb0;
-    padding:0.8vw;
-}
-#TheInput input{
-width: 38vw;
-border: none;
-padding: 1vh 0.5vw;
-margin-left: 0.5vw;
-border-radius: 0.5vw;
-
-}
-#TheInput button{
-    margin-right: 0.5vw;
-    width: 6vw;
-    border: none;
-    border-radius: 1vw;
-}
-#userComment{
-    display: flex;
-    margin: 2vw;
-    border-bottom: 1px solid #ffffff;
-}
-#userComment #userPic{
-    width: 5vw;
-    height: 5vw;
-    background-color: rgb(143, 141, 141);
-    border-radius: 100%;
-}
-
-#theComment{
-    display: flex;
-    flex-direction:column ;
-    height: 2vh;
-}
-#theComment h5{
-    margin-bottom: 0vh;
-    margin-left: 1vw;
-    font-weight: bold;
-    font-size: 1.8vw;
-}
-#theComment p{
-   color: #ffffff;
-   font-weight: lighter;
-   padding-top: 0vw;
-}
 #everythingMovile{
     display: none;
 }
@@ -304,7 +239,7 @@ border-radius: 0.5vw;
      
     }
     #allAlergies img{
-        width: 8vw;
+        width: 9vw;
     }
     #ingredients{
         margin-top: 10%;
@@ -317,17 +252,17 @@ border-radius: 0.5vw;
     .ingredient .TheIngredient{
          width: 53vw;
          box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
-         font-size: 0.2em;
+         font-size: 15px;
     }
     .ingredient .TheAmount{
         width: 12vw;
         box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
-        font-size: 0.2em;
+        font-size:15px;
     }
     #ingredients   h6{
-        margin-left: 58vw;
+        margin-left: 56vw;
         font-weight: bold;
-        font-size: 0.5em;
+        font-size: 15px;
     }
     .title{
         font-size: 1.7em;
