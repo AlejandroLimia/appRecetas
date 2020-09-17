@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/generalStyles.css'
 import Profile from './pages/Profile';
-import EditProfile from './components/EditProfile';
+import EditProfile from './pages/EditProfile';
 import Recipes from './pages/Recipes';
 import RecipeFull from './pages/RecipeFull';
 import CreateRecipe from './pages/CreateRecipe';
