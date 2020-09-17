@@ -1,6 +1,6 @@
-import axios from 'axios'
-import { RUTA_API } from '../../constants'
-import { toast } from 'react-toastify'
+import axios from "axios"
+import { RUTA_API } from "../../constants"
+import { toast } from "react-toastify"
 
 const authActions = {
 	createUser: (user, set) => {
@@ -16,13 +16,13 @@ const authActions = {
 			else {
 				toast.success(`Cuenta creada!`)
 				dispatch({
-					type: 'USER_IN',
+					type: "USER_IN",
 					payload: {
 						token: response.data.token,
 						urlPic: response.data.urlPic,
 						username: response.data.username,
-						likes: response.data.likes
-					}
+						likes: response.data.likes,
+					},
 				})
 			}
 			return response
@@ -30,31 +30,29 @@ const authActions = {
 	},
 	loginUser: user => {
 		return async (dispatch, getState) => {
-			const response = await axios.post(RUTA_API+'/api/user/login', user)
-			console.log(response.data)
-			if(!response.data.success) {
+			const response = await axios.post(RUTA_API + "/api/user/login", user)
+			if (!response.data.success) {
 				toast.error(response.data.error)
 				return response.data.error
-			}
-			else {
+			} else {
 				toast.success(`Bienvenidx ${response.data.username}!`)
 				dispatch({
-					type: 'USER_IN',
+					type: "USER_IN",
 					payload: {
 						token: response.data.token,
 						urlPic: response.data.urlPic,
 						username: response.data.username,
-						likes: response.data.likes
-					}
+						likes: response.data.likes,
+					},
 				})
 			}
 		}
 	},
 	logoutUser: () => {
 		return (dispatch, getState) => {
-			toast.info('See you later! =D')
+			toast.info("See you later! =D")
 			dispatch({
-				type: 'LOGOUT_USER'
+				type: "LOGOUT_USER",
 			})
 		}
     },
@@ -78,36 +76,70 @@ const authActions = {
     },
 	authUser: (token) => {
 		return async (dispatch, getState) => {
-			let response;
+			let response
 			try {
-				response = await axios.get(RUTA_API+'/api/user/login', {
+				response = await axios.get(RUTA_API + "/api/user/login", {
 					headers: {
-						Authorization: 'Bearer ' + token
-					}
+						Authorization: "Bearer " + token,
+					},
 				})
-			}
-			catch {
+			} catch {
 				return false
 			}
 			const {urlPic, username, likes} = response.data
 			dispatch({
-				type: 'USER_IN',
+				type: "USER_IN",
 				payload: {
 					urlPic,
 					token,
 					username,
-					likes
-				}
+					likes,
+				},
 			})
 		}
 	},
-
 	modifyUser:	user => {
 		return async (dispatch, getState) => {
 			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
 
 		}
-	}	
+	},
+	newComment: comment => {
+		console.log(comment)
+		return async (dispatch, getState) => {
+			const response = await axios.post(
+				"http://127.0.0.1:4000/api/comment/",
+				comment
+			)
+		}
+	},
+	getComments: recipeId => {
+		return async (dispatch, getState) => {
+			const response = await axios.get(
+				`http://127.0.0.1:4000/api/comment/${recipeId}`
+			)
+			dispatch({
+				type: "GET_COM",
+				payload: response.data.comments,
+			})
+		}
+	},
+	deleteComment: commentId => {
+		return async (dispatch, getState) => {
+			const response = await axios.delete(
+				`http://127.0.0.1:4000/api/comment`,
+				commentId
+			)
+		}
+	},
+	editComment: edited => {
+		return async (dispatch, getState) => {
+			const response = await axios.put(
+				`http://127.0.0.1:4000/api/comment`,
+				edited
+			)
+		}
+	},
 }
 
-export default authActions;
+export default authActions
