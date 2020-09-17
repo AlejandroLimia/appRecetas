@@ -67,6 +67,19 @@ const recipeActions = {
                 payload: filterRecipes
             });
         }
-    }
+	},
+	profileLikes: (id) =>{
+		return async (dispatch, getState) => {
+			const response = await axios.put(
+				"http://127.0.0.1:4000/api/recipes/likes", id
+			)
+			{console.log(response)}
+			if (response.data.success === true) {
+				toast.success("Comentario editado")
+			} else {
+				toast.error("Ocurrió un error")
+			}
+		}
+	}
 }
 export default recipeActions

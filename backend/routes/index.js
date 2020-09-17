@@ -28,7 +28,7 @@ router.route("/comment/:id").delete(commentController.deleteCommentById)
 
 router.route("/recipes/:diet").get(recipesController.getRecipes)
 
-router.route("/recipes/likes").post(recipesController.getRecipeByLikes)
+router.route("/recipes/likes").get(recipesController.getRecipeByLikes)
 
 router.route("/recipes/user/:userId").get(recipesController.getRecipesByUserId)
 

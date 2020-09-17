@@ -13,7 +13,8 @@ import recipeActions from '../redux/actions/recipeActions';
 const Profile = (props) => {
 
     useEffect(() => {
-		props.getRecipes('vegetariana')
+    props.getRecipes('vegetariana')
+    props.likedRecipes(props.data._id)
     }, [])
     
 
@@ -96,7 +97,7 @@ const mapStateToProps = (state) => {
 
 
     const mapDispatchToProps = {
-        // Conseguir recetas
+        likedRecipes: recipeActions.profileLikes ,
         getRecipes: recipeActions.getRecipes
         // Accion de filtar
     }
