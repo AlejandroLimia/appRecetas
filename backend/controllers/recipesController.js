@@ -39,7 +39,7 @@ const recipesController = {
         const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
-            recipes
+            recipes:recipes
         });
     },
     getRecipeById: async (req,res) => {

@@ -44,12 +44,12 @@ const recipeActions = {
 		}
 	},
 	userRecipes: username => {
-		return (dispatch, getState) => {
-			const response = axios.get(`${RUTA_API}'/api/recipes/${username}`)
+		return async(dispatch, getState) => {
+			const response = await axios.get(`${RUTA_API}/api/recipes/user/${username}`)
 			console.log(response)
 			dispatch({
 				type: "USER_RECIPES",
-				payload: response.data,
+				payload: response.data.recipes,
 			})
 		}
 	},
