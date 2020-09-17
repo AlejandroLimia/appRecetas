@@ -9,6 +9,7 @@ import usuario from "../images/usuario.png"
 import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
+import { RUTA_API } from "../constants"
 
 
 const RecipeFull = props => {
@@ -95,7 +96,7 @@ const RecipeFull = props => {
 		    <div id="difficulty" key={props.recipe.difficulty}>
 					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
 			</div>
-			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} >
+			<div  id="imageFood" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}} >
 			<div class="data">
 				<div class="time">
 						<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>

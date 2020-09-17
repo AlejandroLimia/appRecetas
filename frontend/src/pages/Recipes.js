@@ -8,6 +8,7 @@ import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import recipeActions from '../redux/actions/recipeActions';
 import imageBanner from "../images/foodit.jpg";
+import { TEXTOS } from '../constants';
 
 const Recipes = (props) => {
 	useEffect(() => {
@@ -22,8 +23,14 @@ const Recipes = (props) => {
 		</div>
 		<div className="contenedorRecipes">
 			<div>
-				<h1>Vegetariana</h1>
-				<p>Una dieta vegetariana se enfoca a la alimentación con verduras. Esto incluye frutas, verduras, guisantes y alubias secas, granos, semillas y nueces. No existe un único tipo de dieta vegetariana. Los modelos de alimentación vegetariana suelen entrar en uno de los siguientes grupos: vegetariana estricta, lacto vegetariana, lacto-ovo vegetariana.</p>
+				{TEXTOS.map(texto => {
+					if(texto.diet === props.match.params.diet) {
+						return <>
+								<h1>{texto.title}</h1>
+								<p>{texto.text}</p>
+								</>
+					}
+				})}
 			</div>
 			<div className="filtrador">
 				<input type="text" placeholder="Buscas una receta?"/>
