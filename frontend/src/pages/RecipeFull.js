@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import imageBanner from "../images/foodit.jpg"
 import "../styles/recipeFull.css"
 import Header from "../components/Header"
+import homeBackgroundThree from "../images/backgroundThree.png"
 
 const RecipeFull = (props) => {
 	console.log(props.recipe)
@@ -16,8 +17,21 @@ const RecipeFull = (props) => {
 	}, [])
 	const fotousuario = require("../images/usuario.png")
 	const imageFood = require("../images/VEGETARIANA.jpg")
+	const time = (minutes) => {
+		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
+	}
 
-   
+	const [verMasBoton, setverMas] = useState({
+        show: true
+    })
+ 
+   const verMas =  e =>{
+       e.preventDefault()
+       setverMas ({
+        ...verMasBoton,
+        show: !verMasBoton.show
+    })
+   }
 	
 	return ( 
 		<>
@@ -25,16 +39,30 @@ const RecipeFull = (props) => {
 		? ""
 		:<>
 	<Header/>
-    <div id="space" style={{ height:"10vh"}}></div>
-    <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
-            <div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
+	<div id="space" style={{ height:"10vh"}}></div>
+	<div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
+			<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
 				<p>{props.recipe.username.toUpperCase()}</p>
 			</div>
 	</div>
 	<div id="everything">
 		<div id="LeftSide">
-			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} > </div>
-			    <div id="ingredients">
+		    <div id="difficulty" key={props.recipe.difficulty}>
+					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
+			</div>
+			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} >
+			<div class="data">
+				<div class="time">
+						<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
+						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
+					</div>
+					<div class="likes">
+						<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
+					</div>
+				</div>
+			</div>
+				<div id="ingredients">
 					<h3 className="title">Ingredientes</h3>
 					<h6>cant.</h6>
 				{props.recipe.ingredients.map(ingredient =>{
@@ -47,17 +75,84 @@ const RecipeFull = (props) => {
 		</div>
 		<div id="RightSide">
 			<div id="icons">
-			{props.recipe.importantContain.map(allAlergies => {
-				return <div id="allAlergies" key={allAlergies}>
-						  <img src={require(`../images/${allAlergies}.png`)} id="allergie" />
-					  </div>
-			})}
+				{props.recipe.importantContain.map(allAlergies => {
+					return <div id="allAlergies" key={allAlergies}>
+							<img src={require(`../images/${allAlergies}.png`)} id="allergie" />
+						</div>
+				})}				
 			</div>
 			<div id="titleDescription">
 				<h2>{props.recipe.title}</h2>
 				<p>{props.recipe.description}</p>
 			</div>
-			<div id="steps">
+
+			
+			<div id="steps" style={ verMasBoton.show ? {height:"280px"} : {height:"unset"}  }>
+				<h3 className="title">Pasos a seguir</h3>
+				  {props.recipe.recipe.map((step,index) => {
+					return <div className="divRecipeSteps">
+					    <h4>{index + 1}</h4>
+					    <p className="RecipeSteps" >{step}</p>
+				        </div>
+				   })}
+		      </div>
+
+		
+			<button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
+			<div id="theComments">
+				<div id="userComment">
+					<p id="userPic">foto</p>
+					<div id="theComment">
+					<h5>usuario</h5>
+					<p>hola te amo</p>
+					</div>
+				</div>
+				<div id="TheInput">
+				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
+				<button>Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="everythingMovile">
+		<div id="titleDescription">
+			<h2>{props.recipe.title}</h2>
+			<p>{props.recipe.description}</p>
+		</div>
+		<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}}> 
+		    <div class="data">
+				<div class="time">
+					<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
+					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
+				</div>
+				<div class="likes">
+					<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
+				</div>
+		   </div>
+		</div>
+		<div id="difficulty" key={props.recipe.difficulty}>
+					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
+		</div>
+		<div id="icons">
+			{props.recipe.importantContain.map(allAlergies => {
+				return <div id="allAlergies" key={allAlergies}>
+						  <img src={require(`../images/${allAlergies}.png`)} id="allergie" />
+					  </div>
+			})}
+		</div>
+		<div id="ingredients">
+			<h3 className="title">Ingredientes</h3>
+			<h6>cant.</h6>
+		{props.recipe.ingredients.map(ingredient =>{
+			return <div className="ingredient">
+					<p className="TheIngredient">{ingredient.name}</p>
+					<p className="TheAmount">{ingredient.quantity || ""}</p>
+			</div>
+		})}
+		</div>
+		<div id="steps" style={ verMasBoton.show ? {height:"388px"} : {height:"unset"}}>
+		        <img id="homeBackgroundThree" src={homeBackgroundThree}/>
 				<h3 className="title">Pasos a seguir</h3>
 				{props.recipe.recipe.map((step,index) => {
 					return <div className="divRecipeSteps">
@@ -65,9 +160,10 @@ const RecipeFull = (props) => {
 					<p className="RecipeSteps" >{step}</p>
 				</div>
 				})}
-				<button id="viewMoreSteps">ver mas</button>
-			</div>
-			<div id="theComments">
+				
+		</div>
+		<button id="viewMoreSteps"onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
+		<div id="theComments">
 				<div id="userComment">
 					<p id="userPic">foto</p>
 					<div id="theComment">
@@ -79,9 +175,9 @@ const RecipeFull = (props) => {
 				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
 				<button>Enviar</button>
 				</div>
-			</div>
 		</div>
-	</div> </>}
+	</div>
+	 </>}
 	</> )
 }
  

@@ -32,7 +32,7 @@
     justify-content: center;
     width: 100vw;
     background-color: #aac144;
-    margin-top: 15%;
+    margin-top: 23%;
     height: 18vh;
 
 }
@@ -53,6 +53,20 @@
     background-position: center;
     background-size: cover;
     border-radius: 3vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+}
+
+#everything .data{
+    border-radius: 0vw 0vw 3vw 3vw;
+    background-color: #ffffffa9;
+    padding: 1vh;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
 }
 .title{
     font-weight: bold;
@@ -93,10 +107,17 @@ padding: 0.5vh 1vw;
     font-weight: bold;
 }
 #icons{
-    margin-top: -4vh;
+    margin-top: -3vh;
     margin-left: -4vw;
     display: flex;
     height: 8vh;
+}
+
+#difficulty{
+    margin-top: -15vh;
+}
+#difficultyImg{
+    width: 35%;
 }
 
 #allergie{
@@ -119,21 +140,20 @@ width: 4vw;
 }
 #titleDescription p{
     color: #ffffff;
+    margin-top: 1vh;
     margin-left: 1vw;
     font-size: 1vw;
     width: 18vw;
 }
-#steps .title{
-    margin-top: 8%;
-    margin-left: -1vw;
+#steps{
+    margin-top: 15%;
+    overflow: hidden;
 }
 .divRecipeSteps{
     display: flex;
     justify-content: space-between;
     width: 85%;
     margin-top: 3vh;
-    margin-bottom: -2.1vw;
-    margin-left: -1vw;
 }
 .RecipeSteps{
     width: 95%;
@@ -142,7 +162,7 @@ width: 4vw;
 }
 #viewMoreSteps{
     margin-top: -2vh;
-    width: 47vw;
+    width: 85%;
     border:none;
     border-radius:  0vw 0vw 0.5vw 0.5vw;;
     background: linear-gradient(to bottom, rgba(182, 201, 94, 0),rgba(181, 201, 94, 0.534));
@@ -216,3 +236,168 @@ border-radius: 0.5vw;
    font-weight: lighter;
    padding-top: 0vw;
 }
+#everythingMovile{
+    display: none;
+}
+
+
+
+
+@media only screen and (max-width: 800px){
+    #banner{
+        justify-content: center;
+    }
+    
+    
+    #ProfilePic{
+        right: unset;
+    }
+  
+   
+    #everything {
+        display: none;
+
+        
+    }
+    #everythingMovile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    #titleDescription{
+        margin-left: 0vw;
+        margin-top: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color:#aac144;
+        padding: 1vh;
+        width: 100%;
+        min-height: 15vh;
+    }
+    #titleDescription h2{
+        width: 55vw;
+        font-size: 1.5em;
+        padding-right: 2%;
+    }
+    #titleDescription p{
+        width: 40vw;
+        padding-left: 0.5%;
+        font-size: 0.7em;
+    }
+    #imageFood{
+        margin-top: 3%;
+        width: 60vw;
+        height: 60vw;
+    }
+    #icons{
+        margin-top: -1vh;
+        margin-left: unset;
+        display: flex;
+        justify-content: center;
+        height: 8vh;
+    }
+    #allAlergies{
+        padding: 1vw;
+     
+    }
+    #allAlergies img{
+        width: 8vw;
+    }
+    #ingredients{
+        margin-top: 10%;
+        width: 68%;
+        margin-bottom: -5vh;
+    }
+    .ingredient{
+        width: 100%
+    }
+    .ingredient .TheIngredient{
+         width: 53vw;
+         box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
+         font-size: 0.2em;
+    }
+    .ingredient .TheAmount{
+        width: 12vw;
+        box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
+        font-size: 0.2em;
+    }
+    #ingredients   h6{
+        margin-left: 58vw;
+        font-weight: bold;
+        font-size: 0.5em;
+    }
+    .title{
+        font-size: 1.7em;
+    }
+    #everythingMovile h4{
+        font-weight: bold;
+        font-size: 1em;
+    }
+    #steps .title{
+        margin-top: 20%;
+        margin-left: 0vw;
+    }
+    #steps{
+        overflow: hidden;
+        height: 388px;
+        width:68%;
+    }
+    .divRecipeSteps{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        margin-left: 0vw;
+        margin-top: 0vh;
+    }
+    .RecipeSteps{
+        margin-right: 2vw;
+        width: 60vw;
+        font-size: 0.7em;
+        text-align: justify;
+    }
+    #viewMoreSteps{
+        width: 68%;
+        border:none;
+        border-radius:  0vw 0vw 0.5vw 0.5vw;;
+        background: linear-gradient(to bottom, rgba(181, 201, 94, 0.014),rgba(181, 201, 94, 0.329));
+        padding:0.8vw;
+        padding-top: 2vh;
+        font-weight: bold;
+        font-size: 1em;
+        
+    }
+    #homeBackgroundThree{
+            position: absolute;
+            left:  0;
+            bottom: 1;
+            z-index: -1;
+            height: 90%;
+    }
+    #theComments{
+        margin: 20vh 0vw;
+    }
+    #difficulty{
+        margin-top: unset;
+        display: flex;
+        justify-content: center;
+    }
+     #difficultyImg{
+         width: 40%;
+     }
+     #everythingMovile .data{
+        border-radius: 0vw 0vw 3vw 3vw;
+        background-color: #ffffffa9;
+        padding: 2vh 2vw;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    
+    }
+    
+    
+}
+
