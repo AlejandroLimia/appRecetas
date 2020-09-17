@@ -52,16 +52,16 @@ const CreateRecipe = (props) => {
 		}
 		const formData = new FormData()
 		formData.append('pic', recipe.urlPic)
-		formData.append('title', recetaFull.title)
-		formData.append('description', recetaFull.description)
-		formData.append('ingredients', recetaFull.ingredients)
-		formData.append('recipe', recetaFull.recipe)
-		formData.append('importantContains', recetaFull.importantContains)
-		formData.append('diet', recetaFull.diet)
-		formData.append('difficulty', recetaFull.difficulty)
-		formData.append('duration', recetaFull.duration)
+		// formData.append('title', recetaFull.title)
+		// formData.append('description', recetaFull.description)
+		// formData.append('ingredients', recetaFull.ingredients)
+		// formData.append('recipe', recetaFull.recipe)
+		// formData.append('importantContains', recetaFull.importantContains)
+		// formData.append('diet', recetaFull.diet)
+		// formData.append('difficulty', recetaFull.difficulty)
+		// formData.append('duration', recetaFull.duration)
 
-		await props.createRecipe(formData)
+		await props.createRecipe(recetaFull,formData)
 		console.log(recetaFull)
 	}
 

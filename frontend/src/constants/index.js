@@ -3,11 +3,31 @@ export const TEXTOS = [
 	{
 		diet: 'keto',
 		title: 'Dieta Keto',
-		text: 'El término hoy popular de "dieta keto" es la adaptación de ketogenic diet, es decir, dieta cetogénica. El nombre hace referencia a que es un modelo de alimentación cuyo objetivo es la creación de cuerpos cetónicos. Estos cuerpos cetónicos son compuestos metabólicos generados en el organismo como respuesta a la falta de reservas de energía. '
+		text: 'La dieta keto o cetogénica se centra en la ingesta de más alimentos ricos en grasas buenas y proteínas (pescado azul, aguacate, aceite de coco y de oliva) con una restricción de la ingesta de hidratos de carbono (cereales, azúcar, e incluso de mucha cantidad de verduras y frutas) con el objetivo de generar el proceso de cetosis en sangre similar al ayuno. '
 	},
 	{
-		diet: 'keto',
-		title: 'Ketogenica',
-		text: 'El término hoy popular de "dieta keto" es la adaptación de ketogenic diet, es decir, dieta cetogénica. El nombre hace referencia a que es un modelo de alimentación cuyo objetivo es la creación de cuerpos cetónicos. Estos cuerpos cetónicos son compuestos metabólicos generados en el organismo como respuesta a la falta de reservas de energía. '
+		diet: 'vegetariana',
+		title: 'Vegetariana',
+		text: 'Una dieta vegetariana se enfoca a la alimentación con verduras. Esto incluye frutas, verduras, guisantes y alubias secas, granos, semillas y nueces. No existe un único tipo de dieta vegetariana. Los modelos de alimentación vegetariana suelen entrar en uno de los siguientes grupos: vegetariana estricta, lacto vegetariana, lacto-ovo vegetariana. '
+	},
+	{
+		diet: 'vegana',
+		title: 'Vegana',
+		text: 'Una dieta vegana es una dieta que es estrictamente vegetariana. Además de no comer carne, los vegetarianos estrictos no comen ningún tipo de alimento que provenga de animales. Esto incluye productos lácteos, huevos, miel y gelatina (la cual proviene de huesos y otros tejidos animales). '
+	},
+	{
+		diet: 'pecetariana',
+		title: 'Pecetariana',
+		text: 'Si te gusta la idea de reducir tu consumo de carne pero tienes una buena relación con el salmón, la dieta pescetariana puede ser para ti. Las personas que siguen esta dieta comen una amplia variedad de alimentos de origen vegetal, como frutas, verduras, legumbres, granos integrales y nueces, además de pescado y mariscos. '
+	},
+	{
+		diet: 'paleo',
+		title: 'Paleo',
+		text: 'Una dieta paleo suele contener carne de res magra, pescado, frutas, vegetales, frutos secos y semillas: alimentos que se podían obtener de la caza y la recolección en el pasado. '
+	},
+	{
+		diet: 'otros',
+		title: 'Otros',
+		text: 'Todas las recetas que no entrarian en una dieta específica se encuentran aquí. Se puede encontrar desde una milanesa a caballo hasta un croissant. '
 	},
 ]

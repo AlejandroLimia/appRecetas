@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(cors())
 app.use(fileUpload())
 
+app.use(express.static('client/img'))
 // Routes
 app.use("/api", router);
 if(process.env.NODE_ENV === 'production') {
