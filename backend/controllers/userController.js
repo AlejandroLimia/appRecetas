@@ -66,10 +66,11 @@ const userController = {
     getUserInformation: async (req, res) => {
         const user = await User.findOne({...req.params})
         if(!user) return res.json({success : true, user: null})
-        const { username, firstName, lastName, mail, urlPic, description } = user
+        const { username, firstName, lastName, mail, urlPic, description, likes } = user
         res.json({
             success: user ? true : false,
-            infoUser:{
+            userInfo:{
+				likes,
                 username,
                 firstName,
                 lastName,

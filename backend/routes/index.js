@@ -10,7 +10,7 @@ const router = express.Router()
 router.route("/user/register")
 .post(validator.validateUser,userController.createUser)
 
-router.route("/user/n/:_id")
+router.route("/user/n/:username")
 .get(userController.getUserInformation)
 
 router.route("/user/modifyUser")

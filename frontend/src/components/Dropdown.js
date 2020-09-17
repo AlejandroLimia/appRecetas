@@ -35,7 +35,7 @@ const Dropdown1 = (props) => {
         </>)
         :(<>
          <DropdownMenu>
-		<NavLink to="/profile"><DropdownItem>{props.user.username}</DropdownItem></NavLink>
+		<NavLink to={`/profile/${props.user.username}`}><DropdownItem>{props.user.username}</DropdownItem></NavLink>
             <NavLink to="/"><DropdownItem onClick={props.logoutUser}>Logout</DropdownItem></NavLink>
          </DropdownMenu>
         </>)

@@ -67,7 +67,8 @@ const authActions = {
     },
     userInformation: (id) => {
         return async (dispatch, getState) => {
-            const response = await axios.get(`${RUTA_API}/api/user/${id})`)
+			console.log(`${RUTA_API}/api/user/n/${id}`)
+			const response = await axios.get(`${RUTA_API}/api/user/n/${id}`)
             dispatch({
                 type: 'GET_USER_INFO',
                 payload: response.data.userInfo
@@ -144,18 +145,18 @@ const authActions = {
 		}
 	},
 	profileLikes: (likes) =>{
-		console.log(likes)
+		console.log(likes, 'ESTO LLEGA A LA ACTION')
 		return async (dispatch, getState) => {
-			const response = await axios.get(
+			const response = await axios.post(
 				"http://127.0.0.1:4000/api/recipes/likes", likes
 			)
-			{console.log(response.data.recipes)}
+			console.log(response.data, 'RECETAS QUE ME GUSTARON')
 			if (response.data.success === false) {
 				toast.error("Ocurrió un error")
 			}
 			dispatch({
 				type:'GET_LIKES',
-				payload: response.data.recipes
+				payload: response.data.recipeLikes
 			})
 		}
 	}

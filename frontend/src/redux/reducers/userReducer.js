@@ -5,7 +5,6 @@ const initialState = {
     likes: [],
     userInfo: null,
 	comments: null,
-	userLikes:[]
 }
 
 function authReducer(state = initialState, action) {

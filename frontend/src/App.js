@@ -27,7 +27,7 @@ function App(props) {
 		<Route exact path='/' component={Home} />
 		<Route path='/signup' component={SignUp} />
 		<Route path='/login' component={Login} />
-		<Route path='/profile' component={Profile} />
+		<Route path='/profile/:username' component={Profile} />
 		<Route path='/createRecipe' component={CreateRecipe} />
 		<Route path='/editProfile' component={EditProfile} />
 		<Route path='/recipes/:diet' component={Recipes} />
@@ -37,7 +37,7 @@ function App(props) {
 	: (<Switch>
 		{/* RUTAS USUARIO LOGUEADO */}
 		<Route exact path="/" component={Home}/>
-		<Route path='/profile' component={Profile} />
+		<Route path='/profile/:username' component={Profile} />
 		<Route path='/recipes/:diet' component={Recipes} />
 		<Route path='/recipe/:id' component={RecipeFull} />
 		<Route path='/editProfile' component={EditProfile} />

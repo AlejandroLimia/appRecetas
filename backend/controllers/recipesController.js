@@ -43,7 +43,7 @@ const recipesController = {
         })
     },
     getRecipeByLikes:async(req,res) => {
-        const {likes} = req.body
+        const likes = req.body
         if(likes.length === 0) return res.json({ success: true, recipeLikes:[]})
         let recipeLikes = []
         likes.map( async(id, index) => {
@@ -53,7 +53,7 @@ const recipesController = {
         })
     },
     deleteRecipe: async (req, res) =>{
-        const id = req.body._id
+		const id = req.body._id
         Recipes.findByIdAndDelete({_id: id})
         .then(() => res.json({success: true, res: "Su receta ha sido eliminada."}))
         .catch(err=>res.json({success:false, error: err}))
