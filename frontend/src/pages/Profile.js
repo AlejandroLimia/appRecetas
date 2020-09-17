@@ -6,6 +6,8 @@ import '../styles/Profile.css'
 import Recipe from '../components/Recipe';
 import {NavLink} from "react-router-dom"
 import recipeActions from '../redux/actions/recipeActions';
+import userActions from '../redux/actions/userActions';
+
 
 
 
@@ -45,10 +47,13 @@ const Profile = (props) => {
         <div id="AllProfile">
             <div id="pictureInfoandDecription">
                 <div id="PictureAndInfoUser">
-                    <div id="userPicture" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"25vh", height:"25vh"}}></div>
+                {props.user.urlPic === "false"
+                ?<div id="userPicture" className="fotoHeader" id="usuariosinfoto" style={{width:"25vh", height:"25vh", backgroundColor:"none", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
+                :  <div id="userPicture" style={{backgroundImage: `Url(${props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
+                }
                     <div id="infoUser">
                         <div id="NameAndEdit">
-                        <p>Nombre de Usuario</p>
+                        <p>{props.user.username}</p>
                         <NavLink to="/editProfile"><button>Editar Perfil</button></NavLink>
                         </div>
                     <div id="description"> <p>Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta</p>
@@ -96,6 +101,7 @@ const mapStateToProps = (state) => {
 
 
     const mapDispatchToProps = {
+      userInformation: userActions.userInformation,
         // Conseguir recetas
         getRecipes: recipeActions.getRecipes
         // Accion de filtar
