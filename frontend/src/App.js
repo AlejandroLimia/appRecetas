@@ -41,6 +41,8 @@ function App(props) {
 		<Route path='/profile' component={Profile} />
 		<Route path='/recipes/:diet' component={Recipes} />
 		<Route path='/recipe/:id' component={RecipeFull} />
+		<Route path='/editProfile' component={EditProfile} />
+		<Route path='/profile' component={Profile} />
 		<Redirect to='/' />
 	</Switch>);
 	

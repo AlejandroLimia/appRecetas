@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import '../styles/editarUsuario.css'
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
+import userActions from '../redux/actions/userActions';
+
 
 
 const Profile = (props) => {
@@ -15,15 +17,21 @@ const Profile = (props) => {
         lastName: '',
         urlPic: '',
         username: '',
+        description:'',
         mail: '',
-        pass: ''
+        newPass: '',
+        confirmNewPass:'',
+        pass:''
 })
 const [error, setError] = useState({
     firstName: '',
     lastName: '',
     urlPic: '',
     username: '',
+    description:'',
     mail: '',
+    newPass: '',
+    confirmNewPass:'',
     pass: '',
     ok: false
 })
@@ -35,47 +43,35 @@ const validation = user => {
     const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
     const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
     //firstName
-    if(user.firstName === '') {
-        error.firstName = 'No puede estar vacío'
-        error.ok = false
-    }
-    else if(user.firstName.length < 3) {
-        error.firstName = 'Debe tener tres letras mínimo'
-        error.ok = false
-    }
-    else if(!alphanum.test(user.firstName)) {
-        error.firstName = 'Solo puede contener letras'
-        error.ok = false
-    }
-    else error.firstName = ''
-    // lastName
-    if(user.lastName === '') {
-        error.lastName = 'No puede estar vacío'
+    if(user.firstName.length !== "") {
+
+        if(user.firstName.length < 3 ) {
+            error.firstName = 'Debe tener tres letras mínimo'
             error.ok = false
+        }
+        else if(!alphanum.test(user.firstName)) {
+            error.firstName = 'Solo puede contener letras'
+            error.ok = false
+        }
+        else error.firstName = ''
     }
-    else if(user.lastName.length < 3) {
-        error.lastName = 'Debe tener tres letras mínimo'
-        error.ok = false
+    
+    // lastName
+    if(user.lastName !== '') {
+        if(user.lastName.length < 3) {
+            error.lastName = 'Debe tener tres letras mínimo'
+            error.ok = false
+        }
+        else if(!alphanum.test(user.lastName)) {
+            error.lastName = 'Solo puede contener letras'
+            error.ok = false
+        }
+        else error.lastName = ''
+        
     }
-    else if(!alphanum.test(user.lastName)) {
-        error.lastName = 'Solo puede contener letras'
-        error.ok = false
-    }
-    else error.lastName = ''
+    
     // urlPic
-    if(user.urlPic === '') {
-        error.urlPic = 'No puede estar vacío'
-        error.ok = false
-    }
-    else if(user.urlPic.length < 10) {
-        error.urlPic = 'Debe tener diez letras mínimo'
-        error.ok = false
-    }
-    else if(user.urlPic.toLowerCase().indexOf('http://') !== 0 && user.urlPic.toLowerCase().indexOf('https://') !== 0) {
-        error.urlPic = 'Debe ser una URL válida'
-        error.ok = false
-    }
-    else error.urlPic = ''
+   
     // username
     if(user.username === '') {
         error.username = 'No puede estar vacío'
@@ -90,6 +86,7 @@ const validation = user => {
         error.ok = false
     }
     else error.username = ''
+
     // mail
     if(user.mail === '') {
         error.mail = 'No puede estar vacío'
@@ -104,6 +101,21 @@ const validation = user => {
         error.ok = false
     }
     else error.mail = ''
+
+    //Description
+    if(user.description.length !== "") {
+
+        if(user.description.length < 3 ) {
+            error.description = 'Debe tener tres letras mínimo'
+            error.ok = false
+        }
+        else if(!alphanum.test(user.description)) {
+            error.description = 'Solo puede contener letras'
+            error.ok = false
+        }
+        else error.description = ''
+    }
+
     // pass
     if(user.pass === '') {
         error.pass = 'No puede estar vacío'
@@ -118,6 +130,39 @@ const validation = user => {
         error.ok = false
     }
     else error.pass = ''
+
+    //new pass
+    if(user.newPass === '') {
+        error.newPass = 'No puede estar vacío'
+        error.ok = false
+    }
+    else if(user.newPass.length < 5) {
+        error.newPass = 'Debe tener cinco letras mínimo'
+        error.ok = false
+    }
+    else if(!rePass.test(user.newPass)) {
+        error.newPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
+        error.ok = false
+    }
+    else error.newPass = ''
+
+     
+    //confirm new pass
+    if(user.confirmNewPass === '') {
+        error.confirmNewPass = 'No puede estar vacío'
+        error.ok = false
+    }
+    else if(user.confirmNewPass.length < 5) {
+        error.confirmNewPass = 'Debe tener cinco letras mínimo'
+        error.ok = false
+    }
+    else if(!rePass.test(user.confirmNewPass)) {
+        error.confirmNewPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
+        error.ok = false
+    }
+    else error.confirmNewPass = ''
+
+
     //return
     return error.ok
 }
@@ -126,7 +171,7 @@ const [send, setSend] = useState({
 })
 
     const inputHandler = (e) => {
-		const valor = e.target.value;
+		const valor = e.target.name === 'picture' ? e.target.files[0] : e.target.value
 		const campo = e.target.name;
 		setUser({
 				...user,
@@ -139,12 +184,13 @@ const [send, setSend] = useState({
 		send.status = true
 		setSend({status: true})
 		if(validation(user)) {
-			await props.createUser(user)
+			await props.modifyUser(user)
 			setError({
 				...error,
 				ok: true
 			})
-		}
+        }
+        
 		else {
 			send.status = false
 			setSend({status: false})
@@ -168,7 +214,7 @@ const [send, setSend] = useState({
      })
     }
     
-    
+    console.log("editandoperfil")
 
   return (
       <>
@@ -193,7 +239,7 @@ const [send, setSend] = useState({
                                 </div>
                                 <span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
                                 <div className="inputBox">
-                                    <label htmlFor="lastName">Apellid:</label>
+                                    <label htmlFor="lastName">Apellido:</label>
                                     <input type="text" name="lastName" id="lastName" onChange={inputHandler} value="DiCaprio"/>
                                 </div>
                                 <span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
@@ -210,32 +256,40 @@ const [send, setSend] = useState({
                                 
                                 <div className="inputdescripcion">
                                     <p>Descripción: </p>
-                                    <textarea name="description" id="description" onChange={inputHandler} >
-                                    Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta
+                                    <textarea name="description" id="description" onChange={inputHandler} value="Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta">
                                     </textarea>
                                 </div>
-                                <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
-                                
-                                <button className="botoneditarperfil">Cambiar Foto del Perfil </button>
-                                <button className="botoneditarperfil" onClick={viewChangePass}>Cambiar Contraseña</button>
+                                <span className='error' style={!error.description ? {display: "none"} : {display: "inherit"} }>{error.description ? error.description : null }</span>
+                               
+                                <div className="inputBox">
+                                 <label htmlFor="newPapicturess">Cambiar Foto del Perfil:</label>
+                                    <input type="file" name="picture" id="picture" className="botoneditarperfil"/>
+                                </div>
+
+                                    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
 
                                {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
-                                    <div className="inputBox">
-                                      <label htmlFor="pass">Contraseña Vieja</label>
-                                      <input type="password" name="pass" id="pass" onChange={inputHandler}  />
-                                    </div>
-                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-                                     <div className="inputBox">
+                                   <div className="inputBox">
                                          <label htmlFor="newPass">Contraseña Nueva</label>
                                           <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
                                       </div>
+                                      <span className='error' style={!error.password ? {display: "none"} : {display: "inherit"} }>{error.password ? error.password : null }</span>
+
                                       <div className="inputBox">
-                                         <label htmlFor="confirmNewPass">Confirmar Contraseña Nueva</label>
+                                         <label htmlFor="confirmNewPass">Confirmar Contraseña </label>
                                           <input type="password" name="confirmNewPass" id="confirmNewPass" onChange={inputHandler}  />
                                       </div>
+                                      <span className='error' style={!error.confirmNewPass ? {display: "none"} : {display: "inherit"} }>{error.confirmNewPass ? error.confirmNewPass : null }</span>
+
                               </div>
                                }
+                                <div className="inputBox" >
+                                      <label htmlFor="pass">Contraseña: </label>
+                                      <input type="password" name="pass" id="pass" onChange={inputHandler}  />
+                                    </div>
+                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
+                                     
                                 
                                 <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
                             </form>
@@ -263,6 +317,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
+    modifyUser: userActions.modifyUser
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (Profile)

@@ -14,14 +14,16 @@ const Dropdown1 = (props) => {
 
 
 
-  return (
+  return ( 
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
        <DropdownToggle caret style= {{backgroundColor: `white`, border: `0px solid white`}}>        
-       {/* {!props.tokenLogueado
+       { !props.user.token
         ? <img id="fotousuario" src={fotousuario} alt="fotousuario"/>
-        :<div id="imagenTinerary" className="fotoHeader" style={{ backgroundImage: `url(${props.imagenLogueado})`, width:"6vw", height:"6vw"}}></div>
-        }  */}
-        <img id="fotousuario" src={fotousuario} alt="fotousuario"/>
+        :  props.user.urlPic === "false"
+           ? <div id="imagenTinerary" className="fotoHeader" id="usuariosinfoto" style={{width:"8vw", height:"8vw", backgroundColor:"none", border: "2px solid #abc120", borderRadius:"100%", marginBottom:"-3vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
+           :<div id="imagenTinerary" className="fotoHeader" style={{ backgroundImage: `url(${props.user.urlPic})`, width:"6vw", height:"6vw"}}></div> 
+           
+       }
      </DropdownToggle>
 
 

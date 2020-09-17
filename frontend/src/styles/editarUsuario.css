@@ -16,13 +16,11 @@
     border-bottom: none;
 }
 
-#todoEditarUsuario form {
-    height: 80vh;
-}
+
 
 #todoEditarUsuario label, .inputdescripcion p  {
     margin-right: 2vw;
-    width: 10vw;
+    width: 20vw;
 }
 
 #todoEditarUsuario .inputdescripcion{
@@ -32,7 +30,7 @@ align-items: flex-start;
 }
 
 #todoEditarUsuario input, #todoEditarUsuario textarea {
-    width: 35vw;
+    width: 30vw;
     border: 1px solid #dbf249 ;
     padding: 0.5vh 0.5vw;
 
@@ -45,7 +43,6 @@ height: 25vh;
 
 #todoEditarUsuario button {
     align-self: flex-start;
-
 }
 
 .botoneditarperfil{
@@ -72,3 +69,50 @@ text-decoration: underline;
 #divCambiarContraseña{
     margin-top: 5vh;
 }
+
+
+@media only screen and (max-width: 800px){
+
+    #divBlanco{
+       height: 18vh!important;
+    }
+    #todoEditarUsuario .inputBox, #todoEditarUsuario .inputdescripcion  {
+        display: flex;
+        flex-direction: column!important;
+    }
+
+    #todoEditarUsuario #PictureAndInfoUser {
+        border-bottom: none!important;
+    }
+
+    #todoEditarUsuario label, .inputdescripcion p  {
+        margin-top: 4vh;
+        width: 25vw;
+    }
+    #todoEditarUsuario input, #todoEditarUsuario textarea {
+        width: 35vw;
+        border: 1px solid #dbf249 ;
+        padding: 0.5vh 0.5vw;
+    
+    }
+
+    .botoneditarperfil{
+        margin-top: 5vh!important;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #todoEditarUsuario #PictureAndInfoUser {
+        border-bottom: none!important;
+    }
+
+    #todoEditarUsuario #pictureInfoandDecription{
+        display: flex;
+        flex-direction: column!important;
+
+
+    }
+
+
+}
+
