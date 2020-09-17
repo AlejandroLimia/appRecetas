@@ -14,7 +14,10 @@ header {
     z-index: 70;
 	box-shadow: 0vw 0vw 1vw 0vw rgba(230, 214, 214, 0.849);
 	display: flex;
-	justify-content: space-between;
+    justify-content: space-between;
+    padding-right: 5vw;
+    padding-left: 1vw;
+    width: 100%;
 }
 
 #menuNormal{
@@ -28,25 +31,50 @@ header {
 
 
 #menuHamburguesa{
-    width: 4vw;
+    width: 5vw;
     background-position: center;
     background-size: cover;
-    height: 4vw;
+    height: 5vw;
 
 }
 
 
 
-header img#fotologo {
-    width: 30%;
-    margin-right: 5vw;
+header #fotologo img {
+    width: 100%;
     }
+
+ header #fotologo{
+     width: 30%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     }
+
+
 
 header img#fotousuario {
    width: 8vw;
     }
 
+    #imagenTineraryusuarioLogueado{
+    align-self: center;
+    border-radius: 100%;
+    display: flex;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0vw 0vw 1vw 0.1vw black;
+    border: 1px solid white;
+    margin-left: 2vw;
+    margin-top: 3vh;
+    margin-right: -6vw;
+
+}
+
     #menuCostado{
+        position: absolute;
         position: fixed!important; 
         background: white;
         padding-top: 2vh;
@@ -54,7 +82,6 @@ header img#fotousuario {
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: absolute;
         height: 100%;
         right: -30vw;
         transition: right .3s linear;
@@ -151,6 +178,34 @@ footer p{
 
  /*Header*/
 
+ header #fotologo img {
+    width: 100%;
+    }
+
+ header #fotologo{
+     width: 40%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     }
+
+
+     #imagenTineraryusuarioLogueado{
+        align-self: center;
+        border-radius: 100%;
+        display: flex;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0vw 0vw 1vw 0.1vw black;
+        border: 1px solid white;
+        height: 12vw!important;
+        width: 12vw!important;
+        margin-left: 2vw;
+        margin-top: 3vh;
+        margin-right: -3vw;
+    }
 
  header {
     position: fixed!important; 
@@ -161,7 +216,7 @@ footer p{
     justify-content: space-between;
     align-items: center;
     padding-left: 2vw;
-    padding-right: 4vw;
+    padding-right: 6vw;
     
 }
 
@@ -170,17 +225,17 @@ footer p{
 
 
 #menuHamburguesa{
-    width: 6vw;
+    width: 8vw;
     background-position: center;
     background-size: cover;
-    height: 6vw;
+    height: 8vw;
 
 }
 
 
 
 header img#fotologo {
-    width: 35%;
+    width: 39%;
     margin-right: 5vw;
 
     }
