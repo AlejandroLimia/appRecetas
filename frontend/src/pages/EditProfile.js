@@ -228,7 +228,10 @@ const [send, setSend] = useState({
           <div id="todoEditarUsuario">
                 <div id="pictureInfoandDecription">
                      <div id="PictureAndInfoUser">
-                          <div id="userPicture" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"25vh", height:"25vh"}}></div>
+                     {props.user.urlPic === "false"
+                        ?<div id="userPicture" id="sinfotologueado" className="fotoHeader" id="usuariosinfoto" style={{width:"25vh", height:"25vh",padding:"8vw 8vw", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
+                         :  <div id="userPicture" style={{backgroundImage: `Url(${props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
+                      }
                           <div id="infoUser">
                              <div id="NameAndEdit">
                                  <p>Nombre de Usuario</p>
@@ -322,7 +325,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    modifyUser: userActions.modifyUser
+    modifyUser: userActions.modifyUser,
+    userInformation: userActions.userInformation,
 
 }
 
