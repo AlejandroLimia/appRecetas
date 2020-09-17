@@ -11,11 +11,6 @@ const commentSchema =  new mongoose.Schema({
         ref: 'recipes',
         required: true
     },
-    userId:{
-        type:mongoose.Schema.ObjectId,
-        ref: 'users',
-        required: true
-    },
     username:{
         type:String, 
         required:true

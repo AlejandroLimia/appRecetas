@@ -62,12 +62,15 @@ const recipeActions ={
 
         };
     },
-    /*filterRecipes : () => {
+    filterRecipes : title => {
         return async (dispatch, getState) => {
-            const recipes = getState().recipeReducer.recipes
-            recipes.filter()
-                
+            const recipes = getState().recipeReducer.recipes;
+            const filterRecipes = recipes.filter(recipe => recipe.title.indexOf(title) !== -1);
+            dispatch({
+                type: 'REC_FILTER',
+                payload: filterRecipes
+            });
         }
-    }*/
+    }
 }
 export default recipeActions

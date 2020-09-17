@@ -3,15 +3,15 @@ import { RUTA_API } from '../../constants'
 import { toast } from 'react-toastify'
 
 const authActions = {
-	createUser: user => {
+	createUser: (user, set) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
-			console.log(response)
-			if(!response.data.success) {
-				if(response.data.error.indexOf('Mail') !== -1) toast.error('Mail en uso')
-				if(response.data.error.indexOf('Username') !== -1) toast.error('Usuario en uso')
-				if(response.data.error.indexOf('error') !== -1) toast.error('Opss! Algo falló, prueba de nuevo')
-				return response.data.error
+            if(response.data.success === "false") {
+                set({status: false})
+                let errors = response.data.error.errors;
+				if(errors.username !== undefined) toast.error(errors.username.message);
+				if(errors.mail !== undefined ) toast.error(errors.mail.message);
+				return;
 			}
 			else {
 				toast.success(`Cuenta creada!`)
@@ -57,7 +57,25 @@ const authActions = {
 				type: 'LOGOUT_USER'
 			})
 		}
-	},
+    },
+    modifyUser:	user => {
+		return async (dispatch, getState) => {
+			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+            dispatch({
+                type:'USER_EDIT',
+                payload: response.data
+            })
+        }
+    },
+    userInformation: (id) => {
+        return async (dispatch, getState) => {
+            const response = await axios.get(`${RUTA_API}/api/user/${id})`)
+            dispatch({
+                type: 'GET_USER_INFO',
+                payload: response.data.userInfo
+            })
+        }
+    },
 	authUser: (token) => {
 		return async (dispatch, getState) => {
 			let response;
@@ -71,7 +89,6 @@ const authActions = {
 			catch {
 				return false
 			}
-			
 			const {urlPic, username, likes} = response.data
 			dispatch({
 				type: 'USER_IN',

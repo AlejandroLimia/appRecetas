@@ -88,7 +88,7 @@ const SignUp = (props) => {
 		send.status = true
 		setSend({status: true})
 		if(validation(user)) {
-			await props.createUser(user)
+			await props.createUser(user, setSend)
 			setError({
 				...error,
 				ok: true
