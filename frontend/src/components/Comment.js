@@ -35,7 +35,7 @@ const Comment = props => {
 		setEdit(false)
 	}
 	const options = () => {
-		if (props.username === props.data.username && !edit) {
+		if (props.username === props.data.username && edit) {
 			return (
 				<>
 					<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
@@ -70,15 +70,6 @@ const Comment = props => {
 							marginRight: "2%",
 						}}
 					/>
-					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
-						x
-					</button>
-					<button
-						onClick={sendEditedComment}
-						style={{ width: "20px", height: "20px" }}
-					>
-						enviar
-					</button>
 				</>
 			)
 		}

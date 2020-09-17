@@ -1,17 +1,70 @@
-form.createRecipe .inputBox {
-	width: 80%;
+span.title {
+	font-size: 2em;
+	padding: .5em 0;
 }
 
+div.createRecipe  {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
 form.createRecipe .inputBox {
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
 }
 form.createRecipe .inputBox label {
 	width: 100%;
+	margin-top: .6em;
 }
 
 form.createRecipe .inputBox .allergies {
 	display: flex;
+}
+
+form.createRecipe .btn {
+	border: none;
+	background: #79d70f;
+	color: white;
+	width: 80%;
+	padding: 10px;
+	margin: 10px 0 15px 15px;
+}
+
+form.createRecipe .allergies {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+
+input, select {
+	border: none;
+}
+
+form.createRecipe textarea, input[type="text"] {
+	width: 100%;
+}
+form.createRecipe input[type="text"].ingredient {
+	width: unset;
+}
+
+input[type="text"], textarea, select, input[type="number"] {
+	border: 1px solid #dbf249 ;
+    padding: 0.5vh 0.5vw;
+    margin-bottom: 1em;
+}
+
+form.createRecipe .ingredient select {
+	margin-right: 20px;
+}
+
+form.createRecipe input[type="number"].time {
+	width: 10ch;
+}
+
+form.createRecipe input[type="number"].cant {
+	width: 5ch;
+	margin-right: 20px;
 }
 
 input[type="checkbox"] {
@@ -21,4 +74,19 @@ input[type="checkbox"] {
 form.createRecipe .ingredient {
 	flex-direction: column;
 	width: 100%;
+}
+#homeBackgroundOne{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 25%;
+}
+
+#homeBackgroundTwo{
+    position: fixed;
+    right: 0;
+    top: 10;
+    z-index: -1;
+    width: 10%;
 }
