@@ -120,7 +120,7 @@ header #imagenTinerarysinfoto{
        
     }
 
-    #menuCostado #home{
+    #menuCostado .home{
         color: black;
         font-weight: bold;
         font-size: 1em;

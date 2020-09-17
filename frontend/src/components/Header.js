@@ -31,7 +31,7 @@ const Header = (props) => {
         <>
         <header>
               <div id="usuarioymenu"><Dropdown/></div>
-             <div id="fotologo" ><img src={fotologo} alt="logo"/></div> 
+                <div id="fotologo" ><NavLink to="/Home"><img src={fotologo} alt="logo"/></NavLink></div> 
               <button onClick={menuHamburguesa} style={{backgroundColor: `white`, border: `none`}}>
                   <div id="menuHamburguesa" style={{backgroundImage: `url(${fotoBoton})`}}></div>
               </button>
@@ -50,17 +50,19 @@ const Header = (props) => {
 
             </div>
 
-            <NavLink id="home" to="/Home">Home</NavLink>
+            <NavLink className="home" to="/Home">Home</NavLink>
+            { props.user.token && <NavLink className="home" to="/createRecipe">Crear Receta</NavLink> }
+
          </div>
 
      </>
     )
 }
 
-const mapStateToProps = state => {
-  return{
-
-  }
+const mapStateToProps = (state) => {
+	return {
+		user: state.userReducer
+	}
 }
 
 export default connect(mapStateToProps) (Header)
