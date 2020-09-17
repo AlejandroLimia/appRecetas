@@ -104,10 +104,7 @@ const authActions = {
 	},
 	deleteComment: commentId => {
 		return async (dispatch, getState) => {
-			const response = await axios.delete(
-				"http://127.0.0.1:4000/api/comment",
-				commentId
-			)
+			const response = await axios.delete(`http://127.0.0.1:4000/api/comment/${commentId}`)
 		}
 	},
 	editComment: edited => {
@@ -116,8 +113,8 @@ const authActions = {
 				"http://127.0.0.1:4000/api/comment",
 				edited
 			)
-			if (response.success === true) {
-				toast.success("Comentario Editado")
+			if (response.data.success === true) {
+				toast.success("Comentario editado")
 			} else {
 				toast.error("Ocurrió un error")
 			}

@@ -13,10 +13,11 @@ const commentController = {
 		res.json({ success: true, comments })
 	},
 	deleteCommentById: (req, res) => {
-		const { commentId } = req.body
-		Comment.findByIdAndDelete(commentId)
+		
+		Comment.findByIdAndDelete(req.params.id)
 			.then(resp => res.json({ success: true, resp }))
 			.catch(error => res.json({ success: false, error }))
+		
 	},
 	modifyCommentById: (req, res) => {
 		console.log(req.body)

@@ -5,46 +5,34 @@ import userActions from "../redux/actions/userActions"
 import { toast } from "react-toastify"
 
 const Comment = props => {
-	const [editedComment, setEditedComment] = useState({})
+	const [editedComment, setEditedComment] = useState({
+		comment: props.data.comment,
+	})
 	const [edit, setEdit] = useState(false)
-	console.log(props.data._id)
+	const [commentId, setDeleted] = useState(props.data._id)
 	const erased = async () => {
-		await props.deleteComment(props.data._id)
+		await props.deleteComment(commentId)
+		props.fx(true)
 	}
 	const editing = () => {
+		
 		setEdit(true)
-		return (
-			<>
-				<div
-					style={{
-						backgroungColor: "white",
-						borderLeft: "0.5vw solid #dedede",
-						borderBottom: "0.5vw solid #dedede",
-						minHeight: "15vw",
-					}}
-				>
-					<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
-						{" "}
-						{props.data.comment}
-					</p>
-				</div>
-			</>
-		)
 	}
 	const readComment = e => {
-		console.log(props.data._Id)
 		const text = e.target.value
+
 		setEditedComment({
 			...editedComment,
 			[e.target.name]: text,
-			commentId: props.data._Id,
+			commentId: props.data._id,
 		})
-		console.log(editedComment)
+
 	}
 	const sendEditedComment = async e => {
 		e.preventDefault()
-
 		await props.editComment(editedComment)
+		props.fx(true)
+		setEdit(false)
 	}
 	const options = () => {
 		if (props.username === props.data.username && !edit) {
@@ -67,6 +55,7 @@ const Comment = props => {
 				<>
 					<textarea
 						playholder="write your comment here..."
+						value={editedComment.comment}
 						onChange={readComment}
 						name="comment"
 						style={{

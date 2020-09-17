@@ -23,8 +23,9 @@ router.route("/comment/:recipeId").get(commentController.getComments)
 router
 	.route("/comment")
 	.post(commentController.postComment)
-	.delete(commentController.deleteCommentById)
 	.put(commentController.modifyCommentById)
+
+router.route("/comment/:id").delete(commentController.deleteCommentById)
 
 router.route("/recipes/:diet").get(recipesController.getRecipes)
 

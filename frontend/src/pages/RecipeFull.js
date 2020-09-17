@@ -10,14 +10,15 @@ import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 
 const RecipeFull = props => {
+	const[update, setUpdate]=useState(false)
 	useEffect(() => {
 		const gR = async () => {
 			await props.getRecipe(props.match.params.id)
 			await props.getComments(props.match.params.id)
 		}
-		window.scroll(0, 0)
 		gR()
-	}, [])
+		setUpdate(false)
+	}, [update])
 	const fotousuario = require("../images/usuario.png")
 	const imageFood = require("../images/VEGETARIANA.jpg")
 	const [comment, setComment] = useState(null)
@@ -34,6 +35,7 @@ const RecipeFull = props => {
 	}
 	const sendComment = async e => {
 		e.preventDefault()
+		setUpdate(true)
 		if (props.token) {
 			props.newComment(comment)
 			toast.success("Su comentario fue publicado.")
@@ -117,7 +119,7 @@ const RecipeFull = props => {
 									{props.comments === null
 										? "cargando..."
 										: props.comments.map((comentario, index) => {
-												return <Comment key={index} data={comentario} />
+												return <Comment key={index} fx={setUpdate} data={comentario} />
 										  })}
 								</div>
 								<div id="TheInput">
