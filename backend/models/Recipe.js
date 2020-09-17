@@ -8,15 +8,19 @@ const RecipeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    username:{
+        type: String,
+        required: true
+    },
     ingredients:{
         type: Array,
         required: true
     },
     recipe: {
-        type: String,
+        type: Array,
         required: true
-    },
-    importantContain:{
+	},
+	importantContain:{
 		type: Array,
 		default: []
     },
@@ -43,7 +47,8 @@ const RecipeSchema = new mongoose.Schema({
         type: String
     },
     duration:{
-        type: Number
+		type: Number,
+		required: true
     }
 },{timestamps:true})
 const Recipes = mongoose.model("recipe", RecipeSchema)

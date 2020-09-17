@@ -53,8 +53,8 @@ const Login = (props) => {
 	return (<>
 		<div className="sign">
 				<div className="form">
+					<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 					<form className="sign">
-						<div className="logo" style={{backgroundImage: `url(${require('../images/icono.png')})`}}/>
 						<span className="title">INGRESAR</span>
 						<div className="inputBox">
 							<label htmlFor="mail"><i className="fas fa-envelope"></i></label>

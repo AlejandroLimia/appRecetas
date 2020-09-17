@@ -1,77 +1,169 @@
 import React, {useState, useEffect} from 'react';
-//import recipeActions from '../redux/actions/recipeActions';
-//import {connect} from 'react-redux'
+import recipeActions from '../redux/actions/recipeActions';
+import {connect} from 'react-redux'
 import imageBanner from "../images/foodit.jpg"
 import "../styles/recipeFull.css"
 import Header from "../components/Header"
+import homeBackgroundThree from "../images/backgroundThree.png"
 
 const RecipeFull = (props) => {
-	//useEffect(() => {
-	//	props.getRecipe(props.match.params)
-	//}, [])
+	console.log(props.recipe)
+	useEffect(() => {
+		const gR = async () => {
+			await props.getRecipe(props.match.params.id)
+		}
+		window.scroll(0,0)
+		gR()
+	}, [])
 	const fotousuario = require("../images/usuario.png")
 	const imageFood = require("../images/VEGETARIANA.jpg")
-	const [alergies,setAlergies] = useState({
-		alergies:["milk", "gluten", "egg","peanut", "seaFood", "sesame", "soy" ]})
+	const time = (minutes) => {
+		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
+	}
 
-   
-
+	const [verMasBoton, setverMas] = useState({
+        show: true
+    })
+ 
+   const verMas =  e =>{
+       e.preventDefault()
+       setverMas ({
+        ...verMasBoton,
+        show: !verMasBoton.show
+    })
+   }
+	
 	return ( 
-    <>
-<<<<<<< HEAD
-	<Header />
-=======
+		<>
+		{props.recipe === null 
+		? ""
+		:<>
 	<Header/>
->>>>>>> 0526c6d00fa6c611916857edd03ae2ce21213083
-    <div id="space" style={{ height:"15vh"}}></div>
-    <div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
-            <div id="ProfilePic" style={{backgroundImage: `Url(https://i.pinimg.com/originals/f9/05/73/f905738457b395c55a006374a374c01d.jpg)`, width:"25vh", height:"25vh"}}>
-				<p>PALTA FELIZ</p>
+	<div id="space" style={{ height:"10vh"}}></div>
+	<div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
+			<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
+				<p>{props.recipe.username.toUpperCase()}</p>
 			</div>
 	</div>
 	<div id="everything">
 		<div id="LeftSide">
-			<div  id="imageFood" style={{backgroundImage: `url(${imageFood})`}} > </div>
-			    <div id="ingredients">
-					<h3 className="title">ingredientes</h3>
+		    <div id="difficulty" key={props.recipe.difficulty}>
+					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
+			</div>
+			<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}} >
+			<div class="data">
+				<div class="time">
+						<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
+						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
+					</div>
+					<div class="likes">
+						<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
+					</div>
+				</div>
+			</div>
+				<div id="ingredients">
+					<h3 className="title">Ingredientes</h3>
 					<h6>cant.</h6>
-				<div className="ingredient">
-					<p className="TheIngredient">este es el ingrediente que utilice</p>
-					<p className="TheAmount">cantidad</p>
-				</div>
-				<div className="ingredient">
-					<p className="TheIngredient">este es el ingrediente que utilice</p>
-					<p className="TheAmount">cantidad</p>
-				</div>
+				{props.recipe.ingredients.map(ingredient =>{
+					return <div className="ingredient">
+						<p className="TheIngredient">{ingredient.name}</p>
+						<p className="TheAmount">{ingredient.quantity || ""}</p>
+					</div>
+				})}
 			</div>
 		</div>
 		<div id="RightSide">
 			<div id="icons">
-			{alergies.alergies.map(allAlergies => {
-				return (
-					  <div id="allAlergies" key={allAlergies}>
-						  <img src={require(`../images/${allAlergies}.png`)} id="allergie" />
-					  </div>
-				)
-			})}
+				{props.recipe.importantContain.map(allAlergies => {
+					return <div id="allAlergies" key={allAlergies}>
+							<img src={require(`../images/${allAlergies}.png`)} id="allergie" />
+						</div>
+				})}				
 			</div>
 			<div id="titleDescription">
-				<h2>REVUELTO DE BROCOLI CON HUEVO Y PALTA</h2>
-				<p>descripcion de este plato tan rico para comer en familia completa</p>
+				<h2>{props.recipe.title}</h2>
+				<p>{props.recipe.description}</p>
 			</div>
-			<div id="steps">
-				<h3 className="title">pasos a seguir</h3>
-				<div className="divRecipeSteps">
-					<h4>1</h4>
-					<p className="RecipeSteps" > Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet</p>
-				</div>
-				<div className="divRecipeSteps">
-					<h4>2</h4>
-					<p className="RecipeSteps" > Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet dolore magna aliquam erat volutpat. Ut ut laoreet</p>
-				</div>
-				<button id="viewMoreSteps">ver mas</button>
-			</div>
+
+			
+			<div id="steps" style={ verMasBoton.show ? {height:"280px"} : {height:"unset"}  }>
+				<h3 className="title">Pasos a seguir</h3>
+				  {props.recipe.recipe.map((step,index) => {
+					return <div className="divRecipeSteps">
+					    <h4>{index + 1}</h4>
+					    <p className="RecipeSteps" >{step}</p>
+				        </div>
+				   })}
+		      </div>
+
+		
+			<button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
 			<div id="theComments">
+				<div id="userComment">
+					<p id="userPic">foto</p>
+					<div id="theComment">
+					<h5>usuario</h5>
+					<p>hola te amo</p>
+					</div>
+				</div>
+				<div id="TheInput">
+				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
+				<button>Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="everythingMovile">
+		<div id="titleDescription">
+			<h2>{props.recipe.title}</h2>
+			<p>{props.recipe.description}</p>
+		</div>
+		<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}}> 
+		    <div class="data">
+				<div class="time">
+					<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
+					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
+				</div>
+				<div class="likes">
+					<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
+				</div>
+		   </div>
+		</div>
+		<div id="difficulty" key={props.recipe.difficulty}>
+					<img src={require(`../images/${props.recipe.difficulty}.png`)} id="difficultyImg" />
+		</div>
+		<div id="icons">
+			{props.recipe.importantContain.map(allAlergies => {
+				return <div id="allAlergies" key={allAlergies}>
+						  <img src={require(`../images/${allAlergies}.png`)} id="allergie" />
+					  </div>
+			})}
+		</div>
+		<div id="ingredients">
+			<h3 className="title">Ingredientes</h3>
+			<h6>cant.</h6>
+		{props.recipe.ingredients.map(ingredient =>{
+			return <div className="ingredient">
+					<p className="TheIngredient">{ingredient.name}</p>
+					<p className="TheAmount">{ingredient.quantity || ""}</p>
+			</div>
+		})}
+		</div>
+		<div id="steps" style={ verMasBoton.show ? {height:"388px"} : {height:"unset"}}>
+		        <img id="homeBackgroundThree" src={homeBackgroundThree}/>
+				<h3 className="title">Pasos a seguir</h3>
+				{props.recipe.recipe.map((step,index) => {
+					return <div className="divRecipeSteps">
+					<h4>{index + 1}</h4>
+					<p className="RecipeSteps" >{step}</p>
+				</div>
+				})}
+				
+		</div>
+		<button id="viewMoreSteps"onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
+		<div id="theComments">
 				<div id="userComment">
 					<p id="userPic">foto</p>
 					<div id="theComment">
@@ -81,44 +173,38 @@ const RecipeFull = (props) => {
 				</div>
 				<div id="TheInput">
 				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
-				<button>send</button>
+				<button>Enviar</button>
 				</div>
-			</div>
 		</div>
 	</div>
-			
-
-    
-
-	{/*{props.RecipeFull.title}
-	{props.RecipeFull.description} 
-	{props.RecipeFull.ingredients.map(ingredient => {
-		return <p><span>{ingredient.quantity}</span> {ingredient.name}</p>
-	})} 
-	<img src={`${props.RecipeFull.urlPic}`} alt="foto receta" />
-	<img src={`${props.RecipeFull.userPic}`} alt="foto usuario" />
-	<p>{props.RecipeFull.userId}</p> 
-	<p>Likes: {props.RecipeFull.likes}</p>
-	{props.RecipeFull.importantContains.map(warning => {
-		return <p>{warning}</p>
-	})} 
-	{props.RecipeFull.recipe.map((step, index) => {
-		return <><p>Paso {index+1}</p><>{step}</></>
-	})} 
-	<p>{props.RecipeFull.difficulty}</p>
-	<p>Dietas: {props.RecipeFull.diet}</p>
-<p>{props.RecipeFull.duration}</p>*/}
+	 </>}
 	</> )
 }
  
-{/*const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
 	return {
-		recipeFull: state.recipeReducer
+		recipe: state.recipeReducer.recipe
 	}
 }
 
 const mapDispatchToProps = {
 	getRecipe: recipeActions.getRecipe
-}*/}
+}
 
-export default RecipeFull;
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull);
+/*
+	 
+	{props.recipe.ingredients.map(ingredient => {
+		return <p><span>{ingredient.quantity}</span> {ingredient.name}</p>
+	})} 
+	<p>{props.recipe.userId}</p> 
+	<p>Likes: {props.recipe.likes}</p>
+	{props.recipe.importantContains.map(warning => {
+		return <p>{warning}</p>
+	})} 
+	{props.recipe.recipe.map((step, index) => {
+		return <><p>Paso {index+1}</p><>{step}</></>
+	})} 
+	<p>{props.recipe.difficulty}</p>
+	<p>Dietas: {props.recipe.diet}</p>
+<p>{props.recipe.duration}</p>*/

@@ -11,29 +11,29 @@ import Footer from '../components/Footer';
 const Home = (props) => {
   
   const [categories,setCategories] = useState({
-    categories:["DIETAKETO", "VEGETARIANA", "VEGANA","PECETARIANA", "PALEO", "INCLUYETODO" ]})
+    categories:["dietaketo", "vegetariana", "vegana","pecetariana", "paleo", "otros"]})
     
   
     return (
-        <div>
+        <>
 			<Header/>
        <div id="space" style={{ height:"15vh"}}></div>
           <img id="homeBackgroundOne" src={homeBackgroundOne}/>
           <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
             <div id="homeTitle" >
-              <img src={homeTitle}  ></img>
+              <img src={homeTitle}></img>
             </div>
             <div id="AllCategories">
               {categories.categories.map(conjunto => {
 				  return (
-					  <div id="categorie" key={conjunto} >
+					<div id="categorie" key={conjunto} >
                       <DietBubble bubble={conjunto}/>
-                  </div>
+                  	</div>
                   )
 				})}
             </div>
 			<Footer/>
-          </div>
+          </>
     )
 }
 

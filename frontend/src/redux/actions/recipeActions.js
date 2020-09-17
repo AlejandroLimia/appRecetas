@@ -5,12 +5,12 @@ import { toast } from 'react-toastify'
 const recipeActions ={
     newRecipe: recipe => {
         return async (dispatch, getState) => {
-            const response = await axios.post(RUTA_API+'/api/recipes', recipe)
+            const response = await axios.post(RUTA_API+'/api/recipes', recipe);
             /*dispatch({
                 type:"NEW_RECIPE",
                 payload: toast.success("Su receta creada exitosamente."),
             })*/
-        }
+        };
     },
     modifyRecipe: recipe =>{
         return async (dispatch, getState) => {
@@ -18,25 +18,39 @@ const recipeActions ={
         }
     },
     getRecipe: (recipeId) =>{
-        return(dispatch, getState)=>{
-            const data= getState()
-            const selectedRecipe = data.recipesReducer.recipes.filter((recipe)=> recipe._Id === recipeId)
-            dispatch({
-                type: "GET_RECIPE",
-                payload: selectedRecipe[0],
-            })
+        return async (dispatch, getState)=>{
+            //const recipes = getState().recipesReducer.recipes;
+            // const selectedRecipe = null;
 
-        }    
+            // if(!recipes) 
+            //     selectedRecipe = await axios.get(`${RUTA_API}/api/recipes/${recipeId}`);
+            // else
+            //     selectedRecipe = recipes.filter((recipe)=> recipe._Id === recipeId);
+
+            // dispatch({
+            //     type: "GET_RECIPE",
+            //     payload: recipes? selectedRecipe[0]:selectedRecipe.data.recipe,
+			// });
+			const selectedRecipe = await axios.get(`${RUTA_API}/api/recipe/${recipeId}`);
+			console.log(selectedRecipe)
+			dispatch({
+			    type: "GET_RECIPE",
+			    payload: selectedRecipe.data.recipeInfo
+			});
+
+        };
     },
     getRecipes : diet => {
         return async (dispatch, getState) => {
-        const response = axios.get(`${RUTA_API}'/api/recipes/${diet}`);
+			console.log(`${RUTA_API}'/api/recipes/${diet}`)
+			const response = await axios.get(`${RUTA_API}/api/recipes/${diet}`);
+			console.log(response)
             dispatch({
                 type:'GET_RECIPES',
                 payload: response.data.recipes
             });
 
-        }
+        };
     },
     /*filterRecipes : () => {
         return async (dispatch, getState) => {
