@@ -1,0 +1,181 @@
+#TheInput{
+    box-shadow: 0vw -3vw 2vw 0vw #6b6b6b27;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0vw 0vw 1vh 1vw;
+    background-color: #ffffff;
+    border:1px solid#7ad70fc0;
+    padding:0.8vw;
+    height: 10vh;
+}
+#theComments{
+    margin: 5vh 0vw;
+    width: 85%;
+    height: 50vh;
+    background-color:#7ad70f75;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    
+}
+#scrollComments{
+    overflow: scroll;
+    margin: 1.5vh;
+}
+
+#TextComment{
+    width: 80%;
+    height: 7vh;
+    border: 1px black solid;
+    padding: 1vw;
+    margin-left: 1vw;
+	border-radius: 1em;
+	background-color: white;
+	resize: none;
+	overflow: hidden;
+
+    
+}
+
+#allComentsDone{
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+    justify-content: space-between;
+	align-items: stretch;
+	align-content: flex-start;
+	padding-bottom: 5px;
+	width: 100%;
+}
+#userPic{
+    width: 4.5em;
+	border: 0.3vw solid white;
+    height: 4.5em;
+    box-shadow: 0vw 0vw 1vw 0vw #807f7f57;
+	background-size: cover;
+	align-items: center;
+    margin: 1vw;
+	border-radius: 100%;
+    
+}
+#titleEditComments{
+    width: 35vw;
+    margin-right: 3vw;
+  
+}
+#titleComment{
+    display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 2vh 2vw 0vh 2vw;
+    border-radius: 1vw 0vw 0vw 0vw;
+    border-bottom: 0.2vw dashed #d7e05cb0;
+
+}
+#editComments{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+	border-left: 0.5vw solid #dedede;
+    border-bottom: 0.5vw solid #dedede;
+    border-radius: 0vw 0vw 1vw 0vw;
+    min-height: 6vw;
+    margin-bottom: 2vh;
+}
+
+
+#editComments p{
+    width: 20vw;
+    margin-left: 1vw;
+    margin-top: 3vh;
+}
+#CommentEditText{
+    width: 75%;
+    border: 2px #7ad70f65 solid;
+	padding: 0.5vw;
+	border-radius: 1em;
+    background-color: white;
+    resize: none;
+    outline: none;
+    margin:1vw;
+    min-height: 6vh;
+}
+
+.picturebox{
+    width: 4.5em;
+    height: 4.5em;
+	background-size: cover;
+	align-items: center;
+	display: flex;
+	margin: 0 2%;
+}
+#buttonSend{
+   margin-right: 1vw;
+   border: none;
+   background-color: #7ad70f5e; 
+   padding: 0.7vh 1vw;
+   border-radius: 1vw;
+   box-shadow: 0vw 0vw 1vw 0vw #81818154;
+   font-weight: bold ;
+}
+#buttonSend:hover{
+    font-weight: bold ;
+    color: #ffffff;
+    box-shadow: 0vw 0vw 1vw 0vw #8181816c;
+    background-color: #79c225a6; 
+
+}
+
+#buttonEdit{
+    display: flex;
+    flex-direction: column;
+}
+#rubish {
+    width: 15px; 
+}
+#edit{
+    width: 15px; 
+}
+.buttonRubish{
+    margin-right: 2vw;
+    background-color: #ffffffd8;
+    border:none;
+}
+@media only screen and (max-width: 800px){
+    #theComments{
+        margin: 20vh 0vw;
+        width: 75vw;
+        border-radius: 2vw;   
+    }
+    #scrollComments{
+        margin: 2vh 1vh 1vh 1vh;
+    }
+    #userPic{
+        margin: 1vh 1vw 0vh 1vw;
+        width: 20vw;
+        height: 20vw;
+    }
+    #titleEditComments{
+        width: 45vw;
+        margin-right: 3vw;
+      
+    }
+    #editComments{
+        border-radius: 0vw 0vw 3vw 0vw;
+
+    }
+    #titleComment{
+        border-radius: 3vw 0vw 0vw 0vw;
+
+    }
+
+
+
+}
+

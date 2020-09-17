@@ -3,6 +3,10 @@ import { connect } from "react-redux"
 import usuario from "../images/usuario.png"
 import userActions from "../redux/actions/userActions"
 import { toast } from "react-toastify"
+import "../styles/comments.css"
+import rubish from "../images/rubish.png"
+import editComment from "../images/editComment.png"
+import saveTik from "../images/saveTik.png"
 
 const Comment = props => {
 	const [editedComment, setEditedComment] = useState({
@@ -10,14 +14,16 @@ const Comment = props => {
 	})
 	const [edit, setEdit] = useState(false)
 	const [commentId, setDeleted] = useState(props.data._id)
+
 	const erased = async () => {
 		await props.deleteComment(commentId)
 		props.fx(true)
 	}
+
 	const editing = () => {
-		
-		setEdit(true)
+		setEdit(!edit)
 	}
+
 	const readComment = e => {
 		const text = e.target.value
 
@@ -35,108 +41,61 @@ const Comment = props => {
 		setEdit(false)
 	}
 	const options = () => {
-		if (props.username === props.data.username && edit) {
+		if (props.username === props.data.username) {
 			return (
-				<>
-					<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
-						{" "}
-						{props.data.comment}
-					</p>
-					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
-						x
-					</button>
-					<button onClick={editing} style={{ width: "20px", height: "20px" }}>
-						editar
-					</button>
+
+				<>{edit 
+				? <input type='text' onChange={readComment}id="CommentEditText" name="comment" style={{ backgroundColor: "white"}} value={editedComment.comment}></input>
+				 : <div id="heigtComment">
+				 <p style={{ backgroundColor: "white"}}> {props.data.comment}</p>
+				 </div>
+			     }
+		
+					<div id="buttonEdit">
+						<button onClick={erased} className="buttonRubish" >
+							<img id="rubish" src={rubish}></img>
+						</button>
+
+						{edit
+						? <button onClick={sendEditedComment} className="buttonRubish">
+						     <img id="edit" src={saveTik}></img>
+						 </button>
+
+						:<button onClick={editing} className="buttonRubish">
+					    	<img id="edit" src={editComment}></img>
+						 </button>
+		                }		
+					</div>
 				</>
 			)
 		} else {
-			return (
+		return (
 				<>
-					<textarea
-						playholder="write your comment here..."
-						value={editedComment.comment}
-						onChange={readComment}
-						name="comment"
-						style={{
-							width: "60%",
-							border: "2px black solid",
-							padding: "1.5%",
-							borderRadius: "2em",
-							backgroundColor: "white",
-							resize: "none",
-							outline: "none",
-							overflow: "hidden",
-							marginRight: "2%",
-						}}
-					/>
+					<p style={{ backgroundColor: "white"}}>
+						{props.data.comment}
+					</p>
 				</>
 			)
 		}
 	}
-
+	console.log(props.data)
 	return (
-		<div style={{ margin: "5vw" }}>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "row",
-					flexWrap: "nowrap",
-					justifyContent: "space-between",
-					alignItems: "stretch",
-					alignContent: "flex-start",
-					paddingBottom: "5px",
-					width: "60%",
-				}}
-			>
-				<div className="foto">
-					{" "}
-					<div
-						style={{
-							backgroundImage: `url(${usuario})`,
-							width: "4.5em",
-							border: "0.2vw solid white",
-							height: "4.5em",
-							backgroundSize: "cover",
-							alignItems: "center",
-							display: "inline-block",
-							margin: "1vw",
-							borderRadius: "50px",
-						}}
-					/>
+			<div id="allComentsDone">
+				<div id="foto">
+					<div id="userPic" style={{ backgroundImage: `url(${props.data.userPic})`,}}/>
 				</div>
-
 				<div>
-					<div style={{ width: "100%" }}>
-						<div
-							style={{
-								display: "flex",
-								flexDirection: "row",
-								justifyContent: "space-between",
-								alignItems: "center",
-								backgroundColor: "#f7f7f7",
-								marginLeft: "-1px",
-								padding: " 0 2vw 0 2vw",
-								borderBottom: "0.2vw dashed black",
-							}}
-						>
-							<p>{props.data.username} said:</p>
-							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
+					<div id="titleEditComments" >
+						<div id="titleComment">
+							<p style={{fontWeight: "bold"}}>{props.data.username}  </p>
+							{/*<p style={{ fontStyle: "italic", fontSize: "15px" }}>date</p>*/}
 						</div>
-						<div
-							style={{
-								backgroungColor: "white",
-								borderLeft: "0.5vw solid #dedede",
-								borderBottom: "0.5vw solid #dedede",
-								minHeight: "15vw",
-							}}
-						>
+						<div id="editComments">
 							{options()}
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	)
 }
 
