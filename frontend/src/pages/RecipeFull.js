@@ -14,6 +14,7 @@ import homeBackgroundThree from "../images/backgroundThree.png"
 const RecipeFull = props => {
     const[update, setUpdate]=useState(false)
     const autLikes = async () => {
+        if(props.token === '') return;
         const pos = props.likes.indexOf(props.recipe._id);
         if(pos !== -1){
             --props.recipe.likes;
@@ -102,7 +103,7 @@ const RecipeFull = props => {
 					</div>
 					<div class="likes">
                         <span>
-                            <i class="far fa-heart" disabled={props.token === ''} onClick={autLikes} ></i>
+                            <i class="far fa-heart"  onClick={autLikes} ></i>
                             <span class="number">{props.recipe.likes}</span>
                         </span>
 						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
