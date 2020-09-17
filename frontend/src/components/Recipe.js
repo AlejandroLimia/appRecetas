@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/recipe.css'
+import {Button} from 'reactstrap';
 
 const Recipe = (props) => {
 	const time = (minutes) => {
@@ -18,10 +19,13 @@ const Recipe = (props) => {
 				<div class="data">
 					<div class="time">
 						<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
-						<span>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
+						<span>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration === 60 ? 'hora' : 'horas'}</span>
 					</div>
 					<div class="likes">
-						<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+                        <span>  
+                            <i class="far fa-heart"></i>
+                            <span class="number">{props.recipe.likes}</span>
+                        </span>
 						<span>likes</span>
 					</div>
 				</div>

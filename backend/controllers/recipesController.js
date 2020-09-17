@@ -2,11 +2,26 @@ const Recipes = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
-        const createRecipe = new Recipes({...req.body});
+		const { username, _id, urlPic } = req.user
+		console.log(JSON.parse(req.body.ingredients))
+        const createRecipe = new Recipes({
+								...req.body,
+								username,
+								userId: _id,
+								userPic: urlPic
+							});
 
         createRecipe
         .save()
         .then((recipe) => {
+			const path = require('path');
+			const file = req.files.pic
+			const ruta = `${path.join(__dirname, '..', 'client', 'img')}/${recipe._id}.jpg`
+			file.mv(ruta, err => {
+					 if (err) {
+						res.json({ success: false, error:'Problemas al grabar la imagen'});
+					 }
+				 })	
             res.json({ success: true, recipe});
         })
         .catch((err) => {
@@ -50,6 +65,7 @@ const recipesController = {
         .catch(err=>res.json({success:false, error: err}))
     },
     modifyRecipe: async(req, res)=>{
+        console.log(req.body)
         Recipes.findOneAndUpdate({_id: req.body._id},{$set:{...req.body}})
         .then(()=> res.json({success: true, response: "Los datos se han modificado con éxito."}))
         .catch(err => res.json({success:false, error: err}))

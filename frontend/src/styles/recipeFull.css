@@ -88,7 +88,7 @@
     justify-content: space-between;
 }
 .ingredient .TheIngredient{
-font-size: 1.3vw;
+font-size: 15px;
  width: 27vw;
  background-color: #ffffff;
  box-shadow: 0vw 1vw 2vw 0vw #7c7c7c1e;
@@ -96,7 +96,7 @@ font-size: 1.3vw;
 padding: 0.5vh 1vw;
 }
 .ingredient .TheAmount{
-    font-size: 1.3vw;
+    font-size:15px;
     width: 7vw;
     background-color: #ffffff;
     box-shadow: 0vw 2vw 2vw 0vw #7c7c7c18;
@@ -239,7 +239,7 @@ width: 4vw;
      
     }
     #allAlergies img{
-        width: 8vw;
+        width: 9vw;
     }
     #ingredients{
         margin-top: 10%;
@@ -252,17 +252,17 @@ width: 4vw;
     .ingredient .TheIngredient{
          width: 53vw;
          box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
-         font-size: 0.2em;
+         font-size: 15px;
     }
     .ingredient .TheAmount{
         width: 12vw;
         box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
-        font-size: 0.2em;
+        font-size:15px;
     }
     #ingredients   h6{
-        margin-left: 58vw;
+        margin-left: 56vw;
         font-weight: bold;
-        font-size: 0.5em;
+        font-size: 15px;
     }
     .title{
         font-size: 1.7em;

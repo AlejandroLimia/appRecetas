@@ -5,6 +5,8 @@ import userActions from "../redux/actions/userActions"
 import { toast } from "react-toastify"
 import "../styles/comments.css"
 import rubish from "../images/rubish.png"
+import editComment from "../images/editComment.png"
+import saveTik from "../images/saveTik.png"
 
 const Comment = props => {
 	const [editedComment, setEditedComment] = useState({
@@ -17,10 +19,11 @@ const Comment = props => {
 		await props.deleteComment(commentId)
 		props.fx(true)
 	}
+
 	const editing = () => {
-		
-		setEdit(true)
+		setEdit(!edit)
 	}
+
 	const readComment = e => {
 		const text = e.target.value
 
@@ -38,40 +41,54 @@ const Comment = props => {
 		setEdit(false)
 	}
 	const options = () => {
-		if (props.username === props.data.username && !edit) {
+		if (props.username === props.data.username) {
 			return (
-				<>
-					<p style={{ backgroundColor: "white"}}>
-						{" "}
-						{props.data.comment}
-					</p>
-					<button onClick={erased} id="buttonRubish" style={{ width: "20px", height: "20px" }}>
-						<img id="rubish" src={rubish}></img>
-					</button>
-					{/*<button onClick={editing} style={{ width: "20px", height: "20px" }}>
-						editar
-			</button>*/}
+
+				<>{edit 
+				? <input type='text' onChange={readComment}id="CommentEditText" name="comment" style={{ backgroundColor: "white"}} value={editedComment.comment}></input>
+				 : <div id="heigtComment">
+				 <p style={{ backgroundColor: "white"}}> {props.data.comment}</p>
+				 </div>
+			     }
+		
+					<div id="buttonEdit">
+						<button onClick={erased} className="buttonRubish" >
+							<img id="rubish" src={rubish}></img>
+						</button>
+
+						{edit
+						? <button onClick={sendEditedComment} className="buttonRubish">
+						     <img id="edit" src={saveTik}></img>
+						 </button>
+
+						:<button onClick={editing} className="buttonRubish">
+					    	<img id="edit" src={editComment}></img>
+						 </button>
+		                }		
+					</div>
 				</>
 			)
 		} else {
 		return (
 				<>
-					<textarea id="CommentEditText" value={editedComment.comment} onChange={readComment} name="comment" />
+					<p style={{ backgroundColor: "white"}}>
+						{props.data.comment}
+					</p>
 				</>
 			)
 		}
 	}
+	console.log(props.data)
 	return (
 			<div id="allComentsDone">
-				<div className="foto">
-					{" "}
-					<div id="userPicture" style={{ backgroundImage: `url(${usuario})`,}}/>
+				<div id="foto">
+					<div id="userPic" style={{ backgroundImage: `url(${props.data.userPic})`,}}/>
 				</div>
 				<div>
-					<div id="titleEditComments">
+					<div id="titleEditComments" >
 						<div id="titleComment">
-							<p>{props.data.username} said:</p>
-							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
+							<p style={{fontWeight: "bold"}}>{props.data.username}  </p>
+							{/*<p style={{ fontStyle: "italic", fontSize: "15px" }}>date</p>*/}
 						</div>
 						<div id="editComments">
 							{options()}

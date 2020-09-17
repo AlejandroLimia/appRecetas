@@ -24,13 +24,13 @@ const Header = (props) => {
         <>
         <header>
               <div id="usuarioymenu"><Dropdown/></div>
-              <img id="fotologo" src={fotologo} alt="logo"/>
+             <div id="fotologo" ><img src={fotologo} alt="logo"/></div> 
               <button onClick={menuHamburguesa} style={{backgroundColor: `white`, border: `none`}}>
                   <div id="menuHamburguesa" style={{backgroundImage: `url(${fotoBoton})`}}></div>
               </button>
             
         </header>
-
+ 
          <div id="menuCostado" style={menuShow.show ? {right:0} : {}}>
             <button onClick={menuHamburguesa} style={{backgroundColor: 'white', border:'none'}} ><img src={cerrar} style={{width:'2em', marginTop:'2vh'}}></img></button>
             <p id="tituloDietas"> Elegi tu dieta:</p>
