@@ -86,6 +86,7 @@ const authActions = {
 			} catch {
 				return false
 			}
+			console.log(response.data)
 			const {urlPic, username, likes} = response.data
 			dispatch({
 				type: "USER_IN",
