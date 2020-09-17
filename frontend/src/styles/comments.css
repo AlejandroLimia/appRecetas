@@ -1,0 +1,115 @@
+#TheInput{
+    box-shadow: 0vw -3vw 2vw 0vw #6b6b6b27;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0vw 0vw 1vh 1vw;
+    background-color: #d7e05cb0;
+    padding:0.8vw;
+}
+#theComments{
+    margin: 5vh 0vw;
+    width: 85%;
+    height: 40vh;
+    background-color:#aac144d8;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#TextComment{
+    width: 60%;
+    height: 8vh;
+    border: 2px black solid;
+	padding: 1vw;
+	border-radius: 2em;
+	background-color: white;
+	resize: none;
+	overflow: hidden;
+
+    
+}
+
+#allComentsDone{
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+    justify-content: space-between;
+	align-items: stretch;
+	align-content: flex-start;
+	padding-bottom: 5px;
+	width: 100%;
+}
+#userPicture{
+    width: 4.6em;
+	border: 0.2vw solid white;
+	height: 4.5em;
+	background-size: cover;
+	align-items: center;
+	display: inline-block;
+    margin: 1vw;
+	border-radius: 50px;
+    
+}
+#titleEditComments{
+    width: 30vw;
+    margin-right: 8vw;
+}
+#titleComment{
+    display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-items: center;
+	background-color: #f7f7f7;
+	margin-Left: -1px;
+	padding: 0 2vw 0 2vw;
+	border-bottom: 0.2vw dashed black;
+}
+#editComments{
+    display: flex;
+    align-items: center;
+    background-color: white;
+	border-left: 0.5vw solid #dedede;
+	border-bottom: 0.5vw solid #dedede;
+    min-height: 8vw;
+}
+#CommentEditText{
+    width: 65%;
+    border: 2px black solid;
+	padding: 0.5vw;
+	border-radius: 2em;
+    background-color: white;
+    resize: none;
+    outline: none;
+    margin:1vw;
+    height: 8vh;
+}
+
+.picturebox{
+    width: 4.5em;
+    height: 4.5em;
+	background-size: cover;
+	align-items: center;
+	display: flex;
+	margin: 0 2%;
+}
+#buttonSend{
+    align-self: center!important;
+    padding: 3%;
+}
+#editErase{
+    display: flex;
+    flex-direction: column;
+}
+#rubish {
+    width: 5vw;
+}
+#buttonRubish{
+    background-color: #aac144d8;
+}
+
+
+
+
+

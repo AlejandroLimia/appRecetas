@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 import usuario from "../images/usuario.png"
 import userActions from "../redux/actions/userActions"
 import { toast } from "react-toastify"
+import "../styles/comments.css"
+import rubish from "../images/rubish.png"
 
 const Comment = props => {
 	const [editedComment, setEditedComment] = useState({
@@ -10,6 +12,7 @@ const Comment = props => {
 	})
 	const [edit, setEdit] = useState(false)
 	const [commentId, setDeleted] = useState(props.data._id)
+
 	const erased = async () => {
 		await props.deleteComment(commentId)
 		props.fx(true)
@@ -38,114 +41,44 @@ const Comment = props => {
 		if (props.username === props.data.username && !edit) {
 			return (
 				<>
-					<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
+					<p style={{ backgroundColor: "white"}}>
 						{" "}
 						{props.data.comment}
 					</p>
-					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
-						x
+					<button onClick={erased} id="buttonRubish" style={{ width: "20px", height: "20px" }}>
+						<img id="rubish" src={rubish}></img>
 					</button>
-					<button onClick={editing} style={{ width: "20px", height: "20px" }}>
+					{/*<button onClick={editing} style={{ width: "20px", height: "20px" }}>
 						editar
-					</button>
+			</button>*/}
 				</>
 			)
 		} else {
-			return (
+		return (
 				<>
-					<textarea
-						playholder="write your comment here..."
-						value={editedComment.comment}
-						onChange={readComment}
-						name="comment"
-						style={{
-							width: "60%",
-							border: "2px black solid",
-							padding: "1.5%",
-							borderRadius: "2em",
-							backgroundColor: "white",
-							resize: "none",
-							outline: "none",
-							overflow: "hidden",
-							marginRight: "2%",
-						}}
-					/>
-					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
-						x
-					</button>
-					<button
-						onClick={sendEditedComment}
-						style={{ width: "20px", height: "20px" }}
-					>
-						enviar
-					</button>
+					<textarea id="CommentEditText" value={editedComment.comment} onChange={readComment} name="comment" />
 				</>
 			)
 		}
 	}
-
 	return (
-		<div style={{ margin: "5vw" }}>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "row",
-					flexWrap: "nowrap",
-					justifyContent: "space-between",
-					alignItems: "stretch",
-					alignContent: "flex-start",
-					paddingBottom: "5px",
-					width: "60%",
-				}}
-			>
+			<div id="allComentsDone">
 				<div className="foto">
 					{" "}
-					<div
-						style={{
-							backgroundImage: `url(${usuario})`,
-							width: "4.5em",
-							border: "0.2vw solid white",
-							height: "4.5em",
-							backgroundSize: "cover",
-							alignItems: "center",
-							display: "inline-block",
-							margin: "1vw",
-							borderRadius: "50px",
-						}}
-					/>
+					<div id="userPicture" style={{ backgroundImage: `url(${usuario})`,}}/>
 				</div>
-
 				<div>
-					<div style={{ width: "100%" }}>
-						<div
-							style={{
-								display: "flex",
-								flexDirection: "row",
-								justifyContent: "space-between",
-								alignItems: "center",
-								backgroundColor: "#f7f7f7",
-								marginLeft: "-1px",
-								padding: " 0 2vw 0 2vw",
-								borderBottom: "0.2vw dashed black",
-							}}
-						>
+					<div id="titleEditComments">
+						<div id="titleComment">
 							<p>{props.data.username} said:</p>
 							<p style={{ fontStyle: "italic", fontSize: "1vw" }}>date</p>
 						</div>
-						<div
-							style={{
-								backgroungColor: "white",
-								borderLeft: "0.5vw solid #dedede",
-								borderBottom: "0.5vw solid #dedede",
-								minHeight: "15vw",
-							}}
-						>
+						<div id="editComments">
 							{options()}
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	)
 }
 

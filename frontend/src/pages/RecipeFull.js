@@ -9,6 +9,7 @@ import usuario from "../images/usuario.png"
 import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
+import "../styles/comments.css"
 
 const RecipeFull = props => {
 	const[update, setUpdate]=useState(false)
@@ -123,58 +124,23 @@ const RecipeFull = props => {
 				        </div>
 				   })}
 		      </div>
-
-		
-			<button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
-			<div id="theComments">
-								<div>
-									{props.comments === null
-										? "cargando..."
-										: props.comments.map((comentario, index) => {
-												return <Comment key={index} fx={setUpdate} data={comentario} />
-										  })}
-								</div>
-								<div id="TheInput">
-									<div
-										className="picturebox"
-										style={{
-											backgroundImage: `url(${
-												props.token ? props.urlPic : usuario
-											})`,
-											width: "4.5em",
-											height: "4.5em",
-											backgroundSize: "cover",
-											alignItems: "center",
-											display: "flex",
-											margin: "0 2%",
-										}}
-									/>
-									<textarea
-										playholder="write your comment here..."
-										onChange={readComment}
-										name="comment"
-										style={{
-											width: "60%",
-											border: "2px black solid",
-											padding: "1.5%",
-											borderRadius: "2em",
-											backgroundColor: "white",
-											resize: "none",
-											outline: "none",
-											overflow: "hidden",
-											marginRight: "2%",
-										}}
-									/>
-									<div style={{ marginBotton: "4%", display: "table" }}>
-										<button
-											style={{ alignSelf: "center!important", padding: "3%" }}
-											onClick={sendComment}
-										>
-											send
-										</button>
+			  <button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
+			  <div id="theComments">
+					<div>
+						{props.comments === null
+						? "cargando..."
+						: props.comments.map((comentario, index) => {
+							return <Comment key={index} fx={setUpdate} data={comentario} />
+						})}
+					</div>
+					<div id="TheInput">
+						<div className="picturebox" style= {{backgroundImage: `url(${props.token ? props.urlPic : usuario})`,}}/>
+						<textarea onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment"/>
+						<div style={{ marginBotton: "4%", display: "table" }}>
+							<button id="buttonSend" onClick={sendComment}>send</button>
 						</div>
-				</div>
-			</div>
+				    </div>
+			   </div>
 		</div>
 	</div>
 	<div id="everythingMovile">
