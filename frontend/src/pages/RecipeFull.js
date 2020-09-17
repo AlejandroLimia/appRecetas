@@ -132,7 +132,7 @@ const RecipeFull = props => {
 				{props.recipe.ingredients.map(ingredient =>{
 					return <div className="ingredient">
 						<p className="TheIngredient">{ingredient.name}</p>
-						<p className="TheAmount">{ingredient.quantity || ""}</p>
+						<p className="TheAmount">{ingredient.q || ""}</p>
 					</div>
 				})}
 			</div>
@@ -181,7 +181,7 @@ const RecipeFull = props => {
 			<h2>{props.recipe.title}</h2>
 			<p>{props.recipe.description}</p>
 		</div>
-		<div  id="imageFood" style={{backgroundImage: `url(${props.recipe.urlPic})`}}> 
+		<div  id="imageFood" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}}> 
 		    <div class="data">
 				<div class="time">
 					<span><i class="far fa-clock"> </i> <span class="number">{time(props.recipe.duration)}</span></span>
@@ -209,7 +209,7 @@ const RecipeFull = props => {
 		{props.recipe.ingredients.map(ingredient =>{
 			return <div className="ingredient">
 					<p className="TheIngredient">{ingredient.name}</p>
-					<p className="TheAmount">{ingredient.quantity || ""}</p>
+					<p className="TheAmount">{ingredient.q || ""}</p>
 			</div>
 		})}
 		</div>
@@ -266,7 +266,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull)
 /*
 	 
 	{props.recipe.ingredients.map(ingredient => {
-		return <p><span>{ingredient.quantity}</span> {ingredient.name}</p>
+		return <p><span>{ingredient.q}</span> {ingredient.name}</p>
 	})} 
 	<p>{props.recipe.userId}</p> 
 	<p>Likes: {props.recipe.likes}</p>

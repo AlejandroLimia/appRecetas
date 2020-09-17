@@ -108,7 +108,7 @@ const CreateRecipe = (props) => {
 		<Header />
 			<img id="homeBackgroundOne" src={homeBackgroundOne}/>
 			<img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
-			<div id="space" style={{ height:"20vh"}}></div>
+			<div id="space" style={{ height:"20vh", marginBottom:"9vh"}}></div>
 			<div className="createRecipe">
 				<span className="title">Crear Receta</span>
 				<form class="createRecipe">
