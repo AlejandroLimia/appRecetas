@@ -8,6 +8,8 @@ import '../styles/editarUsuario.css'
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import userActions from '../redux/actions/userActions';
+import {NavLink} from "react-router-dom"
+
 
 
 
@@ -270,7 +272,13 @@ const [send, setSend] = useState({
 
                                {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
-                                   <div className="inputBox">
+                                     <div className="inputBox" >
+                                         <label htmlFor="pass">Contraseña Actual: </label>
+                                         <input type="password" name="pass" id="pass" onChange={inputHandler}  />
+                                     </div>
+                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
+                                     
+                                     <div className="inputBox">
                                          <label htmlFor="newPass">Contraseña Nueva</label>
                                           <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
                                       </div>
@@ -284,14 +292,11 @@ const [send, setSend] = useState({
 
                               </div>
                                }
-                                <div className="inputBox" >
-                                      <label htmlFor="pass">Contraseña: </label>
-                                      <input type="password" name="pass" id="pass" onChange={inputHandler}  />
-                                    </div>
-                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-                                     
-                                
-                                <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+                              
+                                <div id="botones">
+                                     <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
+                                     <NavLink to="/profile" id="volver"> <button  id="volver">Volver</button></NavLink>
+                                </div>
                             </form>
 
                            </div>

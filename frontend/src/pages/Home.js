@@ -11,13 +11,14 @@ import Footer from '../components/Footer';
 const Home = (props) => {
   
   const [categories,setCategories] = useState({
-    categories:["dietaketo", "vegetariana", "vegana","pecetariana", "paleo", "otros"]})
+    categories:["dietaketo", "vegetariana", "vegana","pecetariana", "paleo", "otros"]
+  })
     
   
     return (
         <>
-			<Header/>
-       <div id="space" style={{ height:"20vh"}}></div>
+			<Header />
+       <div id="space" style={{ height:"27vh"}}></div>
           <img id="homeBackgroundOne" src={homeBackgroundOne}/>
           <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
             <div id="homeTitle" >

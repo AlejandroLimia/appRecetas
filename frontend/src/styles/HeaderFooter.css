@@ -18,6 +18,7 @@ header {
     padding-right: 5vw;
     padding-left: 1vw;
     width: 100%;
+    height: 22vh;
 }
 
 #menuNormal{
@@ -57,7 +58,9 @@ header img#fotousuario {
    width: 8vw;
     }
 
-    #imagenTineraryusuarioLogueado{
+    
+
+    #imagenTineraryusuarioLogueado, #dropdownToggle{
     align-self: center;
     border-radius: 100%;
     display: flex;
@@ -67,23 +70,50 @@ header img#fotousuario {
     background-size: cover;
     box-shadow: 0vw 0vw 1vw 0.1vw black;
     border: 1px solid white;
-    margin-left: 2vw;
-    margin-top: 3vh;
-    margin-right: -6vw;
-
+    margin-left: 4vw!important;
+    margin-top: 4vh!important;
 }
+
+#dropdownToggle{
+    background-color: white;
+    border: 2px solid #abc120!important;
+}
+
+header #imagenTinerarysinfoto{
+    background-color: none;
+    border: 2px solid #abc120!important;
+    border-radius: 100%!important;
+    margin-bottom: -3vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:900px!important;
+}
+
+#dropdownToggle{
+    align-self: center;
+    border-radius: 100%;
+    display: flex;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    margin-right: -6vw;
+    width: 8vw;
+    height: 8vw;
+}
+
+
 
     #menuCostado{
         position: absolute;
         position: fixed!important; 
         background: white;
         padding-top: 2vh;
-        width: 30vw;
+        width: 40vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         height: 100%;
-        right: -30vw;
+        right: -40vw;
         transition: right .3s linear;
         z-index: 100;
         border-left: 3px solid #dbf249;
@@ -109,6 +139,13 @@ header img#fotousuario {
         text-decoration: none;
         color:#dbf249;
         background-color:#58632c8a ;
+    }
+
+
+    #imagenTinerary p{
+        color: black!important;
+        font-weight: bold;
+        text-align: center;
     }
     
 
@@ -141,9 +178,14 @@ header img#fotousuario {
         color: #abc120 ;
         cursor: pointer;
         font-weight: bold;
+        justify-content: space-between;
     }
     
 
+    #botones{
+        display: flex;
+        align-items: flex-end;
+    }
 
  /*Footer*/
 
@@ -173,11 +215,27 @@ footer p{
     text-align: center;
 }
 
+@media only screen and (max-width: 800px){
+    #imagenTineraryusuarioLogueado, #dropdownToggle{
+        margin-top: 5vh;    
+        height: 11vw!important;
+        width: 11vw!important;
+    }
+}
+
 @media only screen and (max-width: 600px){
    
 
  /*Header*/
 
+ #imagenTineraryusuarioLogueado, #dropdownToggle{
+    margin-top: 0vh!important;    
+    height: 16vw!important;
+    width: 16vw!important;
+    margin-left: 4vw!important;
+}
+
+ 
  header #fotologo img {
     width: 100%;
     }
@@ -203,7 +261,7 @@ footer p{
         height: 12vw!important;
         width: 12vw!important;
         margin-left: 2vw;
-        margin-top: 3vh;
+        margin-top: -2vh;
         margin-right: -3vw;
     }
 
@@ -346,9 +404,35 @@ header img#fotousuario {
         margin-right: 0vw;
         margin-left: 0vw;
     }
+    #imagenTinerarysinfoto{
+        height: 25vw!important;
+        width: 25vw!important;
+    }
 }
 
-    
+
+@media only screen and (max-width: 400px){
+    header {
+       height: 15vh;
+    }
+
+    #imagenTineraryusuarioLogueado, #imagenTineraryusuarioLogueado{
+        margin-top: 1vh;    
+    }
+
+  
+
+}
+
+@media only screen and (min-width: 1200px){
+    header {
+       height: 27vh;
+    }
+
+  
+
+}
+
  
      
   
