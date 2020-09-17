@@ -10,8 +10,26 @@ import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
 
+
 const RecipeFull = props => {
-	const[update, setUpdate]=useState(false)
+    const[update, setUpdate]=useState(false)
+    const autLikes = async () => {
+        if(props.token === '') return;
+        const pos = props.likes.indexOf(props.recipe._id);
+        if(pos !== -1){
+            --props.recipe.likes;
+            await props.modifyRecipe({likes: props.recipe.likes,_id: props.recipe._id});
+            props.likes.splice(pos);
+            await props.modifyUser({likes: props.likes,username: props.username});
+        }else{
+            ++props.recipe.likes;
+            await props.modifyRecipe({likes: props.recipe.likes, _id: props.recipe._id});
+            props.likes.push(props.recipe._id);
+            await props.modifyUser({likes: props.likes,username: props.username});
+    }
+        setUpdate(true)
+    }
+
 	useEffect(() => {
 		const gR = async () => {
 			await props.getRecipe(props.match.params.id)
@@ -84,7 +102,10 @@ const RecipeFull = props => {
 						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
 					</div>
 					<div class="likes">
-						<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+                        <span>
+                            <i class="far fa-heart"  onClick={autLikes} ></i>
+                            <span class="number">{props.recipe.likes}</span>
+                        </span>
 						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
 					</div>
 				</div>
@@ -248,14 +269,17 @@ const mapStateToProps = state => {
 	return {
 		recipe: state.recipeReducer.recipe,
 		token: state.userReducer.token,
-		urlPic: state.userReducer.profilePic,
+        urlPic: state.userReducer.profilePic,
+        likes : state.userReducer.likes,
 		username: state.userReducer.username,
 		comments: state.userReducer.comments,
 	}
 }
 
 const mapDispatchToProps = {
-	getRecipe: recipeActions.getRecipe,
+    getRecipe: recipeActions.getRecipe,
+    modifyUser: userActions.modifyUser,
+    modifyRecipe: recipeActions.modifyRecipe,
 	newComment: userActions.newComment,
 	getComments: userActions.getComments,
 }
