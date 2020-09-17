@@ -55,6 +55,7 @@ const recipeActions = {
 	},
 	userRecipes: username => {
 		return async(dispatch, getState) => {
+			console.log(`${RUTA_API}/api/recipes/user/${username} USER RECIPIES`)
 			const response = await axios.get(`${RUTA_API}/api/recipes/user/${username}`)
 			console.log(response)
 			dispatch({

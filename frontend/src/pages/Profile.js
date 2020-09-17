@@ -16,7 +16,7 @@ const Profile = (props) => {
   useEffect(() => {
    const call= async()=>{
 	await props.userInformation(props.match.params.username)
-    await props.userRecipes(props.username)
+    await props.getUserRecipes(props.match.params.username)
    }
    call()
     }, [])
@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
         data: state.recipeReducer,
         userLikes: state.userReducer.userLikes,
         likes: state.userReducer.likes,
-		userRecipes: state.userReducer.userRecipes,
+		userRecipes: state.recipeReducer.userRecipes,
 		userInfo: state.userReducer.userInfo,
 		test: state.userReducer
 	}
@@ -114,7 +114,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = {
-	userRecipes: recipeActions.userRecipes,
+	getUserRecipes: recipeActions.userRecipes,
 	profileLikes: userActions.profileLikes,
 	userInformation: userActions.userInformation,
 	getRecipes: recipeActions.getRecipes
