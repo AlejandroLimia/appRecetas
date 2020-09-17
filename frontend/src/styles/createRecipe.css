@@ -1,0 +1,24 @@
+form.createRecipe .inputBox {
+	width: 80%;
+}
+
+form.createRecipe .inputBox {
+	display: flex;
+	flex-wrap: wrap;
+}
+form.createRecipe .inputBox label {
+	width: 100%;
+}
+
+form.createRecipe .inputBox .allergies {
+	display: flex;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+form.createRecipe .ingredient {
+	flex-direction: column;
+	width: 100%;
+}
