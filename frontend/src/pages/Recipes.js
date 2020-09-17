@@ -11,9 +11,8 @@ import imageBanner from "../images/foodit.jpg";
 
 const Recipes = (props) => {
 	useEffect(() => {
-		props.getRecipes('vegetariana')
+		props.getRecipes(props.match.params.diet)
 	}, [])
-	console.log(props.data.recipes)
 	return ( <>
 	<Header />
 		<img id="homeBackgroundOne" src={homeBackgroundOne}/>
