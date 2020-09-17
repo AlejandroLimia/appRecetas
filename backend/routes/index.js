@@ -13,6 +13,9 @@ router.route("/user/register").post(userController.createUser)
 router.route("/user/n/:_id")
 .get(userController.getUserInformation)
 
+router.route("/user/modifyUser")
+.put(userController.editUser)
+
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
 .post(userController.loginUser)
@@ -40,7 +43,7 @@ router
 router
 	.route("/recipes")
 	.get(recipesController.getRecipes)
-	.post(recipesController.newRecipe)
+	.post(passport.authenticate('jwt',{session: false}), recipesController.newRecipe)
 	.put(recipesController.modifyRecipe)
 
 router.route("/subirFoto")

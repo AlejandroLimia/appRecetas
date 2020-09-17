@@ -58,8 +58,9 @@ const userController = {
 		})
 	},
     editUser: (req , res) =>{
-        User.findByIdAndUpdate(req.body._id,{...req.body},{new:true})
-        .then(user => res.json({success: true, username: user.username ,urlPic: user.urlPic}))
+        console.log(req.body)
+        User.findOneAndUpdate({username: req.body.username},{...req.body},{new:true})
+        .then(user => res.json({success: true, username: user.username ,urlPic: user.urlPic, likes: user.likes }))
         .catch(err => res.json({success:false, error: err})) 
     },
     getUserInformation: (req, res) => {

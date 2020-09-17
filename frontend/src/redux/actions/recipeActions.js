@@ -3,14 +3,22 @@ import { RUTA_API } from "../../constants"
 import { toast } from "react-toastify"
 
 const recipeActions = {
-	newRecipe: recipe => {
+	createRecipe: (recipe) => {
 		return async (dispatch, getState) => {
-			const response = await axios.post(RUTA_API + "/api/recipes", recipe)
+			const response = await axios.post(RUTA_API + "/api/recipes", recipe, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+					'Authorization': "Bearer " + getState().userReducer.token,
+				}
+			})
+			if(response.data.success) toast.success("Receta Guardada")
+			else toast.success("Fallo")
 		}
 	},
 	modifyRecipe: recipe => {
 		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API + "/api/recipes", recipe)
+            const response = await axios.put(RUTA_API + "/api/recipes", recipe)
+            console.log(response.data,'actionddd')
 		}
 	},
 	getRecipe: recipeId => {
