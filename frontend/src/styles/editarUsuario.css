@@ -9,6 +9,7 @@
     margin: 2vh 6vw;
 }
 
+
 #todoEditarUsuario #infoUser{
     border-left: none;
 }
@@ -16,23 +17,28 @@
     border-bottom: none;
 }
 
+#todoEditarUsuario .inputBox {
+	position: relative;
+	display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 
 
-#todoEditarUsuario label, .inputdescripcion p  {
+
+#todoEditarUsuario label{
     margin-right: 2vw;
     width: 20vw;
 }
 
-#todoEditarUsuario .inputdescripcion{
-display:flex;
-justify-content: space-between;
-align-items: flex-start;
-}
+
 
 #todoEditarUsuario input, #todoEditarUsuario textarea {
     width: 30vw;
     border: 1px solid #dbf249 ;
     padding: 0.5vh 0.5vw;
+    margin-bottom: 4vh;
+
 
 }
 
@@ -53,8 +59,13 @@ height: 25vh;
     margin-left: 0vw!important;
     padding: 1vh 0vw!important;
     margin-bottom: -1vh!important;
-    margin-top: 1vh!important;
+    margin-top: 3vh!important;
     font-size: 2.6vh!important;
+
+}
+
+#cambiarfotodeperfil {
+    margin-top: 3vh;
 }
 
 .botoneditarperfil:hover{
@@ -63,7 +74,7 @@ text-decoration: underline;
 }
 
 #editarUsuario{
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
 #divCambiarContraseña{
@@ -72,47 +83,70 @@ text-decoration: underline;
 
 
 @media only screen and (max-width: 800px){
+    .botoneditarperfil{
+        margin-top: 4vh!important;
+    }
+    
+    #cambiarfotodeperfil {
+        margin-top: 0vh;
+        margin-bottom: -3vh;
+    }
+    
+
+    #todoEditarUsuario label{
+        width: 30vw;
+    }
+    
+    
+    
+    #todoEditarUsuario input, #todoEditarUsuario textarea {
+        width: 40vw;
+    }
+
+    #todoEditarUsuario .inputBox {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
 
     #divBlanco{
        height: 18vh!important;
     }
-    #todoEditarUsuario .inputBox, #todoEditarUsuario .inputdescripcion  {
-        display: flex;
-        flex-direction: column!important;
-    }
+   
 
     #todoEditarUsuario #PictureAndInfoUser {
         border-bottom: none!important;
     }
 
-    #todoEditarUsuario label, .inputdescripcion p  {
-        margin-top: 4vh;
-        width: 25vw;
-    }
-    #todoEditarUsuario input, #todoEditarUsuario textarea {
-        width: 35vw;
-        border: 1px solid #dbf249 ;
-        padding: 0.5vh 0.5vw;
-    
-    }
-
-    .botoneditarperfil{
-        margin-top: 5vh!important;
-    }
+   
 }
 
 @media only screen and (max-width: 600px){
     #todoEditarUsuario #PictureAndInfoUser {
-        border-bottom: none!important;
+        border-bottom: 1px solid white!important;
     }
 
-    #todoEditarUsuario #pictureInfoandDecription{
+    #todoEditarUsuario #PictureAndInfoUser{
         display: flex;
         flex-direction: column!important;
-
-
+        justify-content:flex-start;
     }
 
+
+    #todoEditarUsuario #userPicture{
+        height: 30vh;
+        width: 30vh;
+    }
+
+
+  
+    #EditarPerfilTitulo{
+        text-align: center;
+        margin-right: 6vw;
+        margin-bottom: 4vh;
+    }
 
 }
 

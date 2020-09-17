@@ -13,12 +13,12 @@ import userActions from '../redux/actions/userActions';
 
 const Profile = (props) => {
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
+        firstName: 'Leo',
+        lastName: 'DiCaprio',
         urlPic: '',
-        username: '',
-        description:'',
-        mail: '',
+        username: 'LeoDi',
+        descriptionEdit:'Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta',
+        mail: 'LeoDi@hotmail.com',
         newPass: '',
         confirmNewPass:'',
         pass:''
@@ -28,7 +28,7 @@ const [error, setError] = useState({
     lastName: '',
     urlPic: '',
     username: '',
-    description:'',
+    descriptionEdit:'',
     mail: '',
     newPass: '',
     confirmNewPass:'',
@@ -103,17 +103,17 @@ const validation = user => {
     else error.mail = ''
 
     //Description
-    if(user.description.length !== "") {
+    if(user.descriptionEdit.length !== "") {
 
-        if(user.description.length < 3 ) {
-            error.description = 'Debe tener tres letras mínimo'
+        if(user.descriptionEdit.length < 3 ) {
+            error.descriptionEdit = 'Debe tener tres letras mínimo'
             error.ok = false
         }
-        else if(!alphanum.test(user.description)) {
-            error.description = 'Solo puede contener letras'
+        else if(!alphanum.test(user.descriptionEdit)) {
+            error.descriptionEdit = 'Solo puede contener letras'
             error.ok = false
         }
-        else error.description = ''
+        else error.descriptionEdit = ''
     }
 
     // pass
@@ -235,35 +235,35 @@ const [send, setSend] = useState({
                              <form className="sign">
                                 <div className="inputBox">
                                     <label htmlFor="firstName">Nombre: </label>
-                                    <input type="text" name="firstName" id="firstName" onChange={inputHandler} value="Leo"/>
+                                    <input type="text" name="firstName" id="firstName" onChange={inputHandler} value={user.firstName}/>
                                 </div>
                                 <span className='error' style={!error.firstName ? {display: "none"} : {display: "inherit"} }>{error.firstName ? error.firstName : null }</span>
                                 <div className="inputBox">
                                     <label htmlFor="lastName">Apellido:</label>
-                                    <input type="text" name="lastName" id="lastName" onChange={inputHandler} value="DiCaprio"/>
+                                    <input type="text" name="lastName" id="lastName" onChange={inputHandler} value={user.lastName}/>
                                 </div>
                                 <span className='error' style={!error.lastName ? {display: "none"} : {display: "inherit"} }>{error.lastName ? error.lastName : null }</span>
                                     <div className="inputBox">
                                     <label htmlFor="mail">Email:</label>
-                                    <input type="text" name="mail" id="mail" onChange={inputHandler} value="LeoDi@hotmail.com"/>
+                                    <input type="text" name="mail" id="mail" onChange={inputHandler} value={user.mail}/>
                                 </div>
                                 <span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
                                 <div className="inputBox">
                                     <label htmlFor="username">Usuario: </label>
-                                    <input type="text" name="username" id="username" onChange={inputHandler} value="LeoDi"/>
+                                    <input type="text" name="username" id="username" onChange={inputHandler} value={user.username}/>
                                 </div>
                                 <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
                                 
-                                <div className="inputdescripcion">
-                                    <p>Descripción: </p>
-                                    <textarea name="description" id="description" onChange={inputHandler} value="Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta">
+                                <div className="inputBox">
+                                <label For="descriptionEdit">Descripción:</label>
+                                    <textarea name="descriptionEdit" id="descriptionEdit" onChange={inputHandler} value={user.descriptionEdit}>
                                     </textarea>
                                 </div>
                                 <span className='error' style={!error.description ? {display: "none"} : {display: "inherit"} }>{error.description ? error.description : null }</span>
                                
                                 <div className="inputBox">
-                                 <label htmlFor="newPapicturess">Cambiar Foto del Perfil:</label>
-                                    <input type="file" name="picture" id="picture" className="botoneditarperfil"/>
+                                  <label htmlFor="urlPic" id="cambiarfotodeperfil">Foto del Perfil:</label>
+                                    <input type="file" name="urlPic" id="urlPic" className="botoneditarperfil"/>
                                 </div>
 
                                     <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
