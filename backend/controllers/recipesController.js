@@ -53,6 +53,17 @@ const recipesController = {
         Recipes.findOneAndUpdate({_id: req.body._id},{$set:{...req.body}})
         .then(()=> res.json({success: true, response: "Los datos se han modificado con éxito."}))
         .catch(err => res.json({success:false, error: err}))
-    }
+	},
+	test: (req, res) => { //Funcion para guardar las fotos
+		const path = require('path');
+		const file = req.files.pic
+		const ruta = `${path.join(__dirname, '..', 'client', 'img')}/${file.name}.jpg`
+		file.mv(ruta, err => {
+		 		if (err) {
+		 			error = 'Problemas al grabar la imagen';
+				 }
+				 else res.send('ok')
+		 	})	
+	}
 }
 module.exports = recipesController

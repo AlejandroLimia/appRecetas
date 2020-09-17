@@ -3,12 +3,14 @@ require('dotenv').config();
 require('./config/db');
 const cors = require('cors');
 const router = require('./routes');
+const fileUpload = require('express-fileupload')
 const app = express();
 const path = require('path')
 
 //Middlewares
 app.use(express.json())
 app.use(cors())
+app.use(fileUpload())
 
 // Routes
 app.use("/api", router);

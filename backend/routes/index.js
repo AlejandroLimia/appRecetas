@@ -11,9 +11,6 @@ router.route("/user/register")
 .post(userController.createUser)
 //.post(validator.validateUser,userController.createUser)
 
-router.route("/user/modifyUser")
-.post(userController.modifyUser)
-
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
 .post(userController.loginUser)
@@ -43,6 +40,9 @@ router.route("/recipes")
 .get(recipesController.getRecipes)
 .post(recipesController.newRecipe)
 .put(recipesController.modifyRecipe)
+
+router.route("/subirFoto")
+.post(recipesController.test)
 
 module.exports = router; 
 
