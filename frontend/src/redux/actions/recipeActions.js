@@ -10,7 +10,8 @@ const recipeActions = {
 	},
 	modifyRecipe: recipe => {
 		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API + "/api/recipes", recipe)
+            const response = await axios.put(RUTA_API + "/api/recipes", recipe)
+            console.log(response.data,'actionddd')
 		}
 	},
 	getRecipe: recipeId => {
