@@ -11,15 +11,15 @@ const recipesController = {
 								userId: _id,
 								userPic: urlPic
 							});
-		console.log(createRecipe)
-        // createRecipe
-        // .save()
-        // .then((recipe) => {
-        //     res.json({ success: true, recipe});
-        // })
-        // .catch((err) => {
-        //     res.json({ success: false, error: err});
-        // });
+		
+        createRecipe
+        .save()
+        .then((recipe) => {
+            res.json({ success: true, recipe});
+        })
+        .catch((err) => {
+            res.json({ success: false, error: err});
+        });
     },
     getRecipes: async (req, res) => {
         const recipes = await Recipes.find({...req.params});
@@ -32,14 +32,14 @@ const recipesController = {
         const recipes = await Recipes.find({...req.params});
         res.json({
             success: true,
-            recipes
+            recipes:recipes
         });
     },
     getRecipeById: async (req,res) => {
         const recipeInfo= await Recipes.findOne({...req.params})
         res.json({
             success: true,
-            recipeInfo
+            recipeInfo: recipeInfo
         })
     },
     getRecipeByLikes:async(req,res) => {

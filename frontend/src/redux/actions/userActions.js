@@ -143,6 +143,22 @@ const authActions = {
 			}
 		}
 	},
+	profileLikes: (likes) =>{
+		console.log(likes)
+		return async (dispatch, getState) => {
+			const response = await axios.get(
+				"http://127.0.0.1:4000/api/recipes/likes", likes
+			)
+			{console.log(response.data.recipes)}
+			if (response.data.success === false) {
+				toast.error("Ocurrió un error")
+			}
+			dispatch({
+				type:'GET_LIKES',
+				payload: response.data.recipes
+			})
+		}
+	}
 }
 
 export default authActions

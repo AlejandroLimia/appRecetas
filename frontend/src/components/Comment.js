@@ -78,7 +78,7 @@ const Comment = props => {
 			)
 		}
 	}
-	console.log(props.data)
+	
 	return (
 			<div id="allComentsDone">
 				<div id="foto">

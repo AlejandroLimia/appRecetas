@@ -2,9 +2,10 @@ const initialState = {
 	urlPic: '',
 	token: '',
 	username: '',
-    likes: '',
+    likes: null,
     userInfo: null,
 	comments: null,
+	userLikes:[]
 }
 
 function authReducer(state = initialState, action) {
@@ -36,6 +37,11 @@ function authReducer(state = initialState, action) {
 				...state,
 				comments: action.payload,
 			}
+		case "GET_LIKES":
+			return{
+				...state, userLikes:action.payload
+			}
+		
 
 		default:
 			return state

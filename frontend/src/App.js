@@ -21,7 +21,6 @@ function App(props) {
 	if(localStorage.getItem('token') && props.user.token === '') {
 		props.authUser(localStorage.getItem('token'))
 	}
-	console.log(props.user)
 	const rutas = (props.user.token === '')
 	? (<Switch>
 		{/* RUTAS USUARIO DESLOGUEADO */}
