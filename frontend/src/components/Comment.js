@@ -2,34 +2,88 @@ import React, { useState } from "react"
 import { connect } from "react-redux"
 import usuario from "../images/usuario.png"
 import userActions from "../redux/actions/userActions"
+import { toast } from "react-toastify"
 
 const Comment = props => {
-	console.log(props)
-	const [editedComment, setEditedComment] = useState({})
+	const [editedComment, setEditedComment] = useState({
+		comment: props.data.comment,
+	})
+	const [edit, setEdit] = useState(false)
+	const [commentId, setDeleted] = useState(props.data._id)
 	const erased = async () => {
-		await props.deleteComment(props.data._id)
+		await props.deleteComment(commentId)
+		props.fx(true)
 	}
-	const edite = async () => {
+	const editing = () => {
+		
+		setEdit(true)
+	}
+	const readComment = e => {
+		const text = e.target.value
+
 		setEditedComment({
+			...editedComment,
+			[e.target.name]: text,
 			commentId: props.data._id,
-			comment: props.data.comment,
 		})
+
+	}
+	const sendEditedComment = async e => {
+		e.preventDefault()
 		await props.editComment(editedComment)
+		props.fx(true)
+		setEdit(false)
 	}
 	const options = () => {
-		if (props.username === props.data.username) {
+		if (props.username === props.data.username && !edit) {
 			return (
 				<>
+					<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
+						{" "}
+						{props.data.comment}
+					</p>
 					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
 						x
 					</button>
-					<button onClick={edite} style={{ width: "20px", height: "20px" }}>
+					<button onClick={editing} style={{ width: "20px", height: "20px" }}>
 						editar
+					</button>
+				</>
+			)
+		} else {
+			return (
+				<>
+					<textarea
+						playholder="write your comment here..."
+						value={editedComment.comment}
+						onChange={readComment}
+						name="comment"
+						style={{
+							width: "60%",
+							border: "2px black solid",
+							padding: "1.5%",
+							borderRadius: "2em",
+							backgroundColor: "white",
+							resize: "none",
+							outline: "none",
+							overflow: "hidden",
+							marginRight: "2%",
+						}}
+					/>
+					<button onClick={erased} style={{ width: "20px", height: "20px" }}>
+						x
+					</button>
+					<button
+						onClick={sendEditedComment}
+						style={{ width: "20px", height: "20px" }}
+					>
+						enviar
 					</button>
 				</>
 			)
 		}
 	}
+
 	return (
 		<div style={{ margin: "5vw" }}>
 			<div
@@ -86,10 +140,6 @@ const Comment = props => {
 								minHeight: "15vw",
 							}}
 						>
-							<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
-								{" "}
-								{props.data.comment}
-							</p>
 							{options()}
 						</div>
 					</div>

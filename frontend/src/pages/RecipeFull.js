@@ -11,18 +11,41 @@ import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
 
 const RecipeFull = props => {
+	const[update, setUpdate]=useState(false)
 	useEffect(() => {
 		const gR = async () => {
 			await props.getRecipe(props.match.params.id)
 			await props.getComments(props.match.params.id)
 		}
-		window.scroll(0, 0)
 		gR()
-	}, [])
+		setUpdate(false)
+	}, [update])
 	const fotousuario = require("../images/usuario.png")
 	const imageFood = require("../images/VEGETARIANA.jpg")
 	const time = (minutes) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
+	}
+	const [comment, setComment] = useState(null)
+
+	const readComment = e => {
+		const text = e.target.value
+		setComment({
+			...comment,
+			[e.target.name]: text,
+			username: props.username,
+			recipeId: props.recipe._id,
+			userPic: props.urlPic,
+		})
+	}
+	const sendComment = async e => {
+		e.preventDefault()
+		setUpdate(true)
+		if (props.token) {
+			props.newComment(comment)
+			toast.success("Su comentario fue publicado.")
+		} else {
+			toast.error("Es necesaria una cuenta para publicar un comentario")
+		}
 	}
 
 	const [verMasBoton, setverMas] = useState({
@@ -104,16 +127,52 @@ const RecipeFull = props => {
 		
 			<button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
 			<div id="theComments">
-				<div id="userComment">
-					<p id="userPic">foto</p>
-					<div id="theComment">
-					<h5>usuario</h5>
-					<p>hola te amo</p>
-					</div>
-				</div>
-				<div id="TheInput">
-				<input  className="allInput" type="text"  value="" name="comment" placeholder="Escribi tu comentario"></input>
-				<button>Enviar</button>
+								<div>
+									{props.comments === null
+										? "cargando..."
+										: props.comments.map((comentario, index) => {
+												return <Comment key={index} fx={setUpdate} data={comentario} />
+										  })}
+								</div>
+								<div id="TheInput">
+									<div
+										className="picturebox"
+										style={{
+											backgroundImage: `url(${
+												props.token ? props.urlPic : usuario
+											})`,
+											width: "4.5em",
+											height: "4.5em",
+											backgroundSize: "cover",
+											alignItems: "center",
+											display: "flex",
+											margin: "0 2%",
+										}}
+									/>
+									<textarea
+										playholder="write your comment here..."
+										onChange={readComment}
+										name="comment"
+										style={{
+											width: "60%",
+											border: "2px black solid",
+											padding: "1.5%",
+											borderRadius: "2em",
+											backgroundColor: "white",
+											resize: "none",
+											outline: "none",
+											overflow: "hidden",
+											marginRight: "2%",
+										}}
+									/>
+									<div style={{ marginBotton: "4%", display: "table" }}>
+										<button
+											style={{ alignSelf: "center!important", padding: "3%" }}
+											onClick={sendComment}
+										>
+											send
+										</button>
+						</div>
 				</div>
 			</div>
 		</div>
