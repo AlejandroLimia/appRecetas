@@ -10,18 +10,19 @@ const recipeActions = {
 					'Authorization': "Bearer " + getState().userReducer.token,
 				}
 			})
-			if(response.data.success) {
-				foto.append('nombre', response.data.recipe._id)				
-				const responseFoto = await axios.post(RUTA_API + "/api/recipes/n/foto", foto, {
-					headers: {
-						'Content-Type': 'multipart/form-data',
-						'Authorization': "Bearer " + getState().userReducer.token,
-					}
-				})
-				if(responseFoto.data.success) toast.success("Receta Guardada")
-				else toast.error("Fallo al guardar la imagen")
-			}
-			else toast.error("Fallo")
+			
+			// if(response.data.success) {
+			// 	foto.append('nombre', response.data.recipe._id)				
+			// 	const responseFoto = await axios.post(RUTA_API + "/api/recipes/n/foto", foto, {
+			// 		headers: {
+			// 			'Content-Type': 'multipart/form-data',
+			// 			'Authorization': "Bearer " + getState().userReducer.token,
+			// 		}
+			// 	})
+			// 	if(responseFoto.data.success) toast.success("Receta Guardada")
+			// 	else toast.error("Fallo al guardar la imagen")
+			//}
+			//else toast.error("Fallo")
 		}
 	},
 	modifyRecipe: recipe => {
@@ -64,7 +65,6 @@ const recipeActions = {
 	//comentario
 	getRecipes: diet => {
 		return async (dispatch, getState) => {
-			console.log(`${RUTA_API}'/api/recipes/${diet}`)
 			const response = await axios.get(`${RUTA_API}/api/recipes/${diet}`)
 			console.log(response)
             dispatch({

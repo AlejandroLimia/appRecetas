@@ -1,7 +1,7 @@
 export const RUTA_API = 'http://127.0.0.1:4000';
 export const TEXTOS = [
 	{
-		diet: 'keto',
+		diet: 'dietaketo',
 		title: 'Dieta Keto',
 		text: 'La dieta keto o cetogénica se centra en la ingesta de más alimentos ricos en grasas buenas y proteínas (pescado azul, aguacate, aceite de coco y de oliva) con una restricción de la ingesta de hidratos de carbono (cereales, azúcar, e incluso de mucha cantidad de verduras y frutas) con el objetivo de generar el proceso de cetosis en sangre similar al ayuno. '
 	},

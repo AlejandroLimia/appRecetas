@@ -45,21 +45,13 @@ const CreateRecipe = (props) => {
 			description: recipe.description,
 			ingredients: ing.filter(i => i.q !== ''),
 			recipe: steps.filter(i => i !== ''),
-			importantContains: recipe.allergies,
+			importantContain: recipe.allergies,
 			diet: recipe.diet,
 			difficulty: recipe.difficulty,
 			duration: parseInt(recipe.duration)
 		}
 		const formData = new FormData()
 		formData.append('pic', recipe.urlPic)
-		// formData.append('title', recetaFull.title)
-		// formData.append('description', recetaFull.description)
-		// formData.append('ingredients', recetaFull.ingredients)
-		// formData.append('recipe', recetaFull.recipe)
-		// formData.append('importantContains', recetaFull.importantContains)
-		// formData.append('diet', recetaFull.diet)
-		// formData.append('difficulty', recetaFull.difficulty)
-		// formData.append('duration', recetaFull.duration)
 
 		await props.createRecipe(recetaFull,formData)
 		console.log(recetaFull)
@@ -176,9 +168,9 @@ const CreateRecipe = (props) => {
 						<label>Receta</label>
 						<div class="recipe">
 						{steps.map((step, index) => {
-								return <div>
-								<span>{index + 1}</span>
-								<textarea placeholder={`Paso ${index + 1}`} onChange={stepHandler} id={index}/>
+								return <div style={{display: 'flex'}}>
+								<h4>{index + 1}</h4>
+								<textarea style={{flex: '1', marginLeft: '1em'}} placeholder={`Paso ${index + 1}`} onChange={stepHandler} id={index}/>
 								</div>
 							})}
 						</div>

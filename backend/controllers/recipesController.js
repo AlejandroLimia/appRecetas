@@ -3,21 +3,22 @@ const Recipes = require('../models/Recipe');
 const recipesController = {
     newRecipe: async (req, res) => {
 		const { username, _id, urlPic } = req.user
+		console.log(req.body)
         const createRecipe = new Recipes({
 								...req.body,
 								username,
 								userId: _id,
 								userPic: urlPic
 							});
-
-        createRecipe
-        .save()
-        .then((recipe) => {
-            res.json({ success: true, recipe});
-        })
-        .catch((err) => {
-            res.json({ success: false, error: err});
-        });
+		console.log(createRecipe)
+        // createRecipe
+        // .save()
+        // .then((recipe) => {
+        //     res.json({ success: true, recipe});
+        // })
+        // .catch((err) => {
+        //     res.json({ success: false, error: err});
+        // });
     },
     getRecipes: async (req, res) => {
         const recipes = await Recipes.find({...req.params});
