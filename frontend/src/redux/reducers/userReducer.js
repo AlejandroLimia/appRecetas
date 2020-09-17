@@ -2,7 +2,7 @@ const initialState = {
 	urlPic: '',
 	token: '',
 	username: '',
-    likes: null,
+    likes: [],
     userInfo: null,
 	comments: null,
 	userLikes:[]

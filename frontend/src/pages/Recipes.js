@@ -13,7 +13,7 @@ import { TEXTOS } from '../constants';
 const Recipes = (props) => {
 	useEffect(() => {
 		props.getRecipes(props.match.params.diet)
-	}, [])
+	}, [props.match.params.diet])
 	return ( <>
 	<Header />
 		<img id="homeBackgroundOne" src={homeBackgroundOne}/>

@@ -27,8 +27,6 @@ const Header = (props) => {
         })       
     }
 
-    console.log(props.categories)
-
     return (
         <>
         <header>
@@ -47,7 +45,7 @@ const Header = (props) => {
             <div id="nombreDietas">
 
             {categories.categories.map(nombreDieta => {
-            return <><Link to={`/recipes/${nombreDieta}`} ><p >{nombreDieta}</p></Link></>
+            return <><Link to={`/recipes/${nombreDieta}`} ><p >{nombreDieta.toUpperCase()}</p></Link></>
             })}
 
             </div>
