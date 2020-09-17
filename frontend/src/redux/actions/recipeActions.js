@@ -18,7 +18,6 @@ const recipeActions = {
 	modifyRecipe: recipe => {
 		return async (dispatch, getState) => {
             const response = await axios.put(RUTA_API + "/api/recipes", recipe)
-            console.log(response.data,'actionddd')
 		}
 	},
 	getRecipe: recipeId => {
@@ -44,12 +43,13 @@ const recipeActions = {
 			})
 		}
 	},
-	userRecipes: userId => {
+	userRecipes: username => {
 		return (dispatch, getState) => {
-			const response = axios.get(`${RUTA_API}'/api/recipes/${userId}`)
+			const response = axios.get(`${RUTA_API}'/api/recipes/${username}`)
+			console.log(response)
 			dispatch({
 				type: "USER_RECIPES",
-				payload: response.data.recipes,
+				payload: response.data,
 			})
 		}
 	},
@@ -58,7 +58,6 @@ const recipeActions = {
 		return async (dispatch, getState) => {
 			console.log(`${RUTA_API}'/api/recipes/${diet}`)
 			const response = await axios.get(`${RUTA_API}/api/recipes/${diet}`)
-			console.log(response)
             dispatch({
                 type:'GET_RECIPES',
                 payload: response.data.recipes
@@ -75,19 +74,6 @@ const recipeActions = {
                 payload: filterRecipes
             });
         }
-	},
-	profileLikes: (id) =>{
-		return async (dispatch, getState) => {
-			const response = await axios.put(
-				"http://127.0.0.1:4000/api/recipes/likes", id
-			)
-			{console.log(response)}
-			if (response.data.success === true) {
-				toast.success("Comentario editado")
-			} else {
-				toast.error("Ocurrió un error")
-			}
-		}
 	}
 }
 export default recipeActions

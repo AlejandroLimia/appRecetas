@@ -4,17 +4,24 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Profile.css'
 import Recipe from '../components/Recipe';
-import {NavLink} from "react-router-dom"
+import {NavLink} from "react-router-dom";
 import recipeActions from '../redux/actions/recipeActions';
+import userActions from '../redux/actions/userActions'
 
 
 
 
 const Profile = (props) => {
-
-    useEffect(() => {
-    props.getRecipes('vegetariana')
-    props.likedRecipes(props.data._id)
+  console.log(props.data)
+  const [likedRecipes,setLikedRecipes]= useState({likes : props.likes, })
+  console.log(likedRecipes)
+  useEffect(() => {
+   const call= async()=>{
+    await props.getRecipes('vegetariana')
+    await props.profileLikes(likedRecipes)
+    await props.userRecipes(props.username)
+   }
+   call()
     }, [])
     
 
@@ -69,7 +76,7 @@ const Profile = (props) => {
           {showRecipe2.show2
           
           ? <div id="myRecipes">{
-            props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+            props.userRecipes.length > 0 && props.userRecipes.map(recipe => {
             return <Recipe recipe={recipe}  own={true}/> })}
             </div>
 
@@ -89,19 +96,23 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-        user: state.userReducer,
-        data: state.recipeReducer
+        username: state.userReducer.username,
+        data: state.recipeReducer,
+        userLikes: state.userReducer.userLikes,
+        likes: state.userReducer.likes,
+        userRecipes: state.userReducer.userRecipes
 
 	}
 }
 
 
     const mapDispatchToProps = {
-        likedRecipes: recipeActions.profileLikes ,
+      userRecipes: recipeActions.userRecipes,
+        profileLikes: userActions.profileLikes ,
         getRecipes: recipeActions.getRecipes
         // Accion de filtar
     }
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
 

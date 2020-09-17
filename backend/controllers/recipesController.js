@@ -46,16 +46,17 @@ const recipesController = {
         const recipeInfo= await Recipes.findOne({...req.params})
         res.json({
             success: true,
-            recipeInfo
+            recipeInfo: recipeInfo
         })
     },
     getRecipeByLikes: async (req,res) => {
         const likes = req.body
+        console.log(req.body)
         const recipeInfo= await Recipes.find()
         const recipeLikes = recipeInfo.filter(recipe => likes.includes(recipe._id)) 
         res.json({
             success: true,
-            recipeLikes
+            recipes:recipeLikes,
         })
     },
     deleteRecipe: async (req, res) =>{
