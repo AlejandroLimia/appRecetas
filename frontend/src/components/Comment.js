@@ -50,7 +50,7 @@ const Comment = props => {
 					</button>
 				</>
 			)
-		} else {
+		} else if(props.username === props.data.username && edit){
 			return (
 				<>
 					<textarea
@@ -81,6 +81,11 @@ const Comment = props => {
 					</button>
 				</>
 			)
+		}else{
+			return (<p style={{ backgroundColor: "white", padding: "2.4vw" }}>
+						{" "}
+						{props.data.comment}
+					</p>)
 		}
 	}
 
