@@ -83,7 +83,14 @@ const authActions = {
 				}
 			})
 		}
-	}
+	},
+
+	modifyUser:	user => {
+		return async (dispatch, getState) => {
+			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+
+		}
+	}	
 }
 
 export default authActions;
