@@ -33,7 +33,7 @@ router.route("/recipes/:diet").get(recipesController.getRecipes)
 
 router.route("/recipes/likes").post(recipesController.getRecipeByLikes)
 
-router.route("/recipes/user/:userId").get(recipesController.getRecipesByUserId)
+router.route("/recipes/user/:username").get(recipesController.getRecipesByUserId)
 
 router
 	.route("/recipe/:_id")

@@ -1,4 +1,5 @@
 const Recipes = require('../models/Recipe');
+const {find, findById} = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
@@ -34,13 +35,14 @@ const recipesController = {
             recipeInfo
         })
     },
-    getRecipeByLikes: async (req,res) => {
-        const likes = req.body
-        const recipeInfo= await Recipes.find()
-        const recipeLikes = recipeInfo.filter(recipe => likes.includes(recipe._id)) 
-        res.json({
-            success: true,
-            recipeLikes
+    getRecipeByLikes:async(req,res) => {
+        const {likes} = req.body
+        if(likes.length === 0) return res.json({ success: true, recipeLikes:[]})
+        let recipeLikes = []
+        likes.map( async(id, index) => {
+            const recipe  = await Recipes.findOne({_id: id})
+            recipeLikes.push(recipe)
+            if(index+1 === likes.length) return res.json({ success: true, recipeLikes:recipeLikes})
         })
     },
     deleteRecipe: async (req, res) =>{
