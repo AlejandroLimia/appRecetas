@@ -32,7 +32,6 @@ function authReducer(state = initialState, action) {
                 username: action.payload.username
                 }
 		case "GET_COM":
-			console.log(action.payload)
 			return {
 				...state,
 				comments: action.payload,

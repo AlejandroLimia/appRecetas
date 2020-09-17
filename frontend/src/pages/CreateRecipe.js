@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../styles/createRecipe.css"
 import axios from 'axios'
+import Header from "../components/Header"
 
 const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
@@ -102,6 +103,7 @@ const CreateRecipe = (props) => {
 	}
 
 	return ( <>
+		<Header />
 			<div className="createRecipe">
 				<span className="title">Crear Receta</span>
 				<form class="createRecipe">
