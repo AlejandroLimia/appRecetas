@@ -7,9 +7,10 @@ const userController = {
 	createUser: async (req, res) => {
 		const { pass } = req.body
 		// Creating new User
+		console.log(req.body)
 		const newUser = new User({ ...req.body })
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
-
+		console.log(newUser)
 		newUser
 			.save()
 			.then(user => {

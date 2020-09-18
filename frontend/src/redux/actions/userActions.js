@@ -6,6 +6,7 @@ const authActions = {
 	createUser: (user, set) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
+			console.log(response.data, 'RESPUESTA AL CREAR CUENTA')
             if(response.data.success === "false") {
                 set({status: false})
                 let errors = response.data.error.errors;

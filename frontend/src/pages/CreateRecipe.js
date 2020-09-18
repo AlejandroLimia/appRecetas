@@ -11,8 +11,8 @@ const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
 		title: '',
 		description: '',
-		diet: '',
-		duration: '',
+		diet: 'keto',
+		duration: 'facil',
 		difficulty: '', 
 		allergies: []
 	})
