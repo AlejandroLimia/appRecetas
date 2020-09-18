@@ -298,7 +298,7 @@ const [send, setSend] = useState({
                               
                                 <div id="botones">
                                      <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
-                                     <NavLink to="/profile" id="volver"> <button  id="volver">Volver</button></NavLink>
+                                     <NavLink to="" id="volver"> <button onClick={() => props.history.goBack()}  id="volver">Volver</button></NavLink>
                                 </div>
                             </form>
 

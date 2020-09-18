@@ -47,7 +47,9 @@ const Recipes = (props) => {
                     })): <img src={SinReceta}/>}
 			</div>
 		</div>
-
+		<div id="centerIt">
+        <button onClick={() => props.history.goBack()} id="goBackButton">Volver</button>
+		</div>
 
 	<Footer />
 	</> );

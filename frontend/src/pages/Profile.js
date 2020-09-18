@@ -92,8 +92,10 @@ else {
             return <Recipe recipe={recipe} /> })}
             </div>
           }
-
         </div>
+        <div id="centerIt">
+        <button onClick={() => props.history.goBack()} id="goBackButton">Volver</button>
+		    </div>
         <Footer/>
       </>
    
