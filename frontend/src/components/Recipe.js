@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { RUTA_API } from '../constants';
 import '../styles/recipe.css'
 import {Button} from 'reactstrap';
+import { connect } from "react-redux"
 
 const Recipe = (props) => {
 	const time = (minutes) => {
@@ -30,7 +31,7 @@ const Recipe = (props) => {
 					</div>
 					<div class="likes">
                         <span>  
-                            <i class="far fa-heart"></i>
+                            <i class={props.likes.includes(props.recipe._id)? "fas fa-heart":"far fa-clock"}></i>
                             <span class="number">{props.recipe.likes}</span>
                         </span>
 						<span>likes</span>
@@ -46,5 +47,9 @@ const Recipe = (props) => {
 		
 	</> );
 }
- 
-export default Recipe;
+
+const mapStateToProps = state => {
+	return { likes : state.userReducer.likes}
+}
+
+export default connect(mapStateToProps)(Recipe)

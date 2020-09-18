@@ -59,7 +59,6 @@ const userController = {
 		})
     },
     addLike: async(req, res)=>{
-        console.log(res.body)
         const {username, recipeId} = req.body 
         const user= await User.findOneAndUpdate({username},{$push:{likes:recipeId}},{new:true})
         res.json({
@@ -70,7 +69,6 @@ const userController = {
     deleteLike: async (req,res)=>{
         const {username, recipeId} = req.body
         const user = await User.findOne({username})
-        console.log(user)
         const likesUpdata = user.likes.filter(likeId => (likeId !== recipeId))
         user.likes = likesUpdata
         user.save()

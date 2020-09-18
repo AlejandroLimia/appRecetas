@@ -19,15 +19,15 @@ const RecipeFull = props => {
     const[update, setUpdate]=useState(false)
     const autLikes = async () => { 
         if(props.token === '') return;
-        const pos = props.likes.indexOf(props.recipe._id);
-        if(pos !== -1){
+		const pos = props.likes.includes(props.recipe._id);
+        if(pos){
             --props.recipe.likes;
             await props.modifyRecipe({likes: props.recipe.likes, _id:props.recipe._id});
-            await props.addLike({username: props.username,recipeId:props.recipe._id})
+            await props.delateLike({username: props.username,recipeId:props.recipe._id})
         }else{
             ++props.recipe.likes;
             await props.modifyRecipe({likes: props.recipe.likes, _id: props.recipe._id});
-            await props.delateLike({username: props.username, recipeId: props.recipe._id})
+            await props.addLike({username: props.username, recipeId: props.recipe._id})
     }
         setUpdate(true)
     }
