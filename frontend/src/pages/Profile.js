@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 import recipeActions from '../redux/actions/recipeActions';
 import userActions from '../redux/actions/userActions';
 import { RUTA_API } from '../constants';
-
+import PALTA from '../images/noRecipeAvocado.png'
 
 
 
@@ -85,14 +85,14 @@ else {
           {showRecipe2.show2
           
           ? <div id="myRecipes">{
-            props.userRecipes.length > 0 && props.userRecipes.map(recipe => {
-            return <Recipe recipe={recipe}  own={true}/> })}
+            props.userRecipes.length !== 0? props.userRecipes.map(recipe => {
+              return <Recipe recipe={recipe}  own={true}/> }) : <img src={PALTA}/>}
             </div>
 
       
           :  <div id="myRecipes">{
-            props.userLikes.length > 0 && props.userLikes.map(recipe => {
-            return <Recipe recipe={recipe} /> })}
+            props.userLikes.length !== 0? props.userLikes.map(recipe => {
+            return <Recipe recipe={recipe} /> }): <img src={PALTA}/>}
             </div>
           }
         </div>

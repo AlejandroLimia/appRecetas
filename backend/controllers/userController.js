@@ -56,8 +56,28 @@ const userController = {
 			username,
 			likes,
 		})
-	},
+    },
+    addLike: async(req, res)=>{
+        console.log(res.body)
+        const {username, recipeId} = req.body 
+        const user= await User.findOneAndUpdate({username},{$push:{likes:recipeId}},{new:true})
+        res.json({
+            success: true,
+            likes: user.likes
+        })
+  },
+    deleteLike: async (req,res)=>{
+        const {username, recipeId} = req.body
+        const user = await User.findOne({username})
+        console.log(user)
+        const likesUpdata = user.likes.filter(likeId => (likeId !== recipeId))
+        user.likes = likesUpdata
+        user.save()
+        .then(user => res.json({success:true, likes: user.likes }) )        
+
+    },
     editUser: (req , res) =>{
+        console.log(req.user,'dfrftdcvfdxbvcdxcvd')
 		if(req.user.username !== req.body.username) res.json({success: false, error: "No puede modificar este perfil"})
 
         console.log(req.body)

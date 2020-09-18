@@ -3,11 +3,11 @@ import { RUTA_API } from "../../constants"
 import { toast } from "react-toastify"
 
 const authActions = {
-	createUser: (user, set) => {
+	createUser: (user, set = null ) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
-            if(response.data.success === "false") {
-                set({status: false})
+            if(response.data.success === 'false') {
+                if(set) set({status: false})
                 let errors = response.data.error.errors;
 				if(errors.username !== undefined) toast.error(errors.username.message);
 				if(errors.mail !== undefined ) toast.error(errors.mail.message);
@@ -108,7 +108,6 @@ const authActions = {
 					'Authorization': "Bearer " + getState().userReducer.token,
 				}
 			})
-			console.log(response)
 			if(response.data.success) {
 				toast.success('Cambios guardados!')
 			}
@@ -117,7 +116,25 @@ const authActions = {
 			}
 
 		}
-	},
+    },
+    addLike:(user) => {
+        return async (dispatch, getState) => { 
+            const response = await axios.put(`${RUTA_API}/api/user/addLike`,user)
+            dispatch({
+                type:'LIKES',
+                payload:response.data.likes
+            })
+        }
+    },
+    delateLike:(user) => {
+        return async (dispatch, getState) => { 
+            const response = await axios.put(`${RUTA_API}/api/user/delateLike`,user)
+            dispatch({
+                type:'LIKES',
+                payload:response.data.likes
+            })
+        }
+    },
 	newComment: comment => {
 		console.log(comment)
 		return async (dispatch, getState) => {
