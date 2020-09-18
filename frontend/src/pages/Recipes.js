@@ -43,7 +43,7 @@ const Recipes = (props) => {
 			</div>
 			<div className="recetas">
 				{recipeFilter(recipeBusca).length !== 0? (recipeFilter(recipeBusca).map(recipe => {
-					return <Recipe recipe={recipe} />
+					return <Recipe key={recipe._id} recipe={recipe} />
                     })): <img src={SinReceta}/>}
 			</div>
 		</div>
