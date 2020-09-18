@@ -286,9 +286,9 @@ const [send, setSend] = useState({
                                     <input type="file" onChange={inputHandler} name="urlPic" id="urlPic" className="botoneditarperfil"/>
                                 </div>
 
-                                    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
+                                {/*    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
 
-                               {/* {ChangePass.Pass && 
+                                {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
                                      <div className="inputBox" >
                                          <label htmlFor="pass">Contraseña Actual: </label>
