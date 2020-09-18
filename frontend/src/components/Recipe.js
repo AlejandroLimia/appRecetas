@@ -31,7 +31,7 @@ const Recipe = (props) => {
 					</div>
 					<div class="likes">
                         <span>  
-                            <i class={props.likes.includes(props.recipe._id)? "fas fa-heart":"far fa-clock"}></i>
+                            <i class={props.likes.includes(props.recipe._id)? "fas fa-heart":"far fa-heart"}></i>
                             <span class="number">{props.recipe.likes}</span>
                         </span>
 						<span>likes</span>

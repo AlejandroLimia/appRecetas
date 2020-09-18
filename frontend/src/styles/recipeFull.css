@@ -91,13 +91,13 @@
     font-weight: bold;
     font-size: 1.3vw;
 }
-.ingredient{
+.ingredientt{
     display: flex;
     width: 35vw;
     align-items: flex-start;
     justify-content: space-between;
 }
-.ingredient .TheIngredient{
+.ingredientt .TheIngredient{
 font-size: 15px;
  width: 27vw;
  background-color: #ffffff;
@@ -105,7 +105,7 @@ font-size: 15px;
  border-radius: 0.5vw;
 padding: 0.5vh 1vw;
 }
-.ingredient .TheAmount{
+.ingredientt .TheAmount{
     font-size:15px;
     width: 7vw;
     background-color: #ffffff;
@@ -281,15 +281,15 @@ width: 4vw;
         width: 68%;
         margin-bottom: -5vh;
     }
-    .ingredient{
+    .ingredientt{
         width: 100%
     }
-    .ingredient .TheIngredient{
+    .ingredientt .TheIngredient{
          width: 53vw;
          box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
          font-size: 15px;
     }
-    .ingredient .TheAmount{
+    .ingredientt .TheAmount{
         width: 12vw;
         box-shadow: 0vw 1vw 2vw 0vw #7c7c7c2a;
         font-size:15px;

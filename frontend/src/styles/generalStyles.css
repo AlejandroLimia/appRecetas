@@ -4,3 +4,13 @@
 	box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 }
+
+#space {
+	height: 20vh;
+}
+
+@media (max-width: 800px){
+	#space {
+		height: 10vh;
+	}
+}

@@ -12,8 +12,8 @@ const CreateRecipe = (props) => {
 		title: '',
 		description: '',
 		diet: 'keto',
-		duration: 'facil',
-		difficulty: '', 
+		duration: '',
+		difficulty: 'facil', 
 		allergies: []
 	})
 	const constantes = {
@@ -55,6 +55,7 @@ const CreateRecipe = (props) => {
 
 		await props.createRecipe(recetaFull,formData)
 		console.log(recetaFull)
+		props.history.push('/')
 	}
 
 	const inputHandler = (e) => {

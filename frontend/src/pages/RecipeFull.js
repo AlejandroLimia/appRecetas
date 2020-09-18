@@ -101,7 +101,7 @@ const RecipeFull = props => {
 		:<>
 	<Header/>
 	<Link to={`/profile/${props.recipe.username}`}>
-	<div id="space" style={{ height:"20vh"}}></div>
+	<div id="space"></div>
 	<div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
 		{props.recipe.userPic === "false"
 		?<div id="noProfilePic"  style={{width:"25vh", height:"25vh", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}>
@@ -143,7 +143,7 @@ const RecipeFull = props => {
 					<h3 className="title">Ingredientes</h3>
 					<h6>cant.</h6>
 				{props.recipe.ingredients.map(ingredient =>{
-					return <div className="ingredient">
+					return <div className="ingredientt">
 						<p className="TheIngredient">{ingredient.name}</p>
 						<p className="TheAmount">{ingredient.q || ""}</p>
 					</div>
@@ -222,7 +222,7 @@ const RecipeFull = props => {
 			<h3 className="title">Ingredientes</h3>
 			<h6>cant.</h6>
 		{props.recipe.ingredients.map(ingredient =>{
-			return <div className="ingredient">
+			return <div className="ingredientt">
 					<p className="TheIngredient">{ingredient.name}</p>
 					<p className="TheAmount">{ingredient.q || ""}</p>
 			</div>

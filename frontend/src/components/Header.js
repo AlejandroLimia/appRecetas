@@ -15,7 +15,7 @@ const Header = (props) => {
     })
 
     const [categories,setCategories] = useState({
-        categories:["dietaketo", "vegetariana", "vegana","pecetariana", "paleo", "otros"]})
+        categories:["keto", "vegetariana", "vegana","pecetariana", "paleo", "otros"]})
         
       
 
