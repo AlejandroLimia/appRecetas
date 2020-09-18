@@ -58,6 +58,7 @@ const CreateRecipe = (props) => {
 	}
 
 	const inputHandler = (e) => {
+		console.log(recipe)
 		const valor = e.target.name === 'urlPic' ? e.target.files[0] : e.target.value;
 		const campo = e.target.name;
 		setRecipe({
