@@ -20,7 +20,7 @@ const Profile = (props) => {
     }, [])
   const recipesview = ()=>{
       if(props.userRecipes !== 0){
-       return <img src={PALTA}></img>
+       return (<div className="recetas"><img src={PALTA}></img></div>)
       }else{
          return ( <div id="myRecipes">{props.userRecipes.lenght}{
           props.userRecipes.length > 0 && props.userRecipes.map(recipe => {
