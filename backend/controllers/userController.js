@@ -61,12 +61,9 @@ const userController = {
     editUser: (req , res) =>{
 		if(req.user.username !== req.body.username) res.json({success: false, error: "No puede modificar este perfil"})
 
-        console.log(req.body)
-		console.log(req.files)
         User.findOneAndUpdate({_id: req.user._id },{...req.body},{new:true})
 		.then(user => {
 			if(req.files.pic !== undefined) {
-			console.log('Entre a guardar la imagen')
 			const path = require('path');
 			const file = req.files.pic
 			const ruta = `${path.join(__dirname, '..', 'client', 'img')}/${user.username}.jpg`
