@@ -62,9 +62,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-	// Conseguir recetas
 	getRecipes: recipeActions.getRecipes
-	// Accion de filtar
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
