@@ -249,10 +249,10 @@ const RecipeFull = props => {
 					return <Comment key={index} fx={setUpdate} data={comentario} />
 				})}
 			</div>
-			<div id="TheInput">
+			<form id="TheInput">
 				<input onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment" value={comment.comment}/>
-				<button id="buttonSend" onClick={sendComment}>send</button>
-			</div>
+				<button id="buttonSend" onClick={sendComment}><i className="fas fa-paper-plane"></i></button>
+			</form>
 		</div>
 		<button onClick={() => props.history.goBack()} id="goBackButton">Volver</button>
 	</div>
