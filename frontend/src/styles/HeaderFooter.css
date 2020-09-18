@@ -371,8 +371,9 @@ header img#fotousuario {
 	#menuCostado #nombreDietas {
 		width: 100%;
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+        flex-direction: column;
+        margin-left: 15vw;
+
 	}
     
     #menuCostado #nombreDietas p{

@@ -184,11 +184,12 @@ const RecipeFull = props => {
 					</div>
 					<div id="TheInput">
 						<input onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment" value={comment.comment}/>
-						<button id="buttonSend" onClick={sendComment}>send</button>
+						<button id="buttonSend" onClick={sendComment}><i className="fas fa-paper-plane"></i></button>
 				    </div>
 			   </div>
 		</div>
 	</div>
+	
 	<div id="everythingMovile">
 		<div id="titleDescription">
 			<h2>{props.recipe.title}</h2>
@@ -248,7 +249,7 @@ const RecipeFull = props => {
 				})}
 			</div>
 			<form id="TheInput">
-				<input onChange={readComment} id="TextComment" placeholder="write your comment here..." name="comment" value={comment.comment}/>
+				<input onChange={readComment} id="TextComment" placeholder="Escribi tu comentario..." name="comment" value={comment.comment}/>
 				<button id="buttonSend" onClick={sendComment}><i className="fas fa-paper-plane"></i></button>
 			</form>
 		</div>

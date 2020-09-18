@@ -90,3 +90,28 @@ form.createRecipe .ingredient {
     z-index: -1;
     width: 10%;
 }
+.inputBox input{
+	width:64vw;
+}
+.stepsToFollow{
+	width:64.8vw;
+    
+}
+.ingredient{
+	width:50.7vw!important;
+}
+
+@media only screen and (max-width: 800px){
+	.ingredient{
+		width:30.7vw!important;
+	}
+	div.createRecipe  {
+		margin-left: 7vw;
+		margin-top: -5vh;
+	}
+}
+@media only screen and (max-width: 500px){
+	div.createRecipe  {
+		margin-top: -10vh;
+	}
+}
