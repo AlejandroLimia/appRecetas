@@ -9,6 +9,7 @@ const Recipe = (props) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
 	}
 	return ( <>
+	<Link to={`/recipe/${props.recipe._id}`}>
 		<div class="recipeCard">
 			<div class="picture" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}}>
 				<div class="avatar" style={{backgroundImage: `url(${props.recipe.userPic})`, display: `${props.own ? "none" : "inherit"}`}}>
@@ -32,9 +33,10 @@ const Recipe = (props) => {
 				<div class="descripcion">
 					{props.recipe.description}
 				</div>
-				<Link to={`/recipe/${props.recipe._id}`}><button class="btn">Ver receta</button></Link>
+				<button class="btn">Ver receta</button>
 			</div>
 		</div>
+		</Link>
 		
 	</> );
 }

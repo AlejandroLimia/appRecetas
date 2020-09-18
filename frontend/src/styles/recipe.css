@@ -10,6 +10,11 @@
 	box-shadow: 0vw 0vw 1vw 0vw rgb(175, 174, 174);
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 .recipeCard:hover {
 	opacity: .8;
 }
@@ -50,16 +55,16 @@
 }
 
 .recipeCard .text .title {
-	border-bottom: 1px solid lightgray;
 	letter-spacing: 1px;
 	padding-bottom: 5px;
+	width: 80%;
 }
 
-
 .recipeCard .text .data {
+	border-top: 1px solid lightgray;
 	display: flex;
 	justify-content: space-around;
-	margin-top: 10px;  
+	padding-top: 10px;  
 }
 
 .recipeCard .text .data span.number {

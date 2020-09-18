@@ -188,7 +188,8 @@ const RecipeFull = props => {
 					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>{props.recipe.duration < 59 ? 'minutos' : props.recipe.duration == 60 ? 'hora' : 'horas'}</span>
 				</div>
 				<div class="likes">
-					<span><i class="far fa-heart"> </i> <span class="number">{props.recipe.likes}</span></span>
+					<i class={(props.likes.indexOf(props.recipe._id) !== -1)? "fas fa-heart":"far fa-heart"}  onClick={autLikes} ></i>
+                    <span class="number">{props.recipe.likes}</span>
 					<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
 				</div>
 		   </div>
