@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState ,useEffect } from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/recipes.css'
@@ -9,15 +9,21 @@ import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import recipeActions from '../redux/actions/recipeActions';
 import imageBanner from "../images/foodit.jpg";
 import { TEXTOS } from '../constants';
+import SinReceta from '../images/noRecipeAvocado.png'
 
 const Recipes = (props) => {
+    const [recipeBusca, setRecipeBusca] = useState('')
+    const recipeFilter = (recipeB) => { 
+        return (props.data.recipes.filter(recipe => recipe.title.toLowerCase().indexOf(recipeB.toLowerCase().trim()) !== -1))
+    }
+
 	useEffect(() => {
 		props.getRecipes(props.match.params.diet)
 	}, [props.match.params.diet])
 	return ( <>
 	<Header />
-		<img id="homeBackgroundOne" src={homeBackgroundOne}/>
-        <img id="homeBackgroundTwo" src={homeBackgroundTwo}/>
+		<img id="homeBackgroundOne" src={homeBackgroundOne} alt={'images'}/>
+        <img id="homeBackgroundTwo" src={homeBackgroundTwo} alt={'images'}/>
 		<div id="space" style={{ height:"10vh"}}></div>
 		<div className="banner" style={{backgroundImage: `url(${imageBanner})`}}>
 		</div>
@@ -33,12 +39,12 @@ const Recipes = (props) => {
 				})}
 			</div>
 			<div className="filtrador">
-				<input type="text" placeholder="Buscas una receta?"/>
+                <input type="text" placeholder="Buscas una receta?" onChange={(e) => setRecipeBusca(e.target.value)}/>
 			</div>
 			<div className="recetas">
-				{props.data.recipes.length > 0 && props.data.recipes.map(recipe => {
+				{recipeFilter(recipeBusca).length !== 0? (recipeFilter(recipeBusca).map(recipe => {
 					return <Recipe recipe={recipe} />
-				})}
+                    })): <img src={SinReceta}/>}
 			</div>
 		</div>
 
