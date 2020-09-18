@@ -11,6 +11,8 @@ import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
 import { RUTA_API } from "../constants"
 import "../styles/comments.css"
+import Footer from "../components/Footer"
+import { Link } from 'react-router-dom';
 
 
 const RecipeFull = props => {
@@ -100,11 +102,24 @@ const RecipeFull = props => {
 		? ""
 		:<>
 	<Header/>
-	<div id="space" style={{ height:"10vh"}}></div>
+	<Link to={`/profile/${props.recipe.username}`}>
+	<div id="space" style={{ height:"20vh"}}></div>
 	<div id="banner" style={{backgroundImage: `url(${imageBanner})`}}>
-			<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
-				<p>{props.recipe.username.toUpperCase()}</p>
+		{props.recipe.userPic === "false"
+		?<div id="noProfilePic"  style={{width:"25vh", height:"25vh", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}>
+			<p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"200%"}}>{props.recipe.username.substr(0,1).toUpperCase()}</p>
+			<div  id="nameWithNoPic">
+			<p>{props.recipe.username.toUpperCase()}</p>
 			</div>
+		</div>
+	    :<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
+		    <p>{props.recipe.username.toUpperCase()}</p>
+	     </div>
+		}	
+	</div>
+	</Link>
+	<div id="CenterTheButton">
+			<button onClick={() => props.history.goBack()} id="goBackButton">Volver</button>
 	</div>
 	<div id="everything">
 		<div id="LeftSide">
@@ -239,9 +254,11 @@ const RecipeFull = props => {
 				<button id="buttonSend" onClick={sendComment}>send</button>
 			</div>
 		</div>
+		<button onClick={() => props.history.goBack()} id="goBackButton">Volver</button>
 	</div>
 	 </>}
-	</> )
+	</>)
+	
 }
 
 const mapStateToProps = state => {
