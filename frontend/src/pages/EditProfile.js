@@ -288,7 +288,7 @@ const [send, setSend] = useState({
 
                                     <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
 
-                               {ChangePass.Pass && 
+                               {/* {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
                                      <div className="inputBox" >
                                          <label htmlFor="pass">Contraseña Actual: </label>
@@ -309,7 +309,7 @@ const [send, setSend] = useState({
                                       <span className='error' style={!error.confirmNewPass ? {display: "none"} : {display: "inherit"} }>{error.confirmNewPass ? error.confirmNewPass : null }</span>
 
                               </div>
-                               }
+                               } */}
                               
                                 <div id="botones">
                                      <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
