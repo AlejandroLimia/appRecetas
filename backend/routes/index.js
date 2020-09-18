@@ -21,6 +21,12 @@ router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)
 .post(userController.loginUser)
 
+router.route("/user/addLike")
+.put(userController.addLike)
+
+router.route("/user/delateLike")
+.put(userController.deleteLike)
+
 router.route("/comment/:recipeId")
 .get(commentController.getComments)
 

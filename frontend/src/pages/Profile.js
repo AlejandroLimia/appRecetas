@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 import recipeActions from '../redux/actions/recipeActions';
 import userActions from '../redux/actions/userActions';
 import { RUTA_API } from '../constants';
-import SinReceta from '../images/noRecipeAvocado.png'
+import PALTA from '../images/noRecipeAvocado.png'
 
 const Profile = (props) => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const Profile = (props) => {
     }, [])
   const recipesview = ()=>{
       if(props.userRecipes !== 0){
-       return <img src={SinReceta}></img>
+       return <img src={PALTA}></img>
       }else{
          return ( <div id="myRecipes">{props.userRecipes.lenght}{
           props.userRecipes.length > 0 && props.userRecipes.map(recipe => {
@@ -90,10 +90,15 @@ else {
 
           {showRecipe2.show2
           
-          ? recipesview()
+          ? <div id="myRecipes">{
+            props.userRecipes.length !== 0? props.userRecipes.map(recipe => {
+              return <Recipe recipe={recipe}  own={true}/> }) : <img src={PALTA}/>}
+            </div>
+
+      
           :  <div id="myRecipes">{
-            props.userLikes.length > 0 && props.userLikes.map(recipe => {
-            return <Recipe recipe={recipe} /> })}
+            props.userLikes.length !== 0? props.userLikes.map(recipe => {
+            return <Recipe recipe={recipe} /> }): <img src={PALTA}/>}
             </div>
           }
         </div>

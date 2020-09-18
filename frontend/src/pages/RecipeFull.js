@@ -17,19 +17,17 @@ import { Link } from 'react-router-dom';
 
 const RecipeFull = props => {
     const[update, setUpdate]=useState(false)
-    const autLikes = async () => {
+    const autLikes = async () => { 
         if(props.token === '') return;
-        const pos = props.likes.indexOf(props.recipe._id);
-        if(pos !== -1){
+		const pos = props.likes.includes(props.recipe._id);
+        if(pos){
             --props.recipe.likes;
-            await props.modifyRecipe({likes: props.recipe.likes,_id: props.recipe._id});
-            props.likes.splice(pos);
-            await props.modifyUser({likes: props.likes,username: props.username});
+            await props.modifyRecipe({likes: props.recipe.likes, _id:props.recipe._id});
+            await props.delateLike({username: props.username,recipeId:props.recipe._id})
         }else{
             ++props.recipe.likes;
             await props.modifyRecipe({likes: props.recipe.likes, _id: props.recipe._id});
-            props.likes.push(props.recipe._id);
-            await props.modifyUser({likes: props.likes,username: props.username});
+            await props.addLike({username: props.username, recipeId: props.recipe._id})
     }
         setUpdate(true)
     }
@@ -134,7 +132,7 @@ const RecipeFull = props => {
 					</div>
 					<div class="likes">
                         <span>
-                            <i class={(props.likes.indexOf(props.recipe._id) !== -1)? "fas fa-heart":"far fa-heart"}  onClick={autLikes} ></i>
+                            <i class={(props.likes.indexOf(props.recipe._id) !== -1)? "fas fa-heart":"far fa-heart"}  onClick={autLikes} disable={true} ></i>
                             <span class="number">{props.recipe.likes}</span>
                         </span>
 						<span style={{fontWeight: "bold", paddingLeft:"1vw"}}>likes</span>
@@ -273,6 +271,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+    addLike : userActions.addLike,
+    delateLike : userActions.delateLike,    
     getRecipe: recipeActions.getRecipe,
     modifyUser: userActions.modifyUser,
     modifyRecipe: recipeActions.modifyRecipe,

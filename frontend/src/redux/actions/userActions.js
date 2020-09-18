@@ -3,7 +3,7 @@ import { RUTA_API } from "../../constants"
 import { toast } from "react-toastify"
 
 const authActions = {
-	createUser: (user, set) => {
+	createUser: (user, set = null ) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
 			console.log(response.data, 'RESPUESTA AL CREAR CUENTA')
@@ -117,7 +117,25 @@ const authActions = {
 			}
 
 		}
-	},
+    },
+    addLike:(user) => {
+        return async (dispatch, getState) => { 
+            const response = await axios.put(`${RUTA_API}/api/user/addLike`,user)
+            dispatch({
+                type:'LIKES',
+                payload:response.data.likes
+            })
+        }
+    },
+    delateLike:(user) => {
+        return async (dispatch, getState) => { 
+            const response = await axios.put(`${RUTA_API}/api/user/delateLike`,user)
+            dispatch({
+                type:'LIKES',
+                payload:response.data.likes
+            })
+        }
+    },
 	newComment: comment => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(

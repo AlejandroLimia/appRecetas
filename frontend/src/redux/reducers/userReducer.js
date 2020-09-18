@@ -30,7 +30,12 @@ function authReducer(state = initialState, action) {
                 ...state,
                 urlPic: action.payload.urlPic,
                 username: action.payload.username
-                }
+            }
+        case 'LIKES':
+            return{
+                ...state,
+                likes: action.payload
+            }
 		case "GET_COM":
 			return {
 				...state,
