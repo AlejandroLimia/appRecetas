@@ -54,3 +54,10 @@ div.recetas {
     z-index: -1;
     width: 10%;
 }
+
+@media only screen and (max-width: 600px){
+div.recetas img {
+    
+	width: 60vw;
+}
+}

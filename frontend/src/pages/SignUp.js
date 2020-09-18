@@ -148,6 +148,7 @@ const SignUp = (props) => {
 				cookiePolicy={'single_host_origin'}
 			/>
 			<p><NavLink to="/">Volver al Home</NavLink></p>
+			<p><NavLink to="logIn">¡Tengo una cuenta!</NavLink></p>
 		</div>
 	</div>
 	</>)
