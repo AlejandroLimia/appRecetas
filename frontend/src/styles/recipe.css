@@ -10,6 +10,11 @@
 	box-shadow: 0vw 0vw 1vw 0vw rgb(175, 174, 174);
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 .recipeCard:hover {
 	opacity: .8;
 }
@@ -33,7 +38,6 @@
 	width: 60px;
 	height: 60px;
 	border-radius: 100%;
-	background: url('https://pressover.news/wp-content/uploads/2020/03/14947667_1771340659798764_1830946119148851805_n-60x60.jpg');
 	background-position: center;
 	background-size: cover;
 	margin: 10px 0 0 10px;
@@ -50,16 +54,16 @@
 }
 
 .recipeCard .text .title {
-	border-bottom: 1px solid lightgray;
 	letter-spacing: 1px;
 	padding-bottom: 5px;
+	width: 80%;
 }
 
-
 .recipeCard .text .data {
+	border-top: 1px solid lightgray;
 	display: flex;
 	justify-content: space-around;
-	margin-top: 10px;  
+	padding-top: 10px;  
 }
 
 .recipeCard .text .data span.number {

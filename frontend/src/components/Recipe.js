@@ -9,10 +9,17 @@ const Recipe = (props) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
 	}
 	return ( <>
+	{console.log(props.recipe.urlPic)}
+	<Link to={`/recipe/${props.recipe._id}`}>
 		<div class="recipeCard">
 			<div class="picture" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}}>
-				<div class="avatar" style={{backgroundImage: `url(${props.recipe.userPic})`, display: `${props.own ? "none" : "inherit"}`}}>
+				{props.recipe.userPic === "false"
+				?<div class="avatar" style={{backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}>
+					<p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"200%"}}>{props.recipe.username.substr(0,1).toUpperCase()}</p>
+				 </div>
+				:<div class="avatar" style={{backgroundImage: `url(${props.recipe.userPic === "true" ? `${RUTA_API}/${props.recipe.username}.jpg` : props.recipe.userPic})`, display: `${props.own ? "none" : "inherit"}`}}>
 				</div>
+				}
 			</div>
 			<div class="text">
 				<h4 class="title">{props.recipe.title}</h4>
@@ -32,9 +39,10 @@ const Recipe = (props) => {
 				<div class="descripcion">
 					{props.recipe.description}
 				</div>
-				<Link to={`/recipe/${props.recipe._id}`}><button class="btn">Ver receta</button></Link>
+				<button class="btn">Ver receta</button>
 			</div>
 		</div>
+		</Link>
 		
 	</> );
 }

@@ -23,8 +23,18 @@
     justify-content: center;
     align-items: flex-end;
 }
-#ProfilePic P{
+#noProfilePic{
+    bottom: -10vh;
+    position: absolute;
+    right: 7vw;
+}
+#nameWithNoPic p{
     bottom: -8vh;
+    right: 28%;
+    position: absolute;
+}
+#ProfilePic p{
+    bottom: -7vh;
     position: absolute;
 }
 #everything{
@@ -174,7 +184,28 @@ width: 4vw;
 #everythingMovile{
     display: none;
 }
-
+#CenterTheButton{
+    display: flex;
+    justify-content: start;
+}
+#goBackButton{
+    background-color: #aac144;
+    margin: 3vh 0vw 1vh 3vw;
+    border: none;
+    padding: 1% 5%;
+    border-radius: 1.5vw;
+    color: #ffffff;
+}
+#goBackButton:hover{
+    color: #000000;
+    background-color: #aac14483;
+    font-weight: bold;
+}
+#centerIt{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
 
 
 
@@ -182,17 +213,21 @@ width: 4vw;
     #banner{
         justify-content: center;
     }
-    
-    
     #ProfilePic{
         right: unset;
+    }
+    #noProfilePic{
+        right: unset;
+    }
+    #nameWithNoPic p{
+        bottom: -8vh;
+        right: 30%;
+        position: absolute;
     }
   
    
     #everything {
-        display: none;
-
-        
+        display: none;  
     }
     #everythingMovile{
         display: flex;
@@ -331,6 +366,12 @@ width: 4vw;
         justify-content: space-around;
         width: 100%;
     
+    }
+    #goBackButton{
+        margin-bottom: 5vw;
+    }
+    #CenterTheButton{
+        display: none;
     }
     
     
