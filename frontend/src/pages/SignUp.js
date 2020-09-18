@@ -114,7 +114,8 @@ const SignUp = (props) => {
             mail:response.profileObj.email,
             urlPic:response.profileObj.imageUrl
 		}
-        await props.createUser(userG)
+		console.log(userG, 'DATOS CUENTA GOOGLE')
+        await props.createUser(userG, setSend)
     }
 
 	return (<>

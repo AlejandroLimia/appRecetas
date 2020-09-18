@@ -6,8 +6,9 @@ const authActions = {
 	createUser: (user, set = null ) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
-            if(response.data.success === 'false') {
-                if(set) set({status: false})
+			console.log(response.data, 'RESPUESTA AL CREAR CUENTA')
+            if(response.data.success === "false") {
+                set({status: false})
                 let errors = response.data.error.errors;
 				if(errors.username !== undefined) toast.error(errors.username.message);
 				if(errors.mail !== undefined ) toast.error(errors.mail.message);
@@ -136,7 +137,6 @@ const authActions = {
         }
     },
 	newComment: comment => {
-		console.log(comment)
 		return async (dispatch, getState) => {
 			const response = await axios.post(
 				"http://127.0.0.1:4000/api/comment/",
@@ -174,12 +174,10 @@ const authActions = {
 		}
 	},
 	profileLikes: (likes) =>{
-		console.log(likes, 'ESTO LLEGA A LA ACTION')
 		return async (dispatch, getState) => {
 			const response = await axios.post(
 				"http://127.0.0.1:4000/api/recipes/likes", likes
 			)
-			console.log(response.data, 'RECETAS QUE ME GUSTARON')
 			if (response.data.success === false) {
 				toast.error("Ocurrió un error")
 			}

@@ -10,17 +10,24 @@ import userActions from '../redux/actions/userActions';
 import { RUTA_API } from '../constants';
 import PALTA from '../images/noRecipeAvocado.png'
 
-
-
-
 const Profile = (props) => {
   useEffect(() => {
    const call= async()=>{
-	await props.userInformation(props.match.params.username)
+	  await props.userInformation(props.match.params.username)
     await props.getUserRecipes(props.match.params.username)
    }
    call()
     }, [])
+  const recipesview = ()=>{
+      if(props.userRecipes !== 0){
+       return <img src={SinReceta}></img>
+      }else{
+         return ( <div id="myRecipes">{props.userRecipes.lenght}{
+          props.userRecipes.length > 0 && props.userRecipes.map(recipe => {
+          return <Recipe recipe={recipe}  own={true}/> })}
+          </div>)
+      }
+    }
     
 
     const [showRecipe2, setshowRecipe2] = useState({
@@ -49,7 +56,6 @@ if(props.userInfo === null){
 	return <>Loading</>
 }
 else {
-	console.log(props.test)
   return (
       <>
       	<Header/>

@@ -7,9 +7,10 @@ const userController = {
 	createUser: async (req, res) => {
 		const { pass } = req.body
 		// Creating new User
+		console.log(req.body)
 		const newUser = new User({ ...req.body })
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
-
+		console.log(newUser)
 		newUser
 			.save()
 			.then(user => {
@@ -80,12 +81,9 @@ const userController = {
         console.log(req.user,'dfrftdcvfdxbvcdxcvd')
 		if(req.user.username !== req.body.username) res.json({success: false, error: "No puede modificar este perfil"})
 
-        console.log(req.body)
-		console.log(req.files)
         User.findOneAndUpdate({_id: req.user._id },{...req.body},{new:true})
 		.then(user => {
 			if(req.files.pic !== undefined) {
-			console.log('Entre a guardar la imagen')
 			const path = require('path');
 			const file = req.files.pic
 			const ruta = `${path.join(__dirname, '..', 'client', 'img')}/${user.username}.jpg`
