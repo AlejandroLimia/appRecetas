@@ -3,6 +3,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import userActions from '../redux/actions/userActions';
+import { RUTA_API } from '../constants';
 
 
 
@@ -20,7 +21,7 @@ const Dropdown1 = (props) => {
         ? <DropdownToggle id="dropdownToggle" style={{ backgroundImage: `url(${fotousuario})`, width:"8vw", height:"8vw"}}></DropdownToggle>
         :  props.user.urlPic === "false"
            ? <DropdownToggle id="imagenTinerarysinfoto" className="fotoHeader" id="usuariosinfoto" style={{width:"75px", height:"75px", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></DropdownToggle>
-           :<DropdownToggle id="imagenTineraryusuarioLogueado" className="fotoHeader" style={{ backgroundImage: `url(${props.user.urlPic})`, width:"8vw", height:"8vw"}}></DropdownToggle>
+           :<DropdownToggle id="imagenTineraryusuarioLogueado" className="fotoHeader" style={{ backgroundImage: `url(${props.user.urlPic === "true" ? `${RUTA_API}/${props.user.username}.jpg` : props.user.urlPic})`, width:"8vw", height:"8vw"}}></DropdownToggle>
            
        }
 

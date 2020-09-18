@@ -6,6 +6,7 @@ const authActions = {
 	createUser: (user, set) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
+			console.log(response.data, 'RESPUESTA AL CREAR CUENTA')
             if(response.data.success === "false") {
                 set({status: false})
                 let errors = response.data.error.errors;
@@ -56,15 +57,15 @@ const authActions = {
 			})
 		}
     },
-    modifyUser:	user => {
-		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
-            dispatch({
-                type:'USER_EDIT',
-                payload: response.data
-            })
-        }
-    },
+    // modifyUser:	user => {
+	// 	return async (dispatch, getState) => {
+	// 		const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+    //         dispatch({
+    //             type:'USER_EDIT',
+    //             payload: response.data
+    //         })
+    //     }
+    // },
     userInformation: (id) => {
         return async (dispatch, getState) => {
 			console.log(`${RUTA_API}/api/user/n/${id}`)
@@ -102,12 +103,22 @@ const authActions = {
 	},
 	modifyUser:	user => {
 		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+			const response = await axios.put(RUTA_API + "/api/user/modifyUser", user, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+					'Authorization': "Bearer " + getState().userReducer.token,
+				}
+			})
+			if(response.data.success) {
+				toast.success('Cambios guardados!')
+			}
+			else {
+				toast.error('Ha habido un problema')
+			}
 
 		}
 	},
 	newComment: comment => {
-		console.log(comment)
 		return async (dispatch, getState) => {
 			const response = await axios.post(
 				"http://127.0.0.1:4000/api/comment/",
@@ -145,12 +156,10 @@ const authActions = {
 		}
 	},
 	profileLikes: (likes) =>{
-		console.log(likes, 'ESTO LLEGA A LA ACTION')
 		return async (dispatch, getState) => {
 			const response = await axios.post(
 				"http://127.0.0.1:4000/api/recipes/likes", likes
 			)
-			console.log(response.data, 'RECETAS QUE ME GUSTARON')
 			if (response.data.success === false) {
 				toast.error("Ocurrió un error")
 			}

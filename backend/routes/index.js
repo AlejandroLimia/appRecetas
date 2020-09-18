@@ -8,13 +8,14 @@ const recipesController = require("../controllers/recipesController")
 const router = express.Router()
 
 router.route("/user/register")
-.post(validator.validateUser,userController.createUser)
+.post(userController.createUser)
+// .post(validator.validateUser,userController.createUser)
 
 router.route("/user/n/:username")
 .get(userController.getUserInformation)
 
 router.route("/user/modifyUser")
-.put(userController.editUser)
+.put(passport.authenticate('jwt',{session: false}),userController.editUser)
 
 router.route("/user/login")
 .get(passport.authenticate('jwt',{session: false}), userController.decodeUser)

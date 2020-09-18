@@ -148,10 +148,11 @@
     background-color: #ffffffd8;
     border:none;
 }
+
 @media only screen and (max-width: 800px){
     #theComments{
         margin: 20vh 0vw;
-        width: 75vw;
+        width: 85vw;
         border-radius: 2vw;   
     }
     #scrollComments{
@@ -175,6 +176,10 @@
         border-radius: 3vw 0vw 0vw 0vw;
 
     }
+    #buttonSend{
+        margin-right: 2vw;
+        width: 8vw;
+     }
 
 
 

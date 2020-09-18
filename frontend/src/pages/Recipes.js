@@ -43,7 +43,7 @@ const Recipes = (props) => {
 			</div>
 			<div className="recetas">
 				{recipeFilter(recipeBusca).length !== 0? (recipeFilter(recipeBusca).map(recipe => {
-					return <Recipe recipe={recipe} />
+					return <Recipe key={recipe._id} recipe={recipe} />
                     })): <img src={SinReceta}/>}
 			</div>
 		</div>
@@ -62,9 +62,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-	// Conseguir recetas
 	getRecipes: recipeActions.getRecipes
-	// Accion de filtar
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,22 +9,26 @@ import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
 import userActions from '../redux/actions/userActions';
 import {NavLink} from "react-router-dom"
+import { RUTA_API } from '../constants';
 
 
 
 
 const Profile = (props) => {
     const [user, setUser] = useState({
-        firstName: 'Leo',
-        lastName: 'DiCaprio',
-        urlPic: '',
-        username: 'LeoDi',
-        descriptionEdit:'Mi especialidad son los platos veganos, cuento con un titulo... Esta es mi gran pasion y me gusta ayudar a que mas personas puedan incorporar mas platos vegetarianos a su dieta',
-        mail: 'LeoDi@hotmail.com',
+        firstName: props.userInfo.firstName || '',
+        lastName: props.userInfo.lastName || '',
+        urlPic: props.userInfo.urlPic || '',
+        username: props.userInfo.username,
+        descriptionEdit: props.userInfo.description || '',
+        mail: props.userInfo.mail,
         newPass: '',
         confirmNewPass:'',
         pass:''
 })
+
+const [mod, setMod] = useState(true)
+	
 const [error, setError] = useState({
     firstName: '',
     lastName: '',
@@ -111,58 +115,58 @@ const validation = user => {
             error.descriptionEdit = 'Debe tener tres letras mínimo'
             error.ok = false
         }
-        else if(!alphanum.test(user.descriptionEdit)) {
-            error.descriptionEdit = 'Solo puede contener letras'
-            error.ok = false
-        }
+        // else if(!alphanum.test(user.descriptionEdit)) {
+        //     error.descriptionEdit = 'Solo puede contener letras'
+        //     error.ok = false
+        // }
         else error.descriptionEdit = ''
     }
 
-    // pass
-    if(user.pass === '') {
-        error.pass = 'No puede estar vacío'
-        error.ok = false
-    }
-    else if(user.pass.length < 5) {
-        error.pass = 'Debe tener cinco letras mínimo'
-        error.ok = false
-    }
-    else if(!rePass.test(user.pass)) {
-        error.pass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-        error.ok = false
-    }
-    else error.pass = ''
+    // // pass
+    // if(user.pass === '') {
+    //     error.pass = 'No puede estar vacío'
+    //     error.ok = false
+    // }
+    // else if(user.pass.length < 5) {
+    //     error.pass = 'Debe tener cinco letras mínimo'
+    //     error.ok = false
+    // }
+    // else if(!rePass.test(user.pass)) {
+    //     error.pass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
+    //     error.ok = false
+    // }
+    // else error.pass = ''
 
-    //new pass
-    if(user.newPass === '') {
-        error.newPass = 'No puede estar vacío'
-        error.ok = false
-    }
-    else if(user.newPass.length < 5) {
-        error.newPass = 'Debe tener cinco letras mínimo'
-        error.ok = false
-    }
-    else if(!rePass.test(user.newPass)) {
-        error.newPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-        error.ok = false
-    }
-    else error.newPass = ''
+    // //new pass
+    // if(user.newPass === '') {
+    //     error.newPass = 'No puede estar vacío'
+    //     error.ok = false
+    // }
+    // else if(user.newPass.length < 5) {
+    //     error.newPass = 'Debe tener cinco letras mínimo'
+    //     error.ok = false
+    // }
+    // else if(!rePass.test(user.newPass)) {
+    //     error.newPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
+    //     error.ok = false
+    // }
+    // else error.newPass = ''
 
      
-    //confirm new pass
-    if(user.confirmNewPass === '') {
-        error.confirmNewPass = 'No puede estar vacío'
-        error.ok = false
-    }
-    else if(user.confirmNewPass.length < 5) {
-        error.confirmNewPass = 'Debe tener cinco letras mínimo'
-        error.ok = false
-    }
-    else if(!rePass.test(user.confirmNewPass)) {
-        error.confirmNewPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-        error.ok = false
-    }
-    else error.confirmNewPass = ''
+    // //confirm new pass
+    // if(user.confirmNewPass === '') {
+    //     error.confirmNewPass = 'No puede estar vacío'
+    //     error.ok = false
+    // }
+    // else if(user.confirmNewPass.length < 5) {
+    //     error.confirmNewPass = 'Debe tener cinco letras mínimo'
+    //     error.ok = false
+    // }
+    // else if(!rePass.test(user.confirmNewPass)) {
+    //     error.confirmNewPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
+    //     error.ok = false
+    // }
+    // else error.confirmNewPass = ''
 
 
     //return
@@ -173,7 +177,7 @@ const [send, setSend] = useState({
 })
 
     const inputHandler = (e) => {
-		const valor = e.target.name === 'picture' ? e.target.files[0] : e.target.value
+		const valor = e.target.name === 'urlPic' ? e.target.files[0] : e.target.value
 		const campo = e.target.name;
 		setUser({
 				...user,
@@ -185,14 +189,25 @@ const [send, setSend] = useState({
 		e.preventDefault();
 		send.status = true
 		setSend({status: true})
+		console.log(user)
+		console.log(error)
 		if(validation(user)) {
-			await props.modifyUser(user)
-			setError({
-				...error,
-				ok: true
-			})
+			const formData = new FormData()
+			formData.append('pic', user.urlPic)
+			formData.append('firstName', user.firstName)
+			formData.append('lastName', user.lastName)
+			formData.append('username', user.username)
+			formData.append('description', user.descriptionEdit)
+			formData.append('mail', user.mail)
+			
+			await props.modifyUser(formData)
+			// setError({
+			// 	...error,
+			// 	ok: true
+			// })
+			props.history.goBack()
+			setMod(!mod)
         }
-        
 		else {
 			send.status = false
 			setSend({status: false})
@@ -230,7 +245,7 @@ const [send, setSend] = useState({
                      <div id="PictureAndInfoUser">
                      {props.user.urlPic === "false"
                         ?<div id="userPicture" id="sinfotologueado" className="fotoHeader" id="usuariosinfoto" style={{width:"25vh", height:"25vh",padding:"8vw 8vw", backgroundColor:"white", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.user.username.substr(0,1).toUpperCase()}</p></div>
-                         :  <div id="userPicture" style={{backgroundImage: `Url(${props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
+                         :  <div id="userPicture" style={{backgroundImage: `url(${props.user.urlPic === "true" ? `${RUTA_API}/${props.user.username}.jpg` : props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
                       }
                           <div id="infoUser">
                              <div id="NameAndEdit">
@@ -255,7 +270,7 @@ const [send, setSend] = useState({
                                 <span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
                                 <div className="inputBox">
                                     <label htmlFor="username">Usuario: </label>
-                                    <input type="text" name="username" id="username" onChange={inputHandler} value={user.username}/>
+                                    <p>{user.username}</p>
                                 </div>
                                 <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
                                 
@@ -268,12 +283,12 @@ const [send, setSend] = useState({
                                
                                 <div className="inputBox">
                                   <label htmlFor="urlPic" id="cambiarfotodeperfil">Foto del Perfil:</label>
-                                    <input type="file" name="urlPic" id="urlPic" className="botoneditarperfil"/>
+                                    <input type="file" onChange={inputHandler} name="urlPic" id="urlPic" className="botoneditarperfil"/>
                                 </div>
 
-                                    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
+                                {/*    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
 
-                               {ChangePass.Pass && 
+                                {ChangePass.Pass && 
                                <div id="divCambiarContraseña">
                                      <div className="inputBox" >
                                          <label htmlFor="pass">Contraseña Actual: </label>
@@ -294,7 +309,7 @@ const [send, setSend] = useState({
                                       <span className='error' style={!error.confirmNewPass ? {display: "none"} : {display: "inherit"} }>{error.confirmNewPass ? error.confirmNewPass : null }</span>
 
                               </div>
-                               }
+                               } */}
                               
                                 <div id="botones">
                                      <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
@@ -320,7 +335,8 @@ const [send, setSend] = useState({
 
 const mapStateToProps = (state) => {
 	return {
-		user: state.userReducer
+		user: state.userReducer,
+		userInfo: state.userReducer.userInfo,
 	}
 }
 
@@ -330,5 +346,5 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
 

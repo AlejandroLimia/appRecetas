@@ -11,8 +11,8 @@ const CreateRecipe = (props) => {
 	const [recipe, setRecipe] = useState({
 		title: '',
 		description: '',
-		diet: '',
-		duration: '',
+		diet: 'keto',
+		duration: 'facil',
 		difficulty: '', 
 		allergies: []
 	})
@@ -58,6 +58,7 @@ const CreateRecipe = (props) => {
 	}
 
 	const inputHandler = (e) => {
+		console.log(recipe)
 		const valor = e.target.name === 'urlPic' ? e.target.files[0] : e.target.value;
 		const campo = e.target.name;
 		setRecipe({
@@ -168,7 +169,7 @@ const CreateRecipe = (props) => {
 						<label>Receta</label>
 						<div class="recipe">
 						{steps.map((step, index) => {
-								return <div style={{display: 'flex'}}>
+								return <div  className="stepsToFollow" style={{display: 'flex'}}>
 								<h4>{index + 1}</h4>
 								<textarea style={{flex: '1', marginLeft: '1em'}} placeholder={`Paso ${index + 1}`} onChange={stepHandler} id={index}/>
 								</div>
