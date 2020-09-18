@@ -21,7 +21,9 @@ const RecipeFull = props => {
         if(pos !== -1){
             --props.recipe.likes;
             await props.modifyRecipe({likes: props.recipe.likes,_id: props.recipe._id});
-            props.likes.splice(pos);
+            console.log(props.likes,'amtes')
+            props.likes.splice(pos,pos);
+            console.log(props.likes,'despues')
             await props.modifyUser({likes: props.likes,username: props.username});
         }else{
             ++props.recipe.likes;
