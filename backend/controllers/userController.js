@@ -58,10 +58,35 @@ const userController = {
 		})
 	},
     editUser: (req , res) =>{
+		if(req.user.username !== req.body.username) res.json({success: false, error: "No puede modificar este perfil"})
+
         console.log(req.body)
-        User.findOneAndUpdate({username: req.body.username},{...req.body},{new:true})
-        .then(user => res.json({success: true, username: user.username ,urlPic: user.urlPic, likes: user.likes }))
-        .catch(err => res.json({success:false, error: err})) 
+		console.log(req.files)
+        User.findOneAndUpdate({_id: req.user._id },{...req.body},{new:true})
+		.then(user => {
+			if(req.files.pic !== undefined) {
+			console.log('Entre a guardar la imagen')
+			const path = require('path');
+			const file = req.files.pic
+			const ruta = `${path.join(__dirname, '..', 'client', 'img')}/${user.username}.jpg`
+			let error = null
+			file.mv(ruta, async err => {
+					if (err) {
+						error = 'Problemas al grabar la imagen';
+					}
+					else {
+						const user = await User.findOneAndUpdate({_id: req.user._id },{urlPic: true},{new:true})
+						res.json({
+						success: !error ? true : false,
+						error,
+						user
+						})}
+			})
+			}
+			res.json({success: true, username: user.username ,urlPic: user.urlPic, likes: user.likes })})
+        .catch(err => {
+			res.json({success:true, error: err})
+		}) 
     },
     getUserInformation: async (req, res) => {
         const user = await User.findOne({...req.params})

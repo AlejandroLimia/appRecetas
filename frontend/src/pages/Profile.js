@@ -7,6 +7,7 @@ import Recipe from '../components/Recipe';
 import {NavLink} from "react-router-dom";
 import recipeActions from '../redux/actions/recipeActions';
 import userActions from '../redux/actions/userActions';
+import { RUTA_API } from '../constants';
 
 
 
@@ -58,15 +59,17 @@ else {
                 <div id="PictureAndInfoUser">
                 {props.userInfo.urlPic === "false"
                 ?<div id="userPicture" className="fotoHeader" id="usuariosinfoto" style={{width:"25vh", height:"25vh", backgroundColor:"none", border: "2px solid #abc120", borderRadius:"100%", marginTop:"4vh",marginLeft:"4vh", display:"flex", justifyContent:"center", alignItems:"center" }}><p style={{color:"#abc120", fontWeight: "bold", marginBottom: "unset", fontSize:"150%"}}>{props.userInfo.username.substr(0,1).toUpperCase()}</p></div>
-                :  <div id="userPicture" style={{backgroundImage: `Url(${props.userInfo.urlPic})`, width:"25vh", height:"25vh"}}></div>
+                :  <div id="userPicture" style={{backgroundImage: `url(${props.userInfo.urlPic === "true" ? `${RUTA_API}/${props.userInfo.username}.jpg` : props.userInfo.urlPic})`, width:"25vh", height:"25vh"}}></div>
                 }
                     <div id="infoUser">
                         <div id="NameAndEdit">
                         <p>{props.userInfo.username}</p>
-                        <NavLink to="/editProfile"><button>Editar Perfil</button></NavLink>
+                        {props.userInfo.username === props.username &&<NavLink to="/editProfile"><button>Editar Perfil</button></NavLink>}
                         </div>
-                    <div id="description"> <p>{props.userInfo.description || ''}</p>
-                    </div>
+						<div id="nombreApellido"> <p>{props.userInfo.firstName || ''} {props.userInfo.lastName || ''}</p>
+						</div>
+						<div id="description"> <p>{props.userInfo.description || ''}</p>
+						</div>
                     </div>
 
                 </div>

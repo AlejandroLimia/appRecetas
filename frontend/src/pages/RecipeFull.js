@@ -112,7 +112,7 @@ const RecipeFull = props => {
 			<p>{props.recipe.username.toUpperCase()}</p>
 			</div>
 		</div>
-	    :<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
+	    :<div id="ProfilePic" style={{backgroundImage: `url(${props.recipe.userPic === "true" ? `${RUTA_API}/${props.recipe.username}.jpg` : props.recipe.userPic})`, width:"25vh", height:"25vh"}}>
 		    <p>{props.recipe.username.toUpperCase()}</p>
 	     </div>
 		}	

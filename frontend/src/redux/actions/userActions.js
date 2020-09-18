@@ -56,15 +56,15 @@ const authActions = {
 			})
 		}
     },
-    modifyUser:	user => {
-		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
-            dispatch({
-                type:'USER_EDIT',
-                payload: response.data
-            })
-        }
-    },
+    // modifyUser:	user => {
+	// 	return async (dispatch, getState) => {
+	// 		const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+    //         dispatch({
+    //             type:'USER_EDIT',
+    //             payload: response.data
+    //         })
+    //     }
+    // },
     userInformation: (id) => {
         return async (dispatch, getState) => {
 			console.log(`${RUTA_API}/api/user/n/${id}`)
@@ -102,7 +102,19 @@ const authActions = {
 	},
 	modifyUser:	user => {
 		return async (dispatch, getState) => {
-			const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
+			const response = await axios.put(RUTA_API + "/api/user/modifyUser", user, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+					'Authorization': "Bearer " + getState().userReducer.token,
+				}
+			})
+			console.log(response)
+			if(response.data.success) {
+				toast.success('Cambios guardados!')
+			}
+			else {
+				toast.error('Ha habido un problema')
+			}
 
 		}
 	},
