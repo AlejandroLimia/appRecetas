@@ -49,7 +49,7 @@ const validation = user => {
     const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
     const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
     //firstName
-    if(user.firstName.length !== "") {
+    if(user.firstName !== "") {
 
         if(user.firstName.length < 3 ) {
             error.firstName = 'Debe tener tres letras mínimo'

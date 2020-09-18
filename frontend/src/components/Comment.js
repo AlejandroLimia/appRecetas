@@ -7,6 +7,7 @@ import "../styles/comments.css"
 import rubish from "../images/rubish.png"
 import editComment from "../images/editComment.png"
 import saveTik from "../images/saveTik.png"
+import { RUTA_API } from "../constants"
 
 const Comment = props => {
 	const [editedComment, setEditedComment] = useState({
@@ -82,7 +83,10 @@ const Comment = props => {
 	return (
 			<div id="allComentsDone">
 				<div id="foto">
-					<div id="userPic" style={{ backgroundImage: `url(${props.data.userPic})`,}}/>
+					{props.data.userPic == "false"
+					? <div id="userPic">{props.data.username.substr(0,1).toUpperCase()}</div>
+					: <div id="userPic" style={{ backgroundImage: `url(${props.data.userPic == "true" ? `${RUTA_API}/${props.data.username}.jpg` : props.data.userPic})`,}}></div>
+					}
 				</div>
 				<div>
 					<div id="titleEditComments" >

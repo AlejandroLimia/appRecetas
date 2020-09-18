@@ -57,9 +57,13 @@
     height: 4.5em;
     box-shadow: 0vw 0vw 1vw 0vw #807f7f57;
 	background-size: cover;
+	display: flex;
+	justify-content: center;
 	align-items: center;
+	font-weight: bold;
     margin: 1vw;
 	border-radius: 100%;
+
     
 }
 #titleEditComments{

@@ -86,8 +86,9 @@ const CreateRecipe = (props) => {
 
 	const ingQHandler = e => {
 		const index = e.target.id;
-		const valor = e.target.value + ' ' + unit[index];
+		const valor = e.target.value === '' ? '' : e.target.value + ' ' + unit[index];
 		ing[index].q = valor;
+		console.log(ing)
 		setMod(!mod)
 	}
 
@@ -95,6 +96,7 @@ const CreateRecipe = (props) => {
 		const valor = e.target.value;
 		const index = e.target.id;
 		unit[index] = valor;
+		console.log(unit)
 		setMod(!mod)
 	}
 
