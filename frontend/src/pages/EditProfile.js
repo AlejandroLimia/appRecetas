@@ -49,7 +49,7 @@ const validation = user => {
     const reMail = RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
     const rePass = RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[!{}[\]@#$%\^&*)(+=._-]).{5,}/)
     //firstName
-    if(user.firstName.length !== "") {
+    if(user.firstName !== '') {
 
         if(user.firstName.length < 3 ) {
             error.firstName = 'Debe tener tres letras mínimo'
@@ -109,7 +109,7 @@ const validation = user => {
     else error.mail = ''
 
     //Description
-    if(user.descriptionEdit.length !== "") {
+    if(user.descriptionEdit !== '') {
 
         if(user.descriptionEdit.length < 3 ) {
             error.descriptionEdit = 'Debe tener tres letras mínimo'
@@ -249,7 +249,7 @@ const [send, setSend] = useState({
                       }
                           <div id="infoUser">
                              <div id="NameAndEdit">
-                                 <p>Nombre de Usuario</p>
+                                 <p>{props.user.username}</p>
                               </div>
                             
                              <form className="sign">
@@ -268,10 +268,11 @@ const [send, setSend] = useState({
                                     <input type="text" name="mail" id="mail" onChange={inputHandler} value={user.mail}/>
                                 </div>
                                 <span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
-                                <div className="inputBox">
+                               
+                               {/* <div className="inputBox">
                                     <label htmlFor="username">Usuario: </label>
                                     <p>{user.username}</p>
-                                </div>
+                                </div>*/} 
                                 <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
                                 
                                 <div className="inputBox">
