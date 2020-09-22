@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Header from "../components/Header"
-import {connect} from 'react-redux'
 import "../styles/Home.css"
 import homeTitle from "../images/homeTitle.png"
 import DietBubble from "../components/DietBubble"
@@ -12,8 +11,7 @@ const Home = (props) => {
   const [categories,setCategories] = useState({
     categories:["keto", "vegetariana", "vegana","pecetariana", "paleo", "otros"]
   })
-    
-  
+
     return (
         <>
 		<Header/>
@@ -37,10 +35,4 @@ const Home = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-  return{
-
-  }
-}
-
-export default connect(mapStateToProps) (Home)
+export default Home;

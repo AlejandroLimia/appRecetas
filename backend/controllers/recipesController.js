@@ -1,10 +1,8 @@
 const Recipes = require('../models/Recipe');
-const {find, findById} = require('../models/Recipe');
 
 const recipesController = {
     newRecipe: async (req, res) => {
 		const { username, _id, urlPic } = req.user
-		console.log(req.body)
         const createRecipe = new Recipes({
 								...req.body,
 								username,
@@ -59,7 +57,6 @@ const recipesController = {
         .catch(err=>res.json({success:false, error: err}))
     },
     modifyRecipe: async(req, res)=>{
-        console.log(req.body)
         Recipes.findOneAndUpdate({_id: req.body._id},{$set:{...req.body}})
         .then(()=> res.json({success: true, response: "Los datos se han modificado con éxito."}))
         .catch(err => res.json({success:false, error: err}))

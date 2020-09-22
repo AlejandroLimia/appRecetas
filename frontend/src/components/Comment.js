@@ -1,13 +1,11 @@
-import React, { useState } from "react"
-import { connect } from "react-redux"
-import usuario from "../images/usuario.png"
-import userActions from "../redux/actions/userActions"
-import { toast } from "react-toastify"
-import "../styles/comments.css"
-import rubish from "../images/rubish.png"
-import editComment from "../images/editComment.png"
-import saveTik from "../images/saveTik.png"
-import { RUTA_API } from "../constants"
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import userActions from "../redux/actions/userActions";
+import "../styles/comments.css";
+import rubish from "../images/rubish.png";
+import editComment from "../images/editComment.png";
+import saveTik from "../images/saveTik.png";
+import { RUTA_API } from "../constants";
 
 const Comment = props => {
 	const [editedComment, setEditedComment] = useState({
@@ -92,7 +90,6 @@ const Comment = props => {
 					<div id="titleEditComments" >
 						<div id="titleComment">
 							<p style={{fontWeight: "bold"}}>{props.data.username}  </p>
-							{/*<p style={{ fontStyle: "italic", fontSize: "15px" }}>date</p>*/}
 						</div>
 						<div id="editComments">
 							{options()}

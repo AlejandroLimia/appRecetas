@@ -22,10 +22,3 @@ const commentSchema = new mongoose.Schema({
 const Comment = mongoose.model("comment", commentSchema)
 
 module.exports = Comment
-
-// Comment
-// 	_id
-// 	userID
-// 	userPic
-// 	recipeId
-// 	comment string

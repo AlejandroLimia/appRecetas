@@ -5,15 +5,11 @@ import { NavLink } from 'react-router-dom';
 import userActions from '../redux/actions/userActions';
 import { RUTA_API } from '../constants';
 
-
-
 const Dropdown1 = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
   const fotousuario = require("../images/usuario.png")
-
-
 
   return ( 
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>

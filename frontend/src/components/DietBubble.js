@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 import "../styles/Home.css"
 
@@ -16,17 +15,4 @@ const DietBubble = (props) => {
    )
 }
 
-
-
-const mapStateToProps = state => {
-  return{
-
-  }
-}
-
-
-
-
-
-
-export default connect(mapStateToProps) (DietBubble)
+export default DietBubble;

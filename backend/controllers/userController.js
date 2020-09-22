@@ -7,10 +7,8 @@ const userController = {
 	createUser: async (req, res) => {
 		const { pass } = req.body
 		// Creating new User
-		console.log(req.body)
 		const newUser = new User({ ...req.body })
 		newUser.pass = bcrypt.hashSync(pass.trim(), 10)
-		console.log(newUser)
 		newUser
 			.save()
 			.then(user => {
@@ -36,7 +34,6 @@ const userController = {
 		const userExists = await User.findOne({ mail })
 		if (!userExists) return res.json({ success: false, error: message })
 		const passwordMatches = bcrypt.compareSync(pass, userExists.pass)
-		console.log(passwordMatches)
 		if (!passwordMatches) return res.json({ success: false, error: message })
 		const token = jwt.sign({ ...userExists }, process.env.SECRET_KEY, {})
 		if (!token) return res.json({ success: false, error })
@@ -76,7 +73,6 @@ const userController = {
 
     },
     editUser: (req , res) =>{
-        console.log(req.user,'dfrftdcvfdxbvcdxcvd')
 		if(req.user.username !== req.body.username) res.json({success: false, error: "No puede modificar este perfil"})
 
         User.findOneAndUpdate({_id: req.user._id },{...req.body},{new:true})

@@ -90,7 +90,7 @@ form.createRecipe .ingredient {
     z-index: -1;
     width: 10%;
 }
-.inputBox input{
+div.createRecipe .inputBox input{
 	width:64vw;
 }
 .stepsToFollow{

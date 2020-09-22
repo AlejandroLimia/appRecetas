@@ -45,8 +45,6 @@ function authReducer(state = initialState, action) {
 			return{
 				...state, userLikes:action.payload
 			}
-		
-
 		default:
 			return state
 	}

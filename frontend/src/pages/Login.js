@@ -58,17 +58,17 @@ const Login = (props) => {
 						<span className="title">INGRESAR</span>
 						<div className="inputBox">
 							<label htmlFor="mail"><i className="fas fa-envelope"></i></label>
-							<input type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
+							<input className="inputForm" type="text" name="mail" id="mail" placeholder="Email" onChange={inputHandler} value={user.mail}/>
 						</div>
 						<div className="inputBox">
 							<label htmlFor="pass"><i className="fas fa-lock"></i></label>
-							<input type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Contraseña" />
+							<input className="inputForm" type="password" name="pass" id="pass" onChange={inputHandler} value={user.pass} placeholder="Contraseña" />
 						</div>
 						<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Ingresar' : <i className="fas fa-spinner fa-pulse"></i>}</button>
 					</form>
 					<div className="googleButton">
 					<GoogleLogin
-					clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"
+					clientId="966528695098-gero4ime5uu402rk59matmpn0g29j0nk.apps.googleusercontent.com"
 					buttonText="Login con Google"
 					onSuccess={responseGoogle}
 					onFailure={responseGoogle}

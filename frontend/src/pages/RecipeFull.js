@@ -5,13 +5,11 @@ import { connect } from "react-redux"
 import imageBanner from "../images/foodit.jpg"
 import "../styles/recipeFull.css"
 import Header from "../components/Header"
-import usuario from "../images/usuario.png"
 import { toast } from "react-toastify"
 import Comment from "../components/Comment"
 import homeBackgroundThree from "../images/backgroundThree.png"
 import { RUTA_API } from "../constants"
 import "../styles/comments.css"
-import Footer from "../components/Footer"
 import { Link } from 'react-router-dom';
 
 
@@ -176,7 +174,7 @@ const RecipeFull = props => {
 			  <button id="viewMoreSteps" onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
 			  <div id="theComments">
 					<div id="scrollComments">
-						{props.comments === null
+						{props.comments === null || props.comments === undefined
 						? "cargando..."
 						: props.comments.map((comentario, index) => {
 							return <Comment key={index} fx={setUpdate} data={comentario} />
@@ -242,7 +240,7 @@ const RecipeFull = props => {
 		<button id="viewMoreSteps"onClick={verMas}>{verMasBoton.show ? "Ver Mas" : "Ver Menos"} </button>
 		<div id="theComments">
 			<div id="scrollComments">
-				{props.comments === null
+				{props.comments === null || props.comments === undefined
 				? "cargando..."
 				: props.comments.map((comentario, index) => {
 					return <Comment key={index} fx={setUpdate} data={comentario} />
@@ -282,19 +280,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeFull)
-/*
-	 
-	{props.recipe.ingredients.map(ingredient => {
-		return <p><span>{ingredient.q}</span> {ingredient.name}</p>
-	})} 
-	<p>{props.recipe.userId}</p> 
-	<p>Likes: {props.recipe.likes}</p>
-	{props.recipe.importantContains.map(warning => {
-		return <p>{warning}</p>
-	})} 
-	{props.recipe.recipe.map((step, index) => {
-		return <><p>Paso {index+1}</p><>{step}</></>
-	})} 
-	<p>{props.recipe.difficulty}</p>
-	<p>Dietas: {props.recipe.diet}</p>
-<p>{props.recipe.duration}</p>*/

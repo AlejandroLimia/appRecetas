@@ -20,7 +20,6 @@ const commentController = {
 		
 	},
 	modifyCommentById: (req, res) => {
-		console.log(req.body)
 		const { commentId, comment } = req.body
 		Comment.findByIdAndUpdate(commentId, { comment }, { new: true })
 			.then(comment => res.json({ success: true, comment }))

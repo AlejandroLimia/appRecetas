@@ -11,9 +11,6 @@ import userActions from '../redux/actions/userActions';
 import {NavLink} from "react-router-dom"
 import { RUTA_API } from '../constants';
 
-
-
-
 const Profile = (props) => {
     const [user, setUser] = useState({
         firstName: props.userInfo.firstName || '',
@@ -21,9 +18,6 @@ const Profile = (props) => {
         urlPic: props.userInfo.urlPic || '',
         username: props.userInfo.username,
         descriptionEdit: props.userInfo.description || '',
-        mail: props.userInfo.mail,
-        newPass: '',
-        confirmNewPass:'',
         pass:''
 })
 
@@ -36,9 +30,6 @@ const [error, setError] = useState({
     username: '',
     descriptionEdit:'',
     mail: '',
-    newPass: '',
-    confirmNewPass:'',
-    pass: '',
     ok: false
 })
 const validation = user => {
@@ -115,61 +106,8 @@ const validation = user => {
             error.descriptionEdit = 'Debe tener tres letras mínimo'
             error.ok = false
         }
-        // else if(!alphanum.test(user.descriptionEdit)) {
-        //     error.descriptionEdit = 'Solo puede contener letras'
-        //     error.ok = false
-        // }
         else error.descriptionEdit = ''
     }
-
-    // // pass
-    // if(user.pass === '') {
-    //     error.pass = 'No puede estar vacío'
-    //     error.ok = false
-    // }
-    // else if(user.pass.length < 5) {
-    //     error.pass = 'Debe tener cinco letras mínimo'
-    //     error.ok = false
-    // }
-    // else if(!rePass.test(user.pass)) {
-    //     error.pass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-    //     error.ok = false
-    // }
-    // else error.pass = ''
-
-    // //new pass
-    // if(user.newPass === '') {
-    //     error.newPass = 'No puede estar vacío'
-    //     error.ok = false
-    // }
-    // else if(user.newPass.length < 5) {
-    //     error.newPass = 'Debe tener cinco letras mínimo'
-    //     error.ok = false
-    // }
-    // else if(!rePass.test(user.newPass)) {
-    //     error.newPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-    //     error.ok = false
-    // }
-    // else error.newPass = ''
-
-     
-    // //confirm new pass
-    // if(user.confirmNewPass === '') {
-    //     error.confirmNewPass = 'No puede estar vacío'
-    //     error.ok = false
-    // }
-    // else if(user.confirmNewPass.length < 5) {
-    //     error.confirmNewPass = 'Debe tener cinco letras mínimo'
-    //     error.ok = false
-    // }
-    // else if(!rePass.test(user.confirmNewPass)) {
-    //     error.confirmNewPass = 'Debe tener al menos una mayúscula, una minúscula y un numero'
-    //     error.ok = false
-    // }
-    // else error.confirmNewPass = ''
-
-
-    //return
     return error.ok
 }
 const [send, setSend] = useState({
@@ -189,8 +127,6 @@ const [send, setSend] = useState({
 		e.preventDefault();
 		send.status = true
 		setSend({status: true})
-		console.log(user)
-		console.log(error)
 		if(validation(user)) {
 			const formData = new FormData()
 			formData.append('pic', user.urlPic)
@@ -201,10 +137,6 @@ const [send, setSend] = useState({
 			formData.append('mail', user.mail)
 			
 			await props.modifyUser(formData)
-			// setError({
-			// 	...error,
-			// 	ok: true
-			// })
 			props.history.goBack()
 			setMod(!mod)
         }
@@ -231,8 +163,6 @@ const [send, setSend] = useState({
      })
     }
     
-    console.log("editandoperfil")
-
   return (
       <>
       	<Header/>
@@ -248,11 +178,10 @@ const [send, setSend] = useState({
                          :  <div id="userPicture" style={{backgroundImage: `url(${props.user.urlPic === "true" ? `${RUTA_API}/${props.user.username}.jpg` : props.user.urlPic})`, width:"25vh", height:"25vh"}}></div>
                       }
                           <div id="infoUser">
-                             <div id="NameAndEdit">
+                            <div id="NameAndEdit">
                                  <p>{props.user.username}</p>
-                              </div>
-                            
-                             <form className="sign">
+                            </div>
+                            <form className="sign">
                                 <div className="inputBox">
                                     <label htmlFor="firstName">Nombre: </label>
                                     <input type="text" name="firstName" id="firstName" onChange={inputHandler} value={user.firstName}/>
@@ -268,11 +197,6 @@ const [send, setSend] = useState({
                                     <input type="text" name="mail" id="mail" onChange={inputHandler} value={user.mail}/>
                                 </div>
                                 <span className='error' style={!error.mail ? {display: "none"} : {display: "inherit"} }>{error.mail ? error.mail : null }</span>
-                               
-                               {/* <div className="inputBox">
-                                    <label htmlFor="username">Usuario: </label>
-                                    <p>{user.username}</p>
-                                </div>*/} 
                                 <span className='error' style={!error.username ? {display: "none"} : {display: "inherit"} }>{error.username ? error.username : null }</span>
                                 
                                 <div className="inputBox">
@@ -285,52 +209,18 @@ const [send, setSend] = useState({
                                 <div className="inputBox">
                                   <label htmlFor="urlPic" id="cambiarfotodeperfil">Foto del Perfil:</label>
                                     <input type="file" onChange={inputHandler} name="urlPic" id="urlPic" className="botoneditarperfil"/>
-                                </div>
-
-                                {/*    <button className="botoneditarperfil" onClick={viewChangePass} >Cambiar Contraseña</button>
-
-                                {ChangePass.Pass && 
-                               <div id="divCambiarContraseña">
-                                     <div className="inputBox" >
-                                         <label htmlFor="pass">Contraseña Actual: </label>
-                                         <input type="password" name="pass" id="pass" onChange={inputHandler}  />
-                                     </div>
-                                     <span className='error' style={!error.pass ? {display: "none"} : {display: "inherit"} }>{error.pass ? error.pass : null }</span>
-                                     
-                                     <div className="inputBox">
-                                         <label htmlFor="newPass">Contraseña Nueva</label>
-                                          <input type="password" name="newPass" id="newPass" onChange={inputHandler}  />
-                                      </div>
-                                      <span className='error' style={!error.password ? {display: "none"} : {display: "inherit"} }>{error.password ? error.password : null }</span>
-
-                                      <div className="inputBox">
-                                         <label htmlFor="confirmNewPass">Confirmar Contraseña </label>
-                                          <input type="password" name="confirmNewPass" id="confirmNewPass" onChange={inputHandler}  />
-                                      </div>
-                                      <span className='error' style={!error.confirmNewPass ? {display: "none"} : {display: "inherit"} }>{error.confirmNewPass ? error.confirmNewPass : null }</span>
-
-                              </div>
-                               } */}
-                              
+                                </div>                              
                                 <div id="botones">
                                      <button  id="editarUsuario" onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Editar Cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
                                      <NavLink to="" id="volver"> <button onClick={() => props.history.goBack()}  id="volver">Volver</button></NavLink>
                                 </div>
                             </form>
-
-                           </div>
-
-
+                        </div>
                      </div>
                </div>
-
-             
-
             </div>
-          
         <Footer/>
       </>
-   
   )
 }
 

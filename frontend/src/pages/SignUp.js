@@ -114,7 +114,6 @@ const SignUp = (props) => {
             mail:response.profileObj.email,
             urlPic:response.profileObj.imageUrl
 		}
-		console.log(userG, 'DATOS CUENTA GOOGLE')
         await props.createUser(userG, setSend)
     }
 
@@ -141,7 +140,7 @@ const SignUp = (props) => {
 					<button onClick={submitHandler} disabled={send.status ? true : false}>{!send.status ? 'Crear cuenta' : <i className="fas fa-spinner fa-pulse"></i>}</button>
 			</form>
 			<GoogleLogin
-				clientId="966528695098-3ndge8hti2067veeniuubta4l64f08do.apps.googleusercontent.com"
+				clientId="966528695098-gero4ime5uu402rk59matmpn0g29j0nk.apps.googleusercontent.com"
 				buttonText="Crear cuenta con Google"
 				onSuccess={responseGoogle}
 				onFailure={responseGoogle}

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RUTA_API } from '../constants';
-import '../styles/recipe.css'
-import {Button} from 'reactstrap';
+import '../styles/recipe.css';
 import { connect } from "react-redux"
 
 const Recipe = (props) => {
@@ -10,7 +9,6 @@ const Recipe = (props) => {
 		return minutes > 59 ? `${(minutes/60).toFixed(0)}:${minutes%60 !== 0 ? minutes%60 < 10 ? '0'+minutes%60 : minutes%60 : "00"}` : minutes;
 	}
 	return ( <>
-	{console.log(props.recipe.urlPic)}
 	<Link to={`/recipe/${props.recipe._id}`}>
 		<div class="recipeCard">
 			<div class="picture" style={{backgroundImage: `url(${RUTA_API +'/'+ props.recipe._id+'.jpg'})`}}>

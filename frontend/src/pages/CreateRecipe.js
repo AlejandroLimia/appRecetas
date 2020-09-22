@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "../styles/createRecipe.css"
-import axios from 'axios'
 import Header from "../components/Header"
 import homeBackgroundOne from "../images/homeBackgroundOne.png"
 import homeBackgroundTwo from "../images/homeBackgroundTwo.png"
@@ -54,12 +53,10 @@ const CreateRecipe = (props) => {
 		formData.append('pic', recipe.urlPic)
 
 		await props.createRecipe(recetaFull,formData)
-		console.log(recetaFull)
 		props.history.push('/')
 	}
 
 	const inputHandler = (e) => {
-		console.log(recipe)
 		const valor = e.target.name === 'urlPic' ? e.target.files[0] : e.target.value;
 		const campo = e.target.name;
 		setRecipe({
@@ -89,7 +86,6 @@ const CreateRecipe = (props) => {
 		const index = e.target.id;
 		const valor = e.target.value === '' ? '' : e.target.value + ' ' + unit[index];
 		ing[index].q = valor;
-		console.log(ing)
 		setMod(!mod)
 	}
 
@@ -97,7 +93,6 @@ const CreateRecipe = (props) => {
 		const valor = e.target.value;
 		const index = e.target.id;
 		unit[index] = valor;
-		console.log(unit)
 		setMod(!mod)
 	}
 

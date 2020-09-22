@@ -32,18 +32,6 @@ const recipeActions = {
 	},
 	getRecipe: recipeId => {
 		return async (dispatch, getState) => {
-			//const recipes = getState().recipesReducer.recipes;
-			// const selectedRecipe = null;
-
-			// if(!recipes)
-			//     selectedRecipe = await axios.get(`${RUTA_API}/api/recipes/${recipeId}`);
-			// else
-			//     selectedRecipe = recipes.filter((recipe)=> recipe._Id === recipeId);
-
-			// dispatch({
-			//     type: "GET_RECIPE",
-			//     payload: recipes? selectedRecipe[0]:selectedRecipe.data.recipe,
-			// });
 			const selectedRecipe = await axios.get(
 				`${RUTA_API}/api/recipe/${recipeId}`
 			)

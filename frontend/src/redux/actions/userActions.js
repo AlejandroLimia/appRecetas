@@ -6,7 +6,6 @@ const authActions = {
 	createUser: (user, set = null ) => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(RUTA_API+'/api/user/register', user)
-			console.log(response.data, 'RESPUESTA AL CREAR CUENTA')
             if(response.data.success === "false") {
                 set({status: false})
                 let errors = response.data.error.errors;
@@ -57,18 +56,8 @@ const authActions = {
 			})
 		}
     },
-    // modifyUser:	user => {
-	// 	return async (dispatch, getState) => {
-	// 		const response = await axios.put(RUTA_API+'/api/user/modifyUser', user)
-    //         dispatch({
-    //             type:'USER_EDIT',
-    //             payload: response.data
-    //         })
-    //     }
-    // },
     userInformation: (id) => {
         return async (dispatch, getState) => {
-			console.log(`${RUTA_API}/api/user/n/${id}`)
 			const response = await axios.get(`${RUTA_API}/api/user/n/${id}`)
             dispatch({
                 type: 'GET_USER_INFO',
@@ -88,7 +77,6 @@ const authActions = {
 			} catch {
 				return false
 			}
-			console.log(response.data)
 			const {urlPic, username, likes} = response.data
 			dispatch({
 				type: "USER_IN",
@@ -139,7 +127,7 @@ const authActions = {
 	newComment: comment => {
 		return async (dispatch, getState) => {
 			const response = await axios.post(
-				"http://127.0.0.1:4000/api/comment/",
+				RUTA_API+ "/api/comment/",
 				comment
 			)
 		}
@@ -147,7 +135,7 @@ const authActions = {
 	getComments: recipeId => {
 		return async (dispatch, getState) => {
 			const response = await axios.get(
-				`http://127.0.0.1:4000/api/comment/${recipeId}`
+				`${RUTA_API}/api/comment/${recipeId}`
 			)
 			dispatch({
 				type: "GET_COM",
@@ -157,13 +145,13 @@ const authActions = {
 	},
 	deleteComment: commentId => {
 		return async (dispatch, getState) => {
-			const response = await axios.delete(`http://127.0.0.1:4000/api/comment/${commentId}`)
+			const response = await axios.delete(`${RUTA_API}/api/comment/${commentId}`)
 		}
 	},
 	editComment: edited => {
 		return async (dispatch, getState) => {
 			const response = await axios.put(
-				"http://127.0.0.1:4000/api/comment",
+				RUTA_API + "/api/comment",
 				edited
 			)
 			if (response.data.success === true) {
@@ -176,7 +164,7 @@ const authActions = {
 	profileLikes: (likes) =>{
 		return async (dispatch, getState) => {
 			const response = await axios.post(
-				"http://127.0.0.1:4000/api/recipes/likes", likes
+				RUTA_API + "/api/recipes/likes", likes
 			)
 			if (response.data.success === false) {
 				toast.error("Ocurrió un error")
